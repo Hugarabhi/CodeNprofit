@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+<title>CodenProfit — Sign In | Developer Marketplace</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+
+<!-- SEO Meta -->
+<meta name="description" content="CodenProfit connects elite student developers with forward-thinking businesses to build websites, apps, and tech solutions faster.">
+<meta name="keywords" content="CodenProfit, student developers, web development marketplace, startup developers, hire developers, build apps">
+<meta name="author" content="CodenProfit">
+
+<!-- Open Graph (Social Media Preview) -->
+<meta property="og:title" content="CodenProfit — Connect Developers with Businesses">
+<meta property="og:description" content="India’s first Business-to-Student (B2S) development marketplace. Build apps, websites and prototypes faster with student talent.">
+<meta property="og:image" content="https://codenprofit.com/logo.png">
+<meta property="og:url" content="https://codenprofit.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CodenProfit — Build Faster with Student Developers">
+<meta name="twitter:description" content="Hire student developers and turn ideas into real working prototypes faster.">
+<meta name="twitter:image" content="https://codenprofit.com/logo.png">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#0A0A0A">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Clash+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg:#04040f;
+  --bg2:#080818;
+  --surface:rgba(255,255,255,0.03);
+  --surface2:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --accent:#7c3aed;
+  --accent2:#06b6d4;
+  --accent3:#f59e0b;
+  --neon:#a78bfa;
+  --neon2:#22d3ee;
+  --green:#10b981;
+  --red:#ef4444;
+  --text:#ffffff;
+  --text-secondary: #e2e8f0;
+  --muted:rgba(255,255,255,0.7);
+  --muted2:rgba(255,255,255,0.3);
+  
+  --google-blue: #4285F4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  height:100%;
+  width:100%;
+  overflow-x: hidden;
+}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ── WELCOME SCREEN ── */
+#welcome-screen{
+  position:fixed;inset:0;z-index:1000;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .8s ease, transform .6s ease;
+  pointer-events: none;
+  padding: 20px;
+}
+#welcome-screen.fade-out{opacity:0;transform:scale(1.05);pointer-events:none}
+
+.welcome-logo{
+  display:flex;align-items:center;gap:16px;
+  animation:logoReveal 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@keyframes logoReveal{
+  from{opacity:0;transform:translateY(30px) scale(0.8)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.welcome-logo-icon{
+  width:64px;height:64px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;
+  animation:iconGlow 2s ease-in-out infinite alternate;
+}
+@media (max-width:480px){
+
+  .welcome-logo{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .welcome-logo-icon{
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    padding:8px;
+  }
+
+  .welcome-name{
+    font-size:32px;
+    text-align:center;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .welcome-tagline{
+    font-size:12px;
+    letter-spacing:2px;
+  }
+
+  .welcome-bar{
+    width:160px;
+  }
+
+}
+@keyframes iconGlow{
+  from{box-shadow:0 0 30px rgba(124,58,237,0.4)}
+  to{box-shadow:0 0 60px rgba(124,58,237,0.8),0 0 100px rgba(6,182,212,0.3)}
+}
+.welcome-tagline{
+  margin-top:20px;
+  font-size:14px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;
+  animation:fadeUp 0.8s .3s both;
+  text-align: center;
+  padding: 0 20px;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+.welcome-bar{
+  width:200px;height:2px;
+  background:var(--border);border-radius:2px;
+  margin-top:40px;overflow:hidden;
+  animation:fadeUp 0.8s .5s both;
+}
+.welcome-bar-fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  animation:barFill 1.2s .6s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes barFill{to{width:100%}}
+.welcome-percent{
+  margin-top:10px;font-size:12px;color:var(--muted2);
+  animation:fadeUp 0.8s .5s both;
+}
+
+/* ── BACKGROUND ── */
+.bg-scene{position:fixed;inset:0;z-index:0;overflow:hidden}
+.noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.mesh{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 15%, rgba(124,58,237,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 45% at 85% 75%, rgba(6,182,212,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 35% at 60% 10%, rgba(245,158,11,0.06) 0%, transparent 50%);
+}
+.grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 80%);
+}
+.orbs{position:absolute;inset:0}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12}
+.orb1{width:500px;height:500px;background:var(--accent);top:-150px;left:-150px;animation:drift1 18s ease-in-out infinite}
+.orb2{width:400px;height:400px;background:var(--accent2);bottom:-100px;right:-100px;animation:drift2 22s ease-in-out infinite}
+.orb3{width:250px;height:250px;background:#f59e0b;top:40%;left:55%;animation:drift3 15s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}33%{transform:translate(60px,-40px)}66%{transform:translate(-30px,50px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}33%{transform:translate(-50px,40px)}66%{transform:translate(40px,-30px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-60px)}}
+
+/* ── LAYOUT ── */
+.auth-split{
+  position:relative;
+  z-index:1;
+  display:flex;
+  width:100%;
+  min-height:100vh;
+  flex-direction: row;
+}
+.auth-left{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:52px 60px;
+  border-right:1px solid var(--border);
+  background:rgba(0,0,0,0.3);
+  backdrop-filter:blur(4px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+.auth-left::-webkit-scrollbar {
+  display: none;
+}
+.auth-right{
+  width:530px;
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:52px;
+  background:rgba(4,4,15,0.6);
+  backdrop-filter:blur(24px);
+  overflow-y: auto;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
+  right: 0;
+}
+
+/* Tablet Styles */
+@media(max-width:1100px) and (min-width:901px){
+  .auth-left{
+    padding: 40px 30px;
+  }
+  .auth-right{
+    width: 450px;
+    padding: 40px 30px;
+  }
+  .hero-h1{
+    font-size: 48px !important;
+  }
+}
+
+/* Mobile Styles */
+@media(max-width:900px){
+  .auth-split{
+    flex-direction: column;
+  }
+  .auth-left{
+    display: none;
+  }
+  .auth-right{
+    width: 100%;
+    padding: 32px 24px;
+    max-height: none;
+    position: static;
+    min-height: 100vh;
+  }
+  
+  .mobile-contact-footer {
+    display: block;
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  
+  .contact-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  .contact-item strong {
+    display: block;
+    color: var(--neon2);
+    margin-bottom: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+}
+
+/* Small Mobile Styles */
+@media(max-width:480px){
+  .auth-right{
+    padding: 24px 16px;
+  }
+  .form-head h2{
+    font-size: 28px !important;
+  }
+  .type-grid{
+    gap: 8px;
+  }
+  .type-card{
+    padding: 12px 8px;
+  }
+  .field-row{
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .btn-submit{
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── LEFT PANEL ── */
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.brand-icon{
+  width:70px;height:60px;overflow:hidden;
+}
+.brand-icon img{width:100%;height:100%;object-fit:cover}
+.brand-name{font-family:'Outfit',sans-serif;font-size:50px;font-weight:800;letter-spacing:-0.5px; color: var(--text);}
+.brand-name .cn{color:var(--neon)}.brand-name .np{color:var(--neon2)}
+
+.hero-block{flex:1;display:flex;flex-direction:column;justify-content:center;padding:48px 0}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.25);
+  color:var(--neon);padding:7px 16px;border-radius:30px;
+  font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  width:fit-content;margin-bottom:28px;
+}
+.hero-pulse{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.8)}}
+
+.hero-h1{
+  font-family:'Outfit',sans-serif;
+  font-size:58px;
+  font-weight:900;
+  line-height:1.05;
+  margin-bottom:24px;
+  letter-spacing:-2px;
+}
+
+.hero-h1 .line1{
+  background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,0.65) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero-h1 .line2{
+  margin-left:8px;
+  background:linear-gradient(135deg,var(--neon),var(--neon2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-p{color:var(--muted);font-size:15px;line-height:1.8;max-width:440px;margin-bottom:44px}
+
+.features{display:flex;flex-direction:column;gap:12px}
+.feat{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;
+  transition:all .3s;
+}
+.feat:hover{background:rgba(255,255,255,0.04);border-color:rgba(124,58,237,0.25);transform:translateX(4px)}
+.feat-icon{
+  width:40px;height:40px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;
+}
+.fi-v{background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.2)}
+.fi-c{background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.18)}
+.fi-a{background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.18)}
+.feat h5{font-size:13px;font-weight:700;margin-bottom:2px;color:var(--text)}
+.feat p{font-size:12px;color:var(--muted);line-height:1.5}
+
+.trust-row{
+  display:flex;align-items:center;gap:16px;
+  padding-top:36px;border-top:1px solid var(--border);
+}
+.t-avatars{display:flex}
+.t-av{
+  width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);
+  margin-left:-9px;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;
+}
+.t-av:first-child{margin-left:0}
+.ta1{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
+.ta2{background:linear-gradient(135deg,#0891b2,#0e7490)}
+.ta3{background:linear-gradient(135deg,#d97706,#b45309)}
+.ta4{background:linear-gradient(135deg,#059669,#047857)}
+.t-text{font-size:13px;color:var(--muted)}
+.t-text strong{color:var(--text);font-weight:700}
+
+/* ── RIGHT PANEL ── */
+.form-head{margin-bottom:32px}
+.form-head h2{font-family:'Outfit',sans-serif;font-size:32px;font-weight:800;margin-bottom:8px;letter-spacing:-1px; color: var(--text);}
+.form-head p{color:var(--muted);font-size:14px}
+
+.tab-switch{
+  display:flex;background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);border-radius:16px;padding:5px;
+  margin-bottom:28px;gap:4px;
+}
+.tab-btn{
+  flex:1;padding:11px 16px;border:none;background:transparent;
+  color:var(--muted);cursor:pointer;border-radius:11px;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
+  transition:all .25s;
+}
+@media (max-width: 480px) {
+  .tab-btn{
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+.tab-btn.active{
+  background:linear-gradient(135deg,var(--accent),#5b21b6);
+  color:#fff;box-shadow:0 4px 20px rgba(124,58,237,0.4);
+}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.type-card{
+  padding:18px 14px;border:1.5px solid var(--border);border-radius:14px;
+  background:var(--surface);cursor:pointer;text-align:center;transition:all .25s;
+}
+.type-card:hover{border-color:rgba(124,58,237,0.4);background:rgba(124,58,237,0.04);transform:translateY(-2px)}
+.type-card.active{border-color:var(--accent);background:rgba(124,58,237,0.08);box-shadow:0 0 0 1px rgba(124,58,237,0.2),0 4px 20px rgba(124,58,237,0.12)}
+.tc-icon{font-size:28px;margin-bottom:10px}
+.tc-title{font-size:13px;font-weight:700; color: var(--text);}
+.tc-sub{font-size:11px;color:var(--muted);margin-top:3px}
+
+.form-section{display:none}.form-section.active{display:block}
+
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);border-radius:11px;
+  color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;
+  outline:none;transition:all .2s;
+}
+.field input:focus,.field select:focus{border-color:var(--accent);background:rgba(124,58,237,0.05);box-shadow:0 0 0 3px rgba(124,58,237,0.1)}
+.field select option{background:#1a1a2e;color:#fff}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:46px}
+.pw-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;transition:color .2s}
+.pw-toggle:hover{color:var(--text)}
+.forgot{text-align:right;margin-top:-8px;margin-bottom:16px}
+.forgot a{font-size:12px;color:var(--neon);text-decoration:none;cursor:pointer;transition:opacity .2s}
+.forgot a:hover{opacity:.7}
+
+/* Phone Input Styles - Simplified for India only */
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border2);
+  border-radius: 11px;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.phone-input-wrapper:focus-within {
+  border-color: var(--accent);
+  background: rgba(124,58,237,0.05);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+
+.country-code-india {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 13px 16px;
+  background: rgba(0,0,0,0.2);
+  border-right: 1px solid var(--border2);
+  font-weight: 600;
+  color: var(--neon2);
+  white-space: nowrap;
+}
+
+.country-code-india i {
+  font-size: 16px;
+  color: var(--neon);
+}
+
+.phone-number-india {
+  flex: 1;
+  padding: 13px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  outline: none;
+  min-width: 0;
+}
+
+.phone-number-india::placeholder {
+  color: var(--muted2);
+  font-size: 13px;
+}
+
+/* Google Sign-In Button */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 20px 0 0;
+}
+
+.google-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--accent2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124,58,237,0.2);
+}
+
+.google-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  color: var(--google-blue);
+  font-size: 16px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: var(--muted2);
+  font-size: 12px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Terms Checkbox */
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0 16px;
+  padding: 12px 16px;
+  background: rgba(124,58,237,0.05);
+  border: 1px solid rgba(124,58,237,0.15);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.ad-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.ad-content h4{
+  font-size:16px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.ad-content p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.terms-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.terms-checkbox label {
+  flex: 1;
+  line-height: 1.5;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.terms-checkbox a {
+  color: var(--neon);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.terms-checkbox a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.terms-error {
+  color: var(--red);
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  display: none;
+}
+
+.terms-error.show {
+  display: block;
+}
+
+/* Footer Links */
+.auth-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+.auth-footer a {
+  color: var(--neon2);
+  text-decoration: none;
+  margin: 0 8px;
+  transition: opacity 0.2s;
+}
+
+.auth-footer a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Contact Section */
+.contact-section {
+  margin-top: 30px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+
+.contact-section h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.contact-emails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.contact-email-item {
+  text-align: center;
+  font-size: 13px;
+}
+
+.contact-email-item .email-type {
+  display: block;
+  color: var(--neon2);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.contact-email-item .email-address {
+  color: var(--muted);
+  font-size: 12px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.contact-email-item .email-address:hover {
+  color: var(--neon);
+}
+
+.contact-email-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .contact-emails {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+}
+
+.btn-submit{
+  width:100%;padding:15px;
+  background:linear-gradient(135deg,var(--accent),#5b21b6);
+  border:none;border-radius:12px;color:#fff;
+  font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;transition:all .3s;
+  box-shadow:0 4px 28px rgba(124,58,237,0.4);
+  position:relative;overflow:hidden;letter-spacing:0.3px;
+}
+.btn-submit::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0));
+  transform:translateX(-100%);transition:transform .5s;
+}
+.btn-submit:hover::before{transform:translateX(100%)}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(124,58,237,0.55)}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
+.alert{padding:13px 16px;border-radius:11px;font-size:13px;margin-bottom:16px;display:none}
+.alert-error{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#f87171}
+.alert-success{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:#34d399}
+
+.strength-bar{height:3px;border-radius:2px;margin-top:8px;background:var(--border);overflow:hidden}
+.strength-fill{height:100%;border-radius:2px;transition:width .3s,background .3s}
+.strength-text{font-size:11px;margin-top:5px;color:var(--muted)}
+
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:inline-block;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Animated entrance for right panel */
+.auth-right > *{animation:slideInRight .6s cubic-bezier(0.16,1,0.3,1) both}
+.auth-right > *:nth-child(1){animation-delay:.2s}
+.auth-right > *:nth-child(2){animation-delay:.3s}
+.auth-right > *:nth-child(3){animation-delay:.4s}
+@keyframes slideInRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+/* Left panel entrance */
+.auth-left .brand{animation:fadeIn .8s .2s both}
+.auth-left .hero-block{animation:fadeIn .8s .4s both}
+.auth-left .trust-row{animation:fadeIn .8s .6s both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+/* Scrollbar for right panel */
+.auth-right::-webkit-scrollbar {
+  width: 4px;
+}
+.auth-right::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+.auth-right::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.show {
+  display: flex;
+}
+.welcome-logo{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  justify-content:center;
+  animation:logoReveal 1s cubic-bezier(0.16,1,0.3,1);
+}
+
+.welcome-logo-icon{
+  width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:logoPulse 3s infinite ease-in-out;
+}
+
+.welcome-logo-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.welcome-name{
+  font-family:'Outfit',sans-serif;
+  font-size:46px;
+  font-weight:900;
+  letter-spacing:-1px;
+  display:flex;
+  align-items:center;
+}
+
+.brand-code{
+  background:linear-gradient(135deg,#a78bfa,#c084fc);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.brand-n{
+  margin:0 3px;
+  background:linear-gradient(135deg,#22d3ee,#38bdf8);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.ad-strip{
+  display: grid;
+  border-radius: 16px;
+  border: 1px solid rgba(139,92,246,0.25);
+  margin-bottom: 28px;
+  background: rgba(124,58,237,0.03);
+  animation: fadeIn .8s .3s both;
+}
+
+.ad-slide{
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.ad-slide.visible{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ad-slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  opacity: 0.3;
+  transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(1.1);
+}
+
+.ad-slide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to right, rgba(4,4,15,0.95) 0%, rgba(4,4,15,0.4) 100%);
+}
+
+.ad-slide:hover .ad-slide-bg {
+  filter: blur(0px);
+  opacity: 0.6;
+  transform: scale(1.02);
+}
+
+#ad1 .ad-slide-bg { background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+#ad2 .ad-slide-bg { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+#ad3 .ad-slide-bg { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+
+.ad-cta{
+  padding:10px 22px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  border:none;
+  font-family:'Outfit',sans-serif;
+  transition:all .2s;
+  white-space:nowrap;
+}
+
+.ad-cta-blue{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;
+}
+
+.ad-cta-amber{
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  color:#fff;
+}
+
+.ad-cta-purple{
+  background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+  color:#fff;
+}
+
+.ad-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(124,58,237,0.4);
+}
+
+.brand-profit{
+  background:linear-gradient(135deg,#a78bfa,#22d3ee);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+@keyframes logoPulse{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.08);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+@keyframes logoReveal{
+  from{
+    opacity:0;
+    transform:translateY(25px) scale(0.9);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+.modal {
+  background: #0f1729;
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 24px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 32px;
+  animation: modalIn 0.3s;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media (max-width: 480px) {
+  .modal {
+    padding: 20px;
+  }
+}
+.btn-primary {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(124,58,237,0.4);
+}
+
+@media(max-width:1200px){
+  .ad-slide{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    padding:16px 20px;
+  }
+
+  .ad-icon{
+    display:none;
+  }
+}
+
+</style>
+</head>
+<body>
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen">
+  <div class="welcome-logo">
+
+  <div class="welcome-logo-icon">
+      <img src="logo.png" alt="CodenProfit Logo">
+  </div>
+
+  <div class="welcome-name">
+      <span class="brand-code">Code</span>
+      <span class="brand-n">N</span>
+      <span class="brand-profit">Profit</span>
+  </div>
+
+</div>
+  <div class="welcome-tagline">Where Code Meets Opportunity</div>
+  <div class="welcome-bar"><div class="welcome-bar-fill" id="wBar"></div></div>
+  <div class="welcome-percent" id="wPercent">Loading...</div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="bg-scene">
+  <div class="mesh"></div>
+  <div class="grid"></div>
+  <div class="orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+  <div class="noise"></div>
+</div>
+
+<div class="auth-split">
+  <!-- LEFT -->
+  <div class="auth-left">
+
+    <div class="brand">
+      <div class="brand-icon"><img src="logo.png" alt="codenprofit"/></div>
+      <div class="brand-name"><span class="cn">Code</span><span class="np">N</span><span class="cn">Profit</span></div>
+    </div>
+
+  <!-- AD STRIP -->
+  <div class="ad-strip">
+
+    <div class="ad-slide visible" id="ad1">
+      <div class="ad-slide-bg"></div>
+      <div class="ad-slide-overlay"></div>
+      <div class="ad-left">
+        <div class="ad-content">
+          <h4>Unlock All Projects</h4>
+          <p>Premium subscription for just ₹69/month — unlimited access!</p>
+        </div>
+      </div>
+      <button class="ad-cta ad-cta-blue"
+      onclick="window.location.href='auth.html'">
+        Subscribe Now →
+      </button>
+    </div>
+
+    <div class="ad-slide" id="ad2">
+      <div class="ad-slide-bg"></div>
+      <div class="ad-slide-overlay"></div>
+      <div class="ad-left">
+        
+        <div class="ad-content">
+          <h4>Get view overview Codenprofit </h4>
+          <p>developer meets the profit with - @India's first B2S</p>
+        </div>
+      </div>
+      <button class="ad-cta ad-cta-amber"
+      onclick="window.location.href='index.html'">
+        OVERVIEW
+      </button>
+    </div>
+
+    <div class="ad-slide" id="ad3">
+      <div class="ad-slide-bg"></div>
+      <div class="ad-slide-overlay"></div>
+      <div class="ad-left">
+        <div class="ad-content">
+          <h4>welcome to codenprofit </h4>
+          <p><div class="t-text"><strong>3k+</strong> developers &amp; <strong>500+</strong>companies trust codenprofit</div></p>
+        </div>
+      </div>
+      <button class="ad-cta ad-cta-purple"
+      onclick="window.location.href='index.html'">
+        HOME
+      </button>
+    </div>
+
+  </div>
+    
+    <div class="hero-block">
+      <div class="hero-badge"><span class="hero-pulse"></span>The Dev Marketplace</div>
+      <h1 class="hero-h1">
+  <span class="line1">Where Code</span>
+  <span class="line2"> Meets Profit</span>
+</h1>
+      <p class="hero-p">Connect elite developers with forward-thinking companies. Build faster, earn smarter — codenprofit is where talent meets real opportunity.</p>
+      <div class="features">
+        <div class="feat">
+          <div class="feat-icon fi-v"><i class="fas fa-code"></i></div>
+          <div><h5>Elite Developer Network</h5><p>Vetted devs across all stacks, ready to work on your project</p></div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon fi-c"><i class="fas fa-rocket"></i></div>
+          <div><h5>Post & Fill Projects Fast</h5><p>Post a project and receive applications from qualified devs within hours</p></div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon fi-a"><i class="fas fa-handshake"></i></div>
+          <div><h5>Direct Hiring</h5><p>Send direct hire requests to developers whose skills match your needs</p></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- RIGHT -->
+   
+  <div class="auth-right">
+    <div class="form-head">
+      <h2>Welcome Back <i class="fas fa-hand-peace"></i></h2>
+      <p>Sign in or create your account to continue</p>
+    </div>
+    <div style="margin-bottom: 20px; text-align: left;">
+    <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--neon2); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 30px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); transition: all 0.2s;">
+      <i class="fas fa-arrow-left" style="font-size: 12px;"></i>
+      Back to Home
+    </a>
+  </div>
+
+    <div class="tab-switch">
+      <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+    </div>
+
+    <div id="alertBox" class="alert alert-error"></div>
+    <div id="successBox" class="alert alert-success"></div>
+
+    <!-- LOGIN -->
+    <div id="loginSection" class="form-section active">
+      <div class="field">
+        <label><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="li-email" placeholder="you@company.com" autocomplete="email"/>
+      </div>
+      <div class="field" id="passwordField">
+        <label><i class="fas fa-lock"></i> Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="li-pass" placeholder="Enter your password" autocomplete="current-password"/>
+          <button class="pw-toggle" onclick="togglePw('li-pass',this)"><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+      <div class="forgot"><a onclick="handleForgotPassword()">Forgot password?</a></div>
+      <button class="btn-submit" id="btnLogin" onclick="handleLogin()">Sign In <i class="fas fa-arrow-right"></i></button>
+      
+      <!-- Google Sign-In Button -->
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span>OR</span>
+        <span class="divider-line"></span>
+      </div>
+      
+      <button class="google-btn" onclick="handleGoogleSignIn()">
+        <span class="google-icon"><i class="fab fa-google"></i></span>
+        Continue with Google
+      </button>
+      
+      <!-- Footer Links for Login -->
+      <div class="auth-footer">
+        <a href="terms.html" >Terms</a> • 
+        <a href="privacy.html" >Privacy</a> • 
+        <a href="contact.html" >Contact</a>
+      </div>
+      
+      <!-- Contact Section -->
+      <div class="contact-section">
+        <h4>Need Help?</h4>
+        <div class="contact-emails">
+          <div class="contact-email-item">
+            <span class="email-type">Contact</span>
+            <span class="email-address" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=Contact@codenprofit.com', '_blank')"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d390bcbda7b2b0a793b0bcb7b6bda3a1bcb5baa7fdb0bcbe">[email&#160;protected]</a></span>
+          </div>
+          <div class="contact-email-item">
+            <span class="email-type">Support</span>
+            <span class="email-address" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=Support@codenprofit.com', '_blank')"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c596b0b5b5aab7b185a6aaa1a0abb5b7aaa3acb1eba6aaa8">[email&#160;protected]</a></span>
+          </div>
+      </div>
+      <div class="trust-row">
+      <div class="t-avatars">
+        <div class="t-av ta1">A</div><div class="t-av ta2">H</div>
+        <div class="t-av ta3">K</div><div class="t-av ta4">R</div>
+      </div>
+      <div class="t-text"><strong>3k+</strong> developers &amp; <strong>500+</strong> companies trust codenprofit</div> 
+      </div>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="registerSection" class="form-section">
+      <div class="type-grid">
+        <div class="type-card active" id="tcDev" onclick="selectType('developer')">
+          <div class="tc-icon"><i class="fas fa-code"></i></div>
+          <div class="tc-title">Developer</div>
+          <div class="tc-sub">I want to work on projects</div>
+        </div>
+        <div class="type-card" id="tcHost" onclick="selectType('host')">
+          <div class="tc-icon"><i class="fas fa-building"></i></div>
+          <div class="tc-title">Host / Company</div>
+          <div class="tc-sub">I want to hire developers</div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label><i class="fas fa-user"></i> Full Name</label>
+        <input type="text" id="rg-name" placeholder="Elon Musk"/>
+      </div>
+      
+      <div class="field">
+        <label><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="rg-email" placeholder="you@company.com"/>
+      </div>
+      
+      <!-- Phone Number Field - India only -->
+      <div class="field">
+        <label><i class="fas fa-phone-alt"></i> Phone Number</label>
+        <div class="phone-input-wrapper">
+          <span class="country-code-india">
+            <i class="fas fa-flag-india"></i> +91
+          </span>
+          <input type="tel" id="rg-phone" class="phone-number-india" placeholder="9876543210" pattern="[0-9]{10}" maxlength="10" required/>
+        </div>
+        <div style="font-size: 11px; color: var(--muted); margin-top: 5px; display: flex; align-items: center; gap: 4px;">
+          <i class="fas fa-info-circle" style="color: var(--neon2);"></i> 
+          <span>Enter 10-digit mobile number</span>
+        </div>
+      </div>
+      
+      <div class="field" id="passwordField">
+        <label><i class="fas fa-lock"></i> Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="rg-pass" placeholder="Create a strong password" oninput="checkStrength(this.value)"/>
+          <button class="pw-toggle" onclick="togglePw('rg-pass',this)"><i class="fas fa-eye"></i></button>
+        </div>
+        <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+        <div class="strength-text" id="strengthText"></div>
+      </div>
+      
+      <!-- DEV FIELDS - Removed minimum budget field -->
+      <div id="devFields">
+        <div class="field">
+          <label><i class="fas fa-code-branch"></i> Primary Skill</label>
+          <select id="rg-skill">
+            <option value="">Select...</option>
+            <option>Full Stack Developer</option><option>Frontend Developer</option>
+            <option>Backend Developer</option><option>Mobile Developer</option>
+            <option>AI/ML Engineer</option><option>DevOps Engineer</option>
+            <option>Blockchain Developer</option><option>UI/UX Designer</option>
+            <option>Data Engineer</option><option>Cloud Architect</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- HOST FIELDS -->
+      <div id="hostFields" style="display:none">
+        <div class="field-row">
+          <div class="field">
+            <label><i class="fas fa-building"></i> Company Name</label>
+            <input type="text" id="rg-company" placeholder="Acme Corp"/>
+          </div>
+          <div class="field">
+            <label><i class="fas fa-industry"></i> Industry</label>
+            <select id="rg-industry">
+              <option value="">Select...</option>
+              <option>Technology</option><option>Finance</option><option>Healthcare</option>
+              <option>E-Commerce</option><option>Education</option><option>Media &amp; Entertainment</option>
+              <option>Real Estate</option><option>Logistics</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Terms and Privacy Checkbox -->
+      <div class="terms-checkbox">
+        <input type="checkbox" id="termsAgree">
+        <label for="termsAgree">
+          I agree to the <a href="terms.html" >Terms of Service</a> and 
+          <a href="privacy.html" >Privacy Policy</a>
+        </label>
+      </div>
+      <div class="terms-error" id="termsError">Please agree to the Terms and Privacy Policy to continue</div>
+      
+      <button class="btn-submit" id="btnRegister" onclick="handleRegister()">Create Account <i class="fas fa-arrow-right"></i></button>
+      
+      <!-- Google Sign-In Button for Register -->
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span>OR</span>
+        <span class="divider-line"></span>
+      </div>
+      
+      <button class="google-btn" onclick="handleGoogleSignIn()">
+        <span class="google-icon"><i class="fab fa-google"></i></span>
+        Sign up with Google
+      </button>
+      
+      <!-- Footer Links for Register -->
+      <div class="auth-footer">
+        <a href="terms.html" >Terms</a> • 
+        <a href="privacy.html" >Privacy</a> • 
+        <a href="contact.html" >Contact</a>
+      </div>
+      
+      <!-- Contact Section -->
+      <div class="contact-section">
+        <h4>Need Help?</h4>
+        <div class="contact-emails">
+          <div class="contact-email-item">
+            <span class="email-type">General</span>
+            <span class="email-address" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=Contact@codenprofit.com', '_blank')"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ecaf8382988d8f98ac8f838889829c9e838a8598c28f8381">[email&#160;protected]</a></span>
+          </div>
+          <div class="contact-email-item">
+            <span class="email-type">Support</span>
+            <span class="email-address" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=Support@codenprofit.com', '_blank')"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2d7e585d5d425f596d4e424948435d5f424b4459034e4240">[email&#160;protected]</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Terms Modal -->
+<div class="modal-overlay" id="termsModal">
+  <div class="modal">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:var(--neon);"><i class="fas fa-file-contract"></i> Terms of Service</h3>
+      <button onclick="closeTermsModal()" style="background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <div style="color:var(--muted); font-size:14px; line-height:1.8;">
+      <p style="margin-bottom:16px"><strong>Last Updated: March 2026</strong></p>
+      <p style="margin-bottom:16px">Welcome to codenprofit! By using our platform, you agree to these terms:</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">1. Account Terms</h4>
+      <p>You must be 18+ years to use this service. You're responsible for maintaining account security.</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">2. Platform Usage</h4>
+      <p>codenprofit connects developers with hosts. We're not responsible for project outcomes or payments between parties.</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">3. Prohibited Activities</h4>
+      <p>No fraudulent projects, spam, or harassment. No sharing of false information.</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">4. Subscription Terms</h4>
+      <p>Premium subscriptions are non-refundable. Cancel anytime via dashboard.</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">5. Termination</h4>
+      <p>We reserve the right to suspend accounts violating these terms.</p>
+      <p style="margin-top:24px; color:var(--neon2);">For questions: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c182aeafb5a0a2b581a2aea5a4afb1b3aea7a8b5efa2aeac">[email&#160;protected]</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Modal -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:var(--neon2);"><i class="fas fa-shield-alt"></i> Privacy Policy</h3>
+      <button onclick="closePrivacyModal()" style="background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <div style="color:var(--muted); font-size:14px; line-height:1.8;">
+      <p style="margin-bottom:16px"><strong>Effective: March 2026</strong></p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">Data We Collect</h4>
+      <p>• Account information (name, email, phone, role)<br>• Profile data (skills, rate, company)<br>• Usage data (projects, applications)<br>• Payment information (via UPI screenshots)</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">How We Use Data</h4>
+      <p>• Match developers with hosts<br>• Improve platform features<br>• Send important notifications<br>• Prevent fraud and abuse</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">Data Sharing</h4>
+      <p>We share profile information with potential employers/hosts when you apply to projects or receive hire requests.</p>
+      <h4 style="color:var(--text); margin:20px 0 10px;">Your Rights</h4>
+      <p>You can access, correct, or delete your data via profile settings.</p>
+      <p style="margin-top:24px; color:var(--neon2);">Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a795f5a5a45585e6a49454e4f445a58454c435e04494547">[email&#160;protected]</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Cookies Modal -->
+<div class="modal-overlay" id="cookiesModal">
+  <div class="modal" style="max-width:500px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#fbbf24;"><i class="fas fa-cookie-bite"></i> Cookie Policy</h3>
+      <button onclick="closeCookiesModal()" style="background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <p style="color:var(--muted); margin-bottom:20px;">We use cookies to enhance your experience:</p>
+    <ul style="color:var(--muted); margin-bottom:20px; padding-left:20px;">
+      <li>Authentication cookies (essential)</li>
+      <li>Preference cookies (save your settings)</li>
+      <li>Analytics cookies (improve our platform)</li>
+    </ul>
+    <p style="color:var(--muted);">By continuing to use codenprofit, you consent to our use of cookies.</p>
+    <p style="margin-top:20px; color:var(--neon2); font-size:12px;">For questions: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3f3d1cad5c2c0dae3c0ccc7c6cdd3d1ccc5cad78dc0ccce">[email&#160;protected]</a></p>
+    <button class="btn-primary" onclick="closeCookiesModal()" style="margin-top:20px; padding:10px 20px; background:linear-gradient(135deg,#f59e0b,#d97706);"><i class="fas fa-check"></i> Got it</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+let selectedType = 'developer';
+
+// Email copy function
+function copyEmail(email) {
+  navigator.clipboard.writeText(email).then(() => {
+    showToast('📧 Email copied: ' + email);
+  }).catch(() => {
+    prompt('Copy this email:', email);
+  });
+}
+
+// Toast for notifications
+function showToast(msg) {
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent), #5b21b6);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 10000;
+    animation: slideUp 0.3s ease;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  `;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.animation = 'fadeOut 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
+
+// Welcome animation (faster)
+window.addEventListener('load', () => {
+
+  // WELCOME SCREEN
+  let p = 0;
+  const pct = document.getElementById('wPercent');
+
+  const t = setInterval(() => {
+
+    p += Math.random() * 25;
+
+    if(p >= 100){
+      p = 100;
+      clearInterval(t);
+
+      setTimeout(() => {
+        document.getElementById('welcome-screen').classList.add('fade-out');
+
+        setTimeout(() => {
+          document.getElementById('welcome-screen').style.display = 'none';
+        }, 500);
+
+      }, 200);
+    }
+
+    pct.textContent = Math.round(p) + '%';
+
+  }, 80);
+
+
+  // AD SLIDER (Moved here to ensure it runs regardless of Firebase errors)
+  const ads = document.querySelectorAll(".ad-strip .ad-slide");
+  let adIndex = 0;
+
+  if (ads.length > 0) {
+    function rotateAds(){
+      ads.forEach(a => a.classList.remove("visible"));
+      adIndex++;
+      if(adIndex >= ads.length){
+        adIndex = 0;
+      }
+      ads[adIndex].classList.add("visible");
+    }
+    setInterval(rotateAds, 4000);
+  }
+
+  // FIREBASE AUTH CHECK
+  try {
+    initializeFirebase();
+    firebase.auth().onAuthStateChanged(async user => {
+      if (!user) return;
+      const res = await FirebaseService.getUserType(user.uid);
+      if (res.success) redirect(res.type);
+    });
+  } catch(err) {
+    console.warn("Firebase skip/error: UI will continue to function.", err);
+  }
+
+});
+
+function redirect(type) { 
+  window.location.href = type === 'developer' ? 'dev.html' : 'host.html'; 
+}
+
+function switchTab(tab) {
+  ['login','register'].forEach(t => {
+    document.getElementById(t+'Section').classList.toggle('active', t===tab);
+    document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===tab);
+  });
+  clearAlerts();
+  
+  // Scroll to top when switching tabs
+  document.querySelector('.auth-right').scrollTop = 0;
+}
+
+function selectType(type) {
+  selectedType = type;
+  document.getElementById('tcDev').classList.toggle('active', type==='developer');
+  document.getElementById('tcHost').classList.toggle('active', type==='host');
+  document.getElementById('devFields').style.display = type==='developer' ? 'block' : 'none';
+  document.getElementById('hostFields').style.display = type==='host' ? 'block' : 'none';
+}
+
+function showError(msg) { 
+  const el = document.getElementById('alertBox'); 
+  el.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + msg; 
+  el.style.display = 'block'; 
+  document.getElementById('successBox').style.display = 'none'; 
+}
+
+function showSuccess(msg) { 
+  const el = document.getElementById('successBox'); 
+  el.innerHTML = '<i class="fas fa-check-circle"></i> ' + msg; 
+  el.style.display = 'block'; 
+  document.getElementById('alertBox').style.display = 'none'; 
+}
+
+function clearAlerts() { 
+  document.getElementById('alertBox').style.display = 'none'; 
+  document.getElementById('successBox').style.display = 'none'; 
+}
+
+function togglePw(id, btn) { 
+  const el = document.getElementById(id); 
+  if(el.type === 'password'){
+    el.type = 'text';
+    btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+  } else {
+    el.type = 'password';
+    btn.innerHTML = '<i class="fas fa-eye"></i>';
+  } 
+}
+
+function checkStrength(val) {
+  const fill = document.getElementById('strengthFill'), text = document.getElementById('strengthText');
+  if(!val){
+    fill.style.width = '0';
+    text.textContent = '';
+    return;
+  }
+  let s = 0;
+  if(val.length >= 8) s++;
+  if(/[A-Z]/.test(val)) s++;
+  if(/[0-9]/.test(val)) s++;
+  if(/[^A-Za-z0-9]/.test(val)) s++;
+  const w = ['','25%','50%','75%','100%'];
+  const c = ['','#f87171','#fbbf24','#60a5fa','#34d399'];
+  const l = ['','Weak','Fair','Good','Strong'];
+  fill.style.width = w[s];
+  fill.style.background = c[s];
+  text.textContent = l[s];
+  text.style.color = c[s];
+}
+
+// Unified Google Sign-In Function (Fixed)
+async function handleGoogleSignIn() {
+  try {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const result = await firebase.auth().signInWithPopup(provider);
+    const user = result.user;
+    
+    // Check if user exists in our database
+    const res = await FirebaseService.getUserType(user.uid);
+    
+    if (res.success) {
+      // User exists - redirect to dashboard
+      localStorage.setItem('userType', res.type);
+      localStorage.setItem('userId', user.uid);
+      localStorage.setItem('userData', JSON.stringify(res.data));
+      showSuccess('Welcome back! Redirecting...');
+      setTimeout(() => redirect(res.type), 1000);
+    } else {
+      // New user - store in localStorage and switch to register tab
+      localStorage.setItem('googleUser', JSON.stringify({
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL
+      }));
+      
+      // Pre-fill registration form
+      document.getElementById('rg-name').value = user.displayName || '';
+      document.getElementById('rg-email').value = user.email || '';
+      document.getElementById('rg-email').disabled = true;
+      
+      // Switch to register tab
+      switchTab('register');
+
+      // Hide password field — Google users don't need a password
+      const pwField = document.getElementById('passwordField');
+      if (pwField) pwField.style.display = 'none';
+
+      showSuccess('Please complete your registration with phone number and select your role');
+      
+      // Scroll to the registration form
+      document.querySelector('.auth-right').scrollTo({
+        top: document.getElementById('registerSection').offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  } catch (error) {
+    console.error('Google sign-in error:', error);
+    showError(error.message);
+  }
+}
+
+// Modified handleRegister function with phone number
+async function handleRegister() {
+  const name = document.getElementById('rg-name').value.trim();
+  const email = document.getElementById('rg-email').value.trim();
+  const pass = document.getElementById('rg-pass').value;
+  const phone = document.getElementById('rg-phone').value.trim();
+
+  // Check if this is a Google user completing registration
+  const googleUserRaw = localStorage.getItem('googleUser');
+  const googleUser = googleUserRaw ? JSON.parse(googleUserRaw) : null;
+  const isGoogleFlow = !!(googleUser && googleUser.email === email);
+
+  // Basic validation
+  if (!name || !email || !phone) {
+    return showError('Please fill all required fields including phone number');
+  }
+
+  // Password only required for normal (non-Google) registration
+  if (!isGoogleFlow) {
+    if (!pass) return showError('Please enter a password');
+    if (pass.length < 6) return showError('Password must be at least 6 characters');
+  }
+
+  // Phone validation for India
+  if (!/^\d{10}$/.test(phone)) {
+    return showError('Please enter a valid 10-digit Indian mobile number');
+  }
+
+  // Check terms agreement
+  if (!document.getElementById('termsAgree').checked) {
+    document.getElementById('termsError').classList.add('show');
+    return showError('Please agree to the Terms and Privacy Policy');
+  } else {
+    document.getElementById('termsError').classList.remove('show');
+  }
+
+  const userData = {
+    displayName: name,
+    userType: selectedType,
+    phone: '+91' + phone,
+    phoneVerified: false,
+    createdAt: new Date().toISOString()
+  };
+
+  if (selectedType === 'developer') {
+    const skill = document.getElementById('rg-skill').value;
+    if (!skill) return showError('Please select your primary skill');
+    Object.assign(userData, {
+      primarySkill: skill,
+      bio: '',
+      skills: [skill],
+      available: true,
+      rating: 0,
+      reviewCount: 0,
+      completedProjects: 0
+    });
+  } else {
+    const company = document.getElementById('rg-company').value.trim();
+    const industry = document.getElementById('rg-industry').value;
+    if (!company) return showError('Please enter your company name');
+    Object.assign(userData, {
+      companyName: company,
+      industry: industry || 'Technology',
+      teamSize: '',
+      website: ''
+    });
+  }
+
+  const btn = document.getElementById('btnRegister');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Creating account...';
+
+  if (isGoogleFlow) {
+    // Google user: Firebase Auth account already exists — just save Firestore record
+    try {
+      const uid = googleUser.uid;
+      const col = selectedType === 'developer' ? 'developers' : 'hosts';
+      await firebase.firestore().collection(col).doc(uid).set({
+        ...userData,
+        uid,
+        email,
+        photoURL: googleUser.photoURL || '',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      // Update Firebase Auth display name
+      const currentUser = firebase.auth().currentUser;
+      if (currentUser) await currentUser.updateProfile({ displayName: name });
+
+      localStorage.removeItem('googleUser');
+      localStorage.setItem('userType', selectedType);
+      localStorage.setItem('userId', uid);
+      localStorage.setItem('userData', JSON.stringify(userData));
+      showSuccess('Account created! Redirecting to your dashboard...');
+      setTimeout(() => redirect(selectedType), 1500);
+    } catch (e) {
+      console.error('Google registration error:', e);
+      showError('Failed to save your profile. Please try again.');
+      btn.disabled = false;
+      btn.innerHTML = 'Create Account →';
+    }
+  } else {
+    // Normal email/password registration
+    const res = await FirebaseService.signUp(email, pass, userData);
+    if (res.success) {
+      localStorage.setItem('userType', selectedType);
+      localStorage.setItem('userId', res.user.uid);
+      localStorage.setItem('userData', JSON.stringify(userData));
+      showSuccess('Account created! Redirecting to your dashboard...');
+      setTimeout(() => redirect(selectedType), 1500);
+    } else {
+      const msg = res.error.replace('Firebase: ', '').replace(/\(auth\/.*?\)/, '').trim();
+      showError(msg);
+      btn.disabled = false;
+      btn.innerHTML = 'Create Account →';
+    }
+  }
+}
+
+async function handleLogin() {
+  const email = document.getElementById('li-email').value.trim(), pass = document.getElementById('li-pass').value;
+  if(!email||!pass) return showError('Please fill all fields');
+  const btn = document.getElementById('btnLogin'); btn.disabled=true; btn.innerHTML='<span class="spinner"></span>Signing in...';
+  const res = await FirebaseService.signIn(email, pass);
+  if(res.success){
+    const tRes = await FirebaseService.getUserType(res.user.uid);
+    if(tRes.success){
+      localStorage.setItem('userType', tRes.type);
+      localStorage.setItem('userId', res.user.uid);
+      localStorage.setItem('userData', JSON.stringify(tRes.data));
+      showSuccess('Welcome back! Redirecting...');
+      setTimeout(() => redirect(tRes.type), 1000);
+    } else {
+      showError('Account data missing. Please contact Support@codenprofit.com');
+    }
+  } else { 
+    const msg = res.error.replace('Firebase: ','').replace(/\(auth\/.*?\)/,'').trim(); 
+    showError(msg); 
+  }
+  btn.disabled=false; 
+  btn.innerHTML='Sign In →';
+}
+
+async function handleForgotPassword() {
+  const email = document.getElementById('li-email').value.trim();
+  if(!email) return showError('Enter your email address first');
+  const res = await FirebaseService.resetPassword(email);
+  if(res.success) showSuccess('Reset email sent! Check your inbox.');
+  else {
+    const msg = res.error.replace('Firebase: ','').replace(/\(auth\/.*?\)/,'').trim();
+    showError(msg);
+  }
+}
+function closeTermsModal() { document.getElementById('termsModal').style.display = 'none'; }
+function closePrivacyModal() { document.getElementById('privacyModal').style.display = 'none'; }
+function closeCookiesModal() { document.getElementById('cookiesModal').style.display = 'none'; }
+</script>
+</body>
+</html>

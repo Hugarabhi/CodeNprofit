@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Learning Modules | codenprofit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg2: #0a1020;
+      --surface: rgba(30,41,59,0.5);
+      --surface2: rgba(30,41,59,0.8);
+      --border: rgba(255,255,255,0.07);
+      --border-h: rgba(139,92,246,0.35);
+      --accent: #3B82F6;
+      --accent2: #8B5CF6;
+      --grad: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      --green: #10b981;
+      --red: #ef4444;
+      --amber: #f59e0b;
+      --gold: #fbbf24;
+      --text: #F8FAFC;
+      --text-secondary: #e2e8f0;
+      --muted: rgba(248,250,252,0.6);
+      --muted2: rgba(248,250,252,0.3);
+      --nav-h: 80px;
+      
+      --font-primary: 'DM Sans', sans-serif;
+      --font-display: 'Syne', sans-serif;
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 70% at 10% 20%, rgba(59,130,246,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 70% 60% at 90% 80%, rgba(139,92,246,0.15) 0%, transparent 60%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+
+    .logo-text {
+      font-family: 'outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ffffff 0%, var(--accent) 50%, var(--accent2) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: logoShimmer 3s linear infinite;
+    }
+
+    @keyframes logoShimmer {
+      to { background-position: 200% center; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(139,92,246,0.15);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .nav-btn-login:hover {
+      border-color: var(--accent2);
+      color: var(--text);
+    }
+
+    .nav-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--accent2);
+      font-size: 24px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-buttons {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+    }
+    
+    .mobile-menu-overlay.open { display: block; }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background: #0f1729;
+      border-left: 1px solid var(--border);
+      padding: 30px 20px;
+      transition: right 0.3s ease;
+      z-index: 201;
+      overflow-y: auto;
+    }
+    
+    .mobile-menu.open { right: 0; }
+    
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    
+    .mobile-menu-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mobile-menu-link {
+      display: block;
+      padding: 15px 20px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .mobile-menu-link:hover {
+      background: rgba(139,92,246,0.1);
+      color: var(--accent2);
+    }
+    
+    .mobile-menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+    
+    .mobile-menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .mobile-menu-btn {
+      padding: 14px;
+      border-radius: 40px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .mobile-menu-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    
+    .mobile-menu-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    /* Main Layout */
+    .learning-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 24px 40px;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 1024px) {
+      .learning-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sidebar - Modules List */
+    .modules-sidebar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-header h3 {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-header h3 i {
+      color: var(--accent2);
+    }
+
+    .overall-progress {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 30px;
+      padding: 4px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .modules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .modules-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    .modules-list::-webkit-scrollbar-track {
+      background: var(--bg2);
+      border-radius: 4px;
+    }
+    
+    .modules-list::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--accent2), var(--neon2));
+      border-radius: 4px;
+    }
+
+    .module-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-item:hover {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.05);
+      transform: translateX(4px);
+    }
+
+    .module-item.active {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.1);
+      box-shadow: 0 0 0 1px var(--accent2);
+    }
+
+    .module-item.completed {
+      border-color: rgba(16,185,129,0.3);
+      background: rgba(16,185,129,0.05);
+    }
+
+    .module-item-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .module-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--accent2);
+    }
+
+    .module-item.completed .module-icon {
+      background: rgba(16,185,129,0.1);
+      border-color: rgba(16,185,129,0.3);
+      color: var(--green);
+    }
+
+    .module-info {
+      flex: 1;
+    }
+
+    .module-info h4 {
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .module-info p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .module-progress {
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .module-progress-fill {
+      height: 100%;
+      background: var(--grad);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .module-item.completed .module-progress-fill {
+      background: var(--green);
+    }
+
+    .module-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    /* Main Content - Module Display */
+    .module-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      min-height: 600px;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .module-title-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .module-large-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: var(--accent2);
+    }
+
+    .module-title-info h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .module-title-info p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .module-stats {
+      display: flex;
+      gap: 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent2);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Chapters List */
+    .chapters-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .chapter-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .chapter-item:hover {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.05);
+    }
+
+    .chapter-item.active {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.08);
+    }
+
+    .chapter-item.completed {
+      border-color: rgba(16,185,129,0.25);
+      background: rgba(16,185,129,0.03);
+    }
+
+    .chapter-item.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .chapter-item.locked:hover {
+      border-color: var(--border);
+      background: rgba(255,255,255,0.02);
+      transform: none;
+    }
+
+    .chapter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .chapter-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chapter-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .chapter-item.completed .chapter-number {
+      background: rgba(16,185,129,0.1);
+      border-color: rgba(16,185,129,0.3);
+      color: var(--green);
+    }
+
+    .chapter-item.active .chapter-number {
+      background: var(--accent2);
+      border-color: var(--accent2);
+      color: white;
+    }
+
+    .chapter-name {
+      font-weight: 600;
+    }
+
+    .chapter-status {
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 30px;
+    }
+
+    .status-pending {
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.2);
+      color: var(--amber);
+    }
+
+    .status-completed {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      color: var(--green);
+    }
+
+    .status-locked {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .chapter-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .chapter-meta i {
+      color: var(--accent2);
+      margin-right: 4px;
+    }
+
+    /* Quiz Container */
+    .quiz-container {
+      background: rgba(0,0,0,0.2);
+      border-radius: 20px;
+      padding: 24px;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .quiz-question {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .quiz-option {
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.05);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.1);
+    }
+
+    .quiz-option.correct {
+      border-color: var(--green);
+      background: rgba(16,185,129,0.1);
+    }
+
+    .quiz-option.wrong {
+      border-color: var(--red);
+      background: rgba(239,68,68,0.1);
+    }
+
+    .quiz-option-marker {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .quiz-option.selected .quiz-option-marker {
+      border-color: var(--accent2);
+      background: var(--accent2);
+      color: white;
+    }
+
+    .quiz-option.correct .quiz-option-marker {
+      border-color: var(--green);
+      background: var(--green);
+      color: white;
+    }
+
+    .quiz-option.wrong .quiz-option-marker {
+      border-color: var(--red);
+      background: var(--red);
+      color: white;
+    }
+
+    .quiz-feedback {
+      padding: 16px;
+      border-radius: 14px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .feedback-correct {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      color: var(--green);
+    }
+
+    .feedback-wrong {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.2);
+      color: var(--red);
+    }
+
+    .quiz-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+
+    .quiz-btn {
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      font-family: var(--font-primary);
+    }
+
+    .quiz-btn-primary {
+      background: var(--grad);
+      color: white;
+    }
+
+    .quiz-btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139,92,246,0.4);
+    }
+
+    .quiz-btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .quiz-btn-secondary:hover:not(:disabled) {
+      border-color: var(--accent2);
+      background: rgba(139,92,246,0.1);
+    }
+
+    .quiz-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Exam Section */
+    .exam-section {
+      margin-top: 30px;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.05));
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 24px;
+      text-align: center;
+    }
+
+    .exam-icon {
+      font-size: 48px;
+      color: var(--amber);
+      margin-bottom: 15px;
+    }
+
+    .exam-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .exam-desc {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .exam-requirements {
+      background: rgba(0,0,0,0.2);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .requirement-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .requirement-item:last-child {
+      border-bottom: none;
+    }
+
+    .requirement-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-complete {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.3);
+      color: var(--green);
+    }
+
+    .check-pending {
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.3);
+      color: var(--amber);
+    }
+
+    .exam-btn {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--amber), #d97706);
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(245,158,11,0.3);
+    }
+
+    .exam-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245,158,11,0.5);
+    }
+
+    .exam-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Badge Earned */
+    .badge-earned {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(16,185,129,0.1));
+      border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 40px;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(245,158,11,0.2); }
+      50% { box-shadow: 0 0 20px rgba(245,158,11,0.5); }
+    }
+
+    /* Progress Toast */
+    .progress-toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(16,185,129,0.2);
+      border: 1px solid rgba(16,185,129,0.4);
+      border-radius: 16px;
+      padding: 16px 24px;
+      backdrop-filter: blur(16px);
+      color: var(--green);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .progress-toast.show {
+      transform: translateX(0);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(15,23,42,0.5);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-about p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      margin-right: 10px;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--accent2);
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 30px 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .module-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="dev.html" class="logo">
+      <img src="logo.png" alt="codenprofit" class="logo-img">
+      <span class="logo-text">CodeNProfit</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="dev.html">Home</a>
+      <a href="modules.html" class="active">Learning Modules</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="auth.html" class="nav-btn nav-btn-login">Sign In</a>
+      <a href="auth.html?tab=register" class="nav-btn nav-btn-signup">Get Started</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span style="font-weight:800;">codenprofit</span>
+      <div class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <a href="dev.html" class="mobile-menu-link">Home</a>
+    <a href="modules.html" class="mobile-menu-link">Learning Modules</a>
+    <a href="dashboard.html" class="mobile-menu-link">Dashboard</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="privacy.html" class="mobile-menu-link">Privacy Policy</a>
+    <a href="terms.html" class="mobile-menu-link">Terms of Service</a>
+    <a href="refund.html" class="mobile-menu-link">Refund Policy</a>
+  </div>
+
+  <!-- Main Learning Container -->
+  <div class="learning-container">
+    <!-- Sidebar - Modules List -->
+    <div class="modules-sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-book-open"></i> Your Modules</h3>
+        <span class="overall-progress" id="overallProgress">0% Complete</span>
+      </div>
+      <div class="modules-list" id="modulesList">
+        <!-- Modules will be loaded here dynamically -->
+      </div>
+    </div>
+
+    <!-- Main Content - Active Module -->
+    <div class="module-content" id="moduleContent">
+      <!-- Content will be loaded dynamically -->
+    </div>
+  </div>
+
+  <!-- Progress Toast -->
+  <div class="progress-toast" id="progressToast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Chapter completed! +10% progress</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <img src="logo.png" style="height: 40px; width: 40px; border-radius: 10px;" alt="logo">
+          <span class="logo-text" style="font-size: 20px;">codenprofit</span>
+        </div>
+        <p>India's first B2S platform connecting businesses with talented student developers.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">Modules</a></li>
+          <li><a href="#">Badges</a></li>
+          <li><a href="#">Leaderboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="mailto:Support@codenprofit.com">Support@codenprofit.com</a></li>
+          <li><a href="mailto:Student@codenprofit.com">Student@codenprofit.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 codenprofit. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==================== DATA STRUCTURES ====================
+    
+    // Learning Modules Data
+    const modulesData = [
+      {
+        id: 1,
+        title: 'Web Development Fundamentals',
+        icon: '<i class="fas fa-code"></i>',
+        description: 'Master the basics of HTML, CSS, and JavaScript',
+        totalChapters: 6,
+        chapters: [
+          {
+            id: 1,
+            title: 'Introduction to HTML',
+            content: 'HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It defines the structure and content of web pages using elements represented by tags.',
+            quiz: [
+              {
+                question: 'What does HTML stand for?',
+                options: [
+                  'Hyper Text Markup Language',
+                  'High Tech Markup Language',
+                  'Hyper Transfer Markup Language',
+                  'Home Tool Markup Language'
+                ],
+                correct: 0,
+                explanation: 'HTML stands for HyperText Markup Language. It is the standard markup language for creating web pages.'
+              },
+              {
+                question: 'Which tag is used to create a hyperlink in HTML?',
+                options: ['<link>', '<a>', '<href>', '<url>'],
+                correct: 1,
+                explanation: 'The <a> tag (anchor tag) is used to create hyperlinks in HTML. The href attribute specifies the URL.'
+              },
+              {
+                question: 'What is the correct HTML for creating a paragraph?',
+                options: ['<p>', '<para>', '<paragraph>', '<pg>'],
+                correct: 0,
+                explanation: 'The <p> tag defines a paragraph in HTML.'
+              }
+            ],
+            completed: false,
+            locked: false
+          },
+          {
+            id: 2,
+            title: 'CSS Fundamentals',
+            content: 'CSS (Cascading Style Sheets) is used to style and layout web pages. It controls the visual presentation of HTML elements including colors, fonts, spacing, and positioning.',
+            quiz: [
+              {
+                question: 'What does CSS stand for?',
+                options: [
+                  'Cascading Style Sheets',
+                  'Computer Style Sheets',
+                  'Creative Style System',
+                  'Colorful Style Sheets'
+                ],
+                correct: 0,
+                explanation: 'CSS stands for Cascading Style Sheets, used for styling web pages.'
+              },
+              {
+                question: 'Which property is used to change the background color?',
+                options: ['color', 'bgcolor', 'background-color', 'bg-color'],
+                correct: 2,
+                explanation: 'The background-color property in CSS is used to change the background color of an element.'
+              }
+            ],
+            completed: false,
+            locked: true
+          },
+          {
+            id: 3,
+            title: 'JavaScript Basics',
+            content: 'JavaScript is a programming language that enables interactive web pages. It can update and change both HTML and CSS, and can calculate, manipulate, and validate data.',
+            quiz: [
+              {
+                question: 'Which keyword is used to declare a variable in JavaScript?',
+                options: ['var', 'let', 'const', 'All of the above'],
+                correct: 3,
+                explanation: 'var, let, and const are all used to declare variables in JavaScript.'
+              },
+              {
+                question: 'What is the correct way to write a comment in JavaScript?',
+                options: ['<!-- comment -->', '// comment', '# comment', '/* comment */'],
+                correct: 1,
+                explanation: 'Single-line comments in JavaScript start with //.'
+              }
+            ],
+            completed: false,
+            locked: true
+          },
+          {
+            id: 4,
+            title: 'DOM Manipulation',
+            content: 'The Document Object Model (DOM) is a programming interface for HTML documents. It represents the page as nodes and objects that can be manipulated with JavaScript.',
+            quiz: [
+              {
+                question: 'Which method selects an element by its ID?',
+                options: [
+                  'getElementById()',
+                  'getElementsByClassName()',
+                  'querySelector()',
+                  'getElementsByTagName()'
+                ],
+                correct: 0,
+                explanation: 'getElementById() returns the element with the specified ID.'
+              }
+            ],
+            completed: false,
+            locked: true
+          },
+          {
+            id: 5,
+            title: 'Responsive Design',
+            content: 'Responsive web design ensures that web pages look good on all devices. It uses flexible layouts, images, and CSS media queries to adapt to different screen sizes.',
+            quiz: [
+              {
+                question: 'Which CSS feature is used for responsive design?',
+                options: [
+                  'Media queries',
+                  'Flexbox',
+                  'Grid',
+                  'All of the above'
+                ],
+                correct: 3,
+                explanation: 'Media queries, Flexbox, and Grid are all tools used in responsive design.'
+              }
+            ],
+            completed: false,
+            locked: true
+          },
+          {
+            id: 6,
+            title: 'Module Review & Exam',
+            content: 'This chapter reviews all concepts covered and prepares you for the module exam.',
+            quiz: [
+              {
+                question: 'What is the purpose of the DOM?',
+                options: [
+                  'To style web pages',
+                  'To structure web content',
+                  'To programmatically access and manipulate web pages',
+                  'To store data'
+                ],
+                correct: 2,
+                explanation: 'The DOM allows programs and scripts to dynamically access and update document content.'
+              }
+            ],
+            completed: false,
+            locked: true,
+            isReview: true
+          }
+        ],
+        exam: {
+          questions: [
+            {
+              question: 'What is the correct HTML for creating a hyperlink?',
+              options: ['<a href="url">link</a>', '<link src="url">link</link>', '<a url="url">link</a>', '<href="url">link</href>'],
+              correct: 0
+            },
+            {
+              question: 'Which CSS property controls text size?',
+              options: ['font-style', 'text-size', 'font-size', 'text-style'],
+              correct: 2
+            },
+            {
+              question: 'How do you write "Hello World" in an alert box?',
+              options: ['alert("Hello World");', 'msgBox("Hello World");', 'alertBox("Hello World");', 'msg("Hello World");'],
+              correct: 0
+            },
+            {
+              question: 'Which HTML tag is used to define an internal style sheet?',
+              options: ['<css>', '<style>', '<script>', '<stylesheet>'],
+              correct: 1
+            },
+            {
+              question: 'What is the correct way to create a function in JavaScript?',
+              options: ['function myFunction()', 'def myFunction()', 'func myFunction()', 'create myFunction()'],
+              correct: 0
+            }
+          ],
+          passingScore: 4,
+          completed: false,
+          badgeEarned: false
+        },
+        completed: false,
+        progress: 0
+      },
+      {
+        id: 2,
+        title: 'React.js Essentials',
+        icon: '<i class="fab fa-react"></i>',
+        description: 'Build modern user interfaces with React',
+        totalChapters: 5,
+        chapters: [
+          {
+            id: 1,
+            title: 'Introduction to React',
+            content: 'React is a JavaScript library for building user interfaces. It lets you compose complex UIs from small, isolated pieces of code called "components".',
+            quiz: [
+              {
+                question: 'What is React?',
+                options: [
+                  'A JavaScript framework',
+                  'A JavaScript library for building UIs',
+                  'A programming language',
+                  'A database'
+                ],
+                correct: 1,
+                explanation: 'React is a JavaScript library for building user interfaces, developed by Facebook.'
+              }
+            ],
+            completed: false,
+            locked: false
+          },
+          {
+            id: 2,
+            title: 'Components & Props',
+            content: 'Components are the building blocks of React applications. Props are read-only inputs passed to components.',
+            quiz: [
+              {
+                question: 'What are props in React?',
+                options: [
+                  'Component state',
+                  'Read-only inputs to components',
+                  'Component methods',
+                  'Component lifecycle'
+                ],
+                correct: 1,
+                explanation: 'Props are read-only inputs passed to React components.'
+              }
+            ],
+            completed: false,
+            locked: true
+          }
+        ],
+        exam: {
+          questions: [
+            {
+              question: 'What is the virtual DOM?',
+              options: [
+                'A direct copy of the browser DOM',
+                'A lightweight copy of the real DOM in memory',
+                'A database for components',
+                'A React plugin'
+              ],
+              correct: 1
+            }
+          ],
+          passingScore: 1,
+          completed: false,
+          badgeEarned: false
+        },
+        completed: false,
+        progress: 0
+      },
+      {
+        id: 3,
+        title: 'Backend with Node.js',
+        icon: '<i class="fab fa-node"></i>',
+        description: 'Build scalable server-side applications',
+        totalChapters: 4,
+        chapters: [
+          {
+            id: 1,
+            title: 'Node.js Basics',
+            content: 'Node.js is a JavaScript runtime built on Chrome\'s V8 engine. It allows JavaScript to run on the server.',
+            quiz: [
+              {
+                question: 'What is Node.js?',
+                options: [
+                  'A JavaScript framework',
+                  'A JavaScript runtime for server-side',
+                  'A database',
+                  'A frontend library'
+                ],
+                correct: 1,
+                explanation: 'Node.js is a JavaScript runtime that allows JavaScript to run on the server.'
+              }
+            ],
+            completed: false,
+            locked: false
+          }
+        ],
+        exam: {
+          questions: [
+            {
+              question: 'Which module is used to create a web server in Node.js?',
+              options: ['http', 'server', 'web', 'url'],
+              correct: 0
+            }
+          ],
+          passingScore: 1,
+          completed: false,
+          badgeEarned: false
+        },
+        completed: false,
+        progress: 0
+      }
+    ];
+
+    // User Progress (would come from backend/localStorage)
+    let userProgress = JSON.parse(localStorage.getItem('moduleProgress')) || {
+      completedChapters: [],
+      completedExams: [],
+      badges: []
+    };
+
+    // Current state
+    let currentModuleId = 1;
+    let currentChapterId = 1;
+    let currentQuizIndex = 0;
+    let selectedOption = null;
+    let quizAnswered = false;
+    let examMode = false;
+    let examQuestions = [];
+    let currentExamIndex = 0;
+    let examScore = 0;
+
+    // ==================== INITIALIZATION ====================
+    function init() {
+      renderModulesList();
+      loadModule(currentModuleId);
+      updateOverallProgress();
+    }
+
+    // ==================== RENDERING FUNCTIONS ====================
+    
+    function renderModulesList() {
+      const container = document.getElementById('modulesList');
+      let html = '';
+      
+      modulesData.forEach(module => {
+        const progress = calculateModuleProgress(module.id);
+        const isCompleted = progress === 100;
+        const isActive = module.id === currentModuleId;
+        
+        html += `
+          <div class="module-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" onclick="switchModule(${module.id})">
+            <div class="module-item-header">
+              <div class="module-icon">${module.icon}</div>
+              <div class="module-info">
+                <h4>${module.title}</h4>
+                <p>${module.totalChapters} chapters</p>
+              </div>
+            </div>
+            <div class="module-progress">
+              <div class="module-progress-fill" style="width: ${progress}%"></div>
+            </div>
+            ${isCompleted ? '<div class="module-badge"><i class="fas fa-check"></i></div>' : ''}
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+
+    function loadModule(moduleId) {
+      const module = modulesData.find(m => m.id === moduleId);
+      if (!module) return;
+      
+      currentModuleId = moduleId;
+      currentChapterId = module.chapters.find(c => !c.locked)?.id || module.chapters[0].id;
+      
+      renderModuleContent(module);
+      renderModulesList(); // Update active state in sidebar
+    }
+
+    function renderModuleContent(module) {
+      const container = document.getElementById('moduleContent');
+      const currentChapter = module.chapters.find(c => c.id === currentChapterId);
+      const allChaptersCompleted = module.chapters.every(c => c.completed || c.id === module.chapters.length);
+      const examUnlocked = module.chapters.slice(0, -1).every(c => c.completed);
+      
+      let chaptersHtml = '';
+      module.chapters.forEach((chapter, index) => {
+        const isActive = chapter.id === currentChapterId;
+        const isCompleted = chapter.completed;
+        const isLocked = chapter.locked && !chapter.completed;
+        const statusClass = isCompleted ? 'completed' : isActive ? 'active' : isLocked ? 'locked' : '';
+        const statusText = isCompleted ? 'Completed' : isActive ? 'In Progress' : isLocked ? 'Locked' : 'Not Started';
+        const statusColor = isCompleted ? 'status-completed' : isActive ? '' : isLocked ? 'status-locked' : 'status-pending';
+        
+        chaptersHtml += `
+          <div class="chapter-item ${statusClass}" onclick="${!isLocked ? `loadChapter(${module.id}, ${chapter.id})` : ''}">
+            <div class="chapter-header">
+              <div class="chapter-title">
+                <div class="chapter-number">${index + 1}</div>
+                <span class="chapter-name">${chapter.title}</span>
+              </div>
+              <span class="chapter-status ${statusColor}">${statusText}</span>
+            </div>
+            <div class="chapter-meta">
+              <span><i class="fas fa-question-circle"></i> ${chapter.quiz.length} questions</span>
+              <span><i class="fas fa-clock"></i> 5 min</span>
+            </div>
+          </div>
+        `;
+      });
+
+      // Calculate module progress
+      const completedCount = module.chapters.filter(c => c.completed).length;
+      const progress = Math.round((completedCount / module.totalChapters) * 100);
+
+      // Check if exam is completed
+      const examCompleted = module.exam.completed;
+
+      // Exam section HTML
+      let examHtml = '';
+      if (examUnlocked || examCompleted) {
+        const requirements = module.chapters.map((ch, idx) => ({
+          text: `Chapter ${idx + 1}: ${ch.title}`,
+          completed: ch.completed
+        }));
+
+        examHtml = `
+          <div class="exam-section">
+            <div class="exam-icon"><i class="fas fa-trophy"></i></div>
+            <div class="exam-title">Module ${module.id} Final Exam</div>
+            <div class="exam-desc">Test your knowledge and earn the module badge</div>
+            
+            <div class="exam-requirements">
+              ${requirements.map(req => `
+                <div class="requirement-item">
+                  <div class="requirement-check ${req.completed ? 'check-complete' : 'check-pending'}">
+                    <i class="fas fa-${req.completed ? 'check' : 'clock'}"></i>
+                  </div>
+                  <span style="color: ${req.completed ? 'var(--green)' : 'var(--amber)'}">${req.text}</span>
+                </div>
+              `).join('')}
+            </div>
+            
+            ${examCompleted ? 
+              `<div class="badge-earned"><i class="fas fa-award"></i> Badge Earned: ${module.title} Master</div>` :
+              `<button class="exam-btn" onclick="startExam(${module.id})" ${!examUnlocked ? 'disabled' : ''}>
+                ${examUnlocked ? 'Start Final Exam' : 'Complete all chapters first'}
+              </button>`
+            }
+          </div>
+        `;
+      }
+
+      // Current chapter quiz display
+      let quizHtml = '';
+      if (currentChapter && !examMode) {
+        const quiz = currentChapter.quiz[currentQuizIndex] || currentChapter.quiz[0];
+        
+        quizHtml = `
+          <div class="quiz-container">
+            <div class="quiz-question">${quiz.question}</div>
+            <div class="quiz-options" id="quizOptions">
+              ${quiz.options.map((opt, idx) => `
+                <div class="quiz-option ${selectedOption === idx ? 'selected' : ''} ${quizAnswered && idx === quiz.correct ? 'correct' : ''} ${quizAnswered && selectedOption === idx && idx !== quiz.correct ? 'wrong' : ''}" onclick="selectQuizOption(${idx})">
+                  <div class="quiz-option-marker">${String.fromCharCode(65 + idx)}</div>
+                  <div>${opt}</div>
+                </div>
+              `).join('')}
+            </div>
+            
+            ${quizAnswered ? `
+              <div class="quiz-feedback ${selectedOption === quiz.correct ? 'feedback-correct' : 'feedback-wrong'}">
+                <i class="fas fa-${selectedOption === quiz.correct ? 'check-circle' : 'times-circle'}"></i>
+                ${selectedOption === quiz.correct ? 'Correct! ' + quiz.explanation : 'Incorrect. ' + quiz.explanation}
+              </div>
+            ` : ''}
+            
+            <div class="quiz-navigation">
+              <button class="quiz-btn quiz-btn-secondary" onclick="previousQuiz()" ${currentQuizIndex === 0 ? 'disabled' : ''}>
+                <i class="fas fa-arrow-left"></i> Previous
+              </button>
+              <span style="color: var(--muted)">Question ${currentQuizIndex + 1} of ${currentChapter.quiz.length}</span>
+              ${currentQuizIndex < currentChapter.quiz.length - 1 ? 
+                `<button class="quiz-btn quiz-btn-primary" onclick="nextQuiz()" ${!quizAnswered ? 'disabled' : ''}>
+                  Next <i class="fas fa-arrow-right"></i>
+                </button>` :
+                `<button class="quiz-btn quiz-btn-primary" onclick="completeChapter(${module.id}, ${currentChapter.id})" ${!quizAnswered ? 'disabled' : ''}>
+                  Complete Chapter <i class="fas fa-check"></i>
+                </button>`
+              }
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        <div class="module-header">
+          <div class="module-title-section">
+            <div class="module-large-icon">${module.icon}</div>
+            <div class="module-title-info">
+              <h2>${module.title}</h2>
+              <p>${module.description}</p>
+            </div>
+          </div>
+          <div class="module-stats">
+            <div class="stat-item">
+              <div class="stat-value">${progress}%</div>
+              <div class="stat-label">Progress</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">${completedCount}/${module.totalChapters}</div>
+              <div class="stat-label">Chapters</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chapters-list">
+          ${chaptersHtml}
+        </div>
+
+        ${examHtml}
+        ${quizHtml}
+      `;
+    }
+
+    // ==================== USER INTERACTION FUNCTIONS ====================
+    
+    function switchModule(moduleId) {
+      currentModuleId = moduleId;
+      currentQuizIndex = 0;
+      selectedOption = null;
+      quizAnswered = false;
+      examMode = false;
+      loadModule(moduleId);
+    }
+
+    function loadChapter(moduleId, chapterId) {
+      currentChapterId = chapterId;
+      currentQuizIndex = 0;
+      selectedOption = null;
+      quizAnswered = false;
+      examMode = false;
+      
+      const module = modulesData.find(m => m.id === moduleId);
+      renderModuleContent(module);
+    }
+
+    function selectQuizOption(optionIndex) {
+      if (quizAnswered) return;
+      
+      selectedOption = optionIndex;
+      renderModuleContent(modulesData.find(m => m.id === currentModuleId));
+    }
+
+    function nextQuiz() {
+      if (selectedOption === null) return;
+      
+      const module = modulesData.find(m => m.id === currentModuleId);
+      const chapter = module.chapters.find(c => c.id === currentChapterId);
+      const quiz = chapter.quiz[currentQuizIndex];
+      
+      quizAnswered = true;
+      
+      // Check if correct
+      const isCorrect = selectedOption === quiz.correct;
+      
+      renderModuleContent(module);
+    }
+
+    function previousQuiz() {
+      if (currentQuizIndex > 0) {
+        currentQuizIndex--;
+        selectedOption = null;
+        quizAnswered = false;
+        
+        const module = modulesData.find(m => m.id === currentModuleId);
+        renderModuleContent(module);
+      }
+    }
+
+    function completeChapter(moduleId, chapterId) {
+      const module = modulesData.find(m => m.id === moduleId);
+      const chapter = module.chapters.find(c => c.id === chapterId);
+      
+      // Mark chapter as completed
+      chapter.completed = true;
+      
+      // Unlock next chapter
+      const currentIndex = module.chapters.findIndex(c => c.id === chapterId);
+      if (currentIndex < module.chapters.length - 1) {
+        module.chapters[currentIndex + 1].locked = false;
+      }
+      
+      // Save progress
+      userProgress.completedChapters.push({ moduleId, chapterId });
+      localStorage.setItem('moduleProgress', JSON.stringify(userProgress));
+      
+      // Update module progress
+      updateModuleProgress(moduleId);
+      
+      // Show toast
+      showToast('🎉 Chapter completed! +' + Math.round(100/module.totalChapters) + '% progress');
+      
+      // Move to next chapter
+      if (currentIndex < module.chapters.length - 1) {
+        currentChapterId = module.chapters[currentIndex + 1].id;
+      }
+      
+      // Reset quiz state
+      currentQuizIndex = 0;
+      selectedOption = null;
+      quizAnswered = false;
+      
+      renderModuleContent(module);
+      renderModulesList();
+      updateOverallProgress();
+    }
+
+    function startExam(moduleId) {
+      const module = modulesData.find(m => m.id === moduleId);
+      
+      examMode = true;
+      examQuestions = [...module.exam.questions];
+      currentExamIndex = 0;
+      examScore = 0;
+      
+      renderExam(moduleId);
+    }
+
+    function renderExam(moduleId) {
+      const module = modulesData.find(m => m.id === moduleId);
+      const question = examQuestions[currentExamIndex];
+      
+      let examHtml = `
+        <div class="exam-section" style="margin-top: 0;">
+          <div class="exam-icon"><i class="fas fa-pencil-alt"></i></div>
+          <div class="exam-title">Module ${moduleId} Final Exam</div>
+          <div class="exam-desc">Question ${currentExamIndex + 1} of ${examQuestions.length}</div>
+          
+          <div style="margin: 30px 0; text-align: left;">
+            <h3 style="margin-bottom: 20px;">${question.question}</h3>
+            <div class="quiz-options">
+              ${question.options.map((opt, idx) => `
+                <div class="quiz-option" onclick="selectExamOption(${idx})">
+                  <div class="quiz-option-marker">${String.fromCharCode(65 + idx)}</div>
+                  <div>${opt}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between;">
+            <button class="quiz-btn quiz-btn-secondary" onclick="previousExamQuestion()" ${currentExamIndex === 0 ? 'disabled' : ''}>
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            ${currentExamIndex < examQuestions.length - 1 ?
+              `<button class="quiz-btn quiz-btn-primary" onclick="nextExamQuestion()" id="nextExamBtn" disabled>
+                Next <i class="fas fa-arrow-right"></i>
+              </button>` :
+              `<button class="quiz-btn quiz-btn-primary" onclick="submitExam(${moduleId})" id="submitExamBtn" disabled>
+                Submit Exam <i class="fas fa-check"></i>
+              </button>`
+            }
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('moduleContent').innerHTML = `
+        <div class="module-header">
+          <div class="module-title-section">
+            <div class="module-large-icon">${module.icon}</div>
+            <div class="module-title-info">
+              <h2>${module.title} - Final Exam</h2>
+              <p>Test your knowledge and earn your badge</p>
+            </div>
+          </div>
+        </div>
+        ${examHtml}
+      `;
+    }
+
+    function selectExamOption(optionIndex) {
+      examQuestions[currentExamIndex].selected = optionIndex;
+      
+      // Enable next button
+      const nextBtn = document.getElementById('nextExamBtn');
+      const submitBtn = document.getElementById('submitExamBtn');
+      if (nextBtn) nextBtn.disabled = false;
+      if (submitBtn) submitBtn.disabled = false;
+      
+      // Re-render to show selection
+      renderExam(currentModuleId);
+    }
+
+    function nextExamQuestion() {
+      currentExamIndex++;
+      renderExam(currentModuleId);
+    }
+
+    function previousExamQuestion() {
+      currentExamIndex--;
+      renderExam(currentModuleId);
+    }
+
+    function submitExam(moduleId) {
+      // Calculate score
+      let score = 0;
+      examQuestions.forEach(q => {
+        if (q.selected === q.correct) score++;
+      });
+      
+      const module = modulesData.find(m => m.id === moduleId);
+      const passed = score >= module.exam.passingScore;
+      
+      if (passed) {
+        module.exam.completed = true;
+        module.exam.badgeEarned = true;
+        module.completed = true;
+        
+        userProgress.completedExams.push(moduleId);
+        userProgress.badges.push({
+          moduleId,
+          title: module.title,
+          earnedAt: new Date().toISOString()
+        });
+        localStorage.setItem('moduleProgress', JSON.stringify(userProgress));
+        
+        // Show success message
+        document.getElementById('moduleContent').innerHTML = `
+          <div class="module-header">
+            <div class="module-title-section">
+              <div class="module-large-icon"><i class="fas fa-trophy" style="color: var(--gold);"></i></div>
+              <div class="module-title-info">
+                <h2>Congratulations!</h2>
+                <p>You've completed the ${module.title} module</p>
+              </div>
+            </div>
+          </div>
+          
+          <div style="text-align: center; padding: 60px 20px;">
+            <div style="font-size: 80px; color: var(--gold); margin-bottom: 20px;">
+              <i class="fas fa-award"></i>
+            </div>
+            <h2 style="font-size: 32px; margin-bottom: 15px;">You Passed! 🎉</h2>
+            <p style="color: var(--muted); margin-bottom: 30px;">You scored ${score} out of ${examQuestions.length}</p>
+            
+            <div class="badge-earned" style="font-size: 18px; padding: 15px 30px;">
+              <i class="fas fa-star"></i> ${module.title} Master Badge Earned!
+            </div>
+            
+            <button class="quiz-btn quiz-btn-primary" style="margin-top: 30px;" onclick="switchModule(${moduleId})">
+              <i class="fas fa-redo"></i> Back to Module
+            </button>
+          </div>
+        `;
+        
+        showToast('🏆 Module completed! Badge earned!');
+      } else {
+        alert(`You scored ${score}/${examQuestions.length}. Need ${module.exam.passingScore} to pass. Try again!`);
+      }
+      
+      updateOverallProgress();
+      renderModulesList();
+    }
+
+    // ==================== PROGRESS TRACKING ====================
+    
+    function calculateModuleProgress(moduleId) {
+      const module = modulesData.find(m => m.id === moduleId);
+      const completedCount = module.chapters.filter(c => c.completed).length;
+      return Math.round((completedCount / module.totalChapters) * 100);
+    }
+
+    function updateModuleProgress(moduleId) {
+      const module = modulesData.find(m => m.id === moduleId);
+      const progress = calculateModuleProgress(moduleId);
+      module.progress = progress;
+      module.completed = progress === 100;
+    }
+
+    function updateOverallProgress() {
+      let totalChapters = 0;
+      let completedChapters = 0;
+      
+      modulesData.forEach(module => {
+        totalChapters += module.totalChapters;
+        completedChapters += module.chapters.filter(c => c.completed).length;
+      });
+      
+      const percent = Math.round((completedChapters / totalChapters) * 100);
+      document.getElementById('overallProgress').textContent = `${percent}% Complete`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('progressToast');
+      document.getElementById('toastMessage').textContent = message;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // ==================== MOBILE MENU ====================
+    
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Initialize on load
+    window.onload = init;
+  </script>
+</body>
+</html>

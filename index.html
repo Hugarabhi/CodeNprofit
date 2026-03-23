@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodenProfit - India's First B2S Marketplace</title>
+     <link rel="canonical" href="https://codenprofit.com/home.html">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png">
+    <!-- SEO META -->
+<meta name="description" content="CodeNProfit – India's First B2S Marketplace connecting developers with businesses. Build real-world projects, gain experience and grow your career.">
+
+<meta name="keywords" content="CodeNProfit, developer marketplace, hire developers, student developers, web development projects, startup developers India">
+
+<meta name="author" content="CodeNProfit">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://codenprofit.com">
+<!-- WEBSITE ICON / FAVICON -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<!-- THEME COLOR -->
+<meta name="theme-color" content="#0B1120">
+<!-- OPEN GRAPH (LinkedIn / Facebook Preview) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CodeNProfit — Where Code Meets Profit">
+<meta property="og:description" content="Connect talented developers with innovative businesses and build real projects.">
+<meta property="og:image" content="https://codenprofit.com/logo.png">
+<meta property="og:url" content="https://codenprofit.com">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CodeNProfit — India's First B2S Marketplace">
+<meta name="twitter:description" content="Work on real projects, build your portfolio and earn while learning.">
+<meta name="twitter:image" content="https://codenprofit.com/logo.png">
+
+<!-- GOOGLE STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "CodeNProfit",
+ "url": "https://codenprofit.com",
+ "logo": "https://codenprofit.com/logo.png",
+ "description": "India's First B2S Marketplace connecting developers with businesses.",
+ "sameAs": [
+   "https://linkedin.com/company/codenprofit"
+ ]
+}
+</script>
+    
+    <!-- Tailwind CSS via CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        royal: '#1E3A8A',
+                        midnight: '#0B1120',
+                        electric: '#3B82F6',
+                        sky: '#0EA5E9',
+                        gold: '#F59E0B',
+                        slate: '#1E293B',
+                        soft: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        blob: 'blob 7s infinite',
+                        shimmer: 'shimmer 2s infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' },
+                        },
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'translateY(10px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Font Awesome for additional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Utilities */
+        html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+
+        body {
+            background-color: #0B1120;
+            color: #E5E7EB;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .glow-button-primary {
+            background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+        }
+        
+        .glow-button-primary:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+        }
+        
+        .glow-button-primary:hover .shimmer-effect {
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Utilities for selection */
+        ::selection {
+            background-color: #3B82F6;
+            color: white;
+        }
+
+        /* Brand Name Styling */
+        .brand-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .brand-name .cn {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-name .np {
+            color: var(--text);
+            margin: 0 1px;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 30px;
+            padding: 40px 30px;
+            transition: all 0.3s;
+            backdrop-filter: blur(12px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.35);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #a78bfa;
+            margin-bottom: 30px;
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 30px;
+            padding: 40px 30px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.35);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .step-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 30px;
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .step-btn:hover {
+            background: rgba(139, 92, 246, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Developer Cards */
+        .developer-scroll-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .developer-scroll-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            animation: scrollUp 20s linear infinite;
+        }
+
+        .developer-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .developer-card-small {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .developer-card-small:hover {
+            border-color: #8B5CF6;
+            background: rgba(30, 41, 59, 0.9);
+            transform: translateX(5px);
+        }
+
+        .developer-card-small .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .developer-card-small .skill-tag {
+            padding: 4px 10px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            font-size: 11px;
+            color: #a78bfa;
+        }
+
+        .developer-card-small .badge {
+            padding: 4px 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 15px;
+            color: #10b981;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .developer-card-small .rating {
+            color: #fbbf24;
+            font-size: 11px;
+        }
+
+        /* Business Cards */
+        .business-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .business-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.35);
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .business-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            background: rgba(59, 130, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Slider */
+        .testimonials-slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 30px;
+            animation: scrollTestimonials 30s linear infinite;
+            width: fit-content;
+        }
+
+        .testimonials-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTestimonials {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .testimonial-card {
+            flex: 0 0 350px;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 30px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(139, 92, 246, 0.35);
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-rating {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* Pricing Cards */
+        .pricing-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 30px;
+            padding: 40px 30px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.35);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #8B5CF6;
+            transform: scale(1.05);
+            z-index: 1;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F8FAFC;
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            color: rgba(248, 250, 252, 0.6);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            color: #e2e8f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: #10b981;
+            font-size: 14px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 40px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            color: #F8FAFC;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pricing-btn:hover {
+            border-color: #8B5CF6;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .pricing-btn.popular-btn {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border: none;
+            color: white;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            padding: 80px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .student-card{
+    background: rgba(30,41,59,0.6);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+.student-card:hover{
+    transform: translateY(-8px);
+    border-color:#3B82F6;
+    box-shadow:0 10px 30px rgba(59,130,246,0.25);
+}
+
+.student-icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    background:rgba(59,130,246,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    color:#38BDF8;
+    margin:0 auto 20px;
+}
+
+.student-card h4{
+    font-size:18px;
+    font-weight:700;
+    color:white;
+    margin-bottom:10px;
+}
+
+.student-card p{
+    font-size:14px;
+    color:#9CA3AF;
+}
+
+
+        .cta-text {
+            color: rgba(248, 250, 252, 0.6);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* Showcase Cards */
+        .showcase-card {
+            flex: 0 0 450px;
+            height: 550px;
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: #0a1020;
+            cursor: pointer;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .showcase-card:hover {
+            transform: scale(1.02);
+            border-color: #8B5CF6;
+            z-index: 10;
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(15px);
+            transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1.1);
+        }
+
+        .showcase-card:hover .showcase-img {
+            filter: blur(0);
+            transform: scale(1);
+        }
+        .growth-card{
+    background: rgba(30,41,59,0.6);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:24px;
+    padding:30px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+.growth-card:hover{
+    transform: translateY(-8px);
+    border-color:#3B82F6;
+    box-shadow:0 10px 35px rgba(59,130,246,0.25);
+}
+
+.growth-icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    background:rgba(59,130,246,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    color:#38BDF8;
+    margin:0 auto 20px;
+}
+
+.growth-title{
+    font-size:18px;
+    font-weight:700;
+    color:white;
+    margin-bottom:10px;
+}
+
+.growth-text{
+    font-size:14px;
+    color:#9CA3AF;
+}
+
+
+        .showcase-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.3) 50%, transparent 100%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            transition: background 0.4s ease;
+        }
+
+        .showcase-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .showcase-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(30, 41, 59, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border-color: transparent;
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .showcase-card {
+                flex: 0 0 280px;
+                height: 400px;
+            }
+            .cta-section {
+                padding: 40px 20px;
+            }
+            .cta-title {
+                font-size: 32px;
+            }
+        }
+        .cn-ai-btn img{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 180px;
+    }
+    .cn-ai-bot-avatar1{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    background:black;
+
+    /* Smooth transition */
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    /* Light blue AI glow */
+    filter:
+        drop-shadow(0 0 10px #0EA5E9)
+        drop-shadow(0 0 20px #38BDF8)
+        drop-shadow(0 0 40px rgba(14,165,233,0.9))
+        drop-shadow(0 0 60px rgba(59,130,246,0.6));
+        }
+    
+    </style>
+</head>
+<body class="overflow-x-hidden relative antialiased">
+
+    <!-- Welcome Loader Overlay - Only Logo -->
+    <div id="welcome-loader" class="fixed inset-0 z-[100] bg-midnight flex flex-col items-center justify-center overflow-hidden transition-opacity duration-700 ease-in-out">
+        <!-- Watermark Background -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img src="logo.png" alt="Watermark" class="w-[150vw] md:w-[80vw] opacity-[0.02] object-contain blur-md filter grayscale select-none">
+        </div>
+        <!-- Animated Content - Only Logo -->
+        <div class="z-10 text-center animate-[slideUp_0.8s_ease-out_forwards] flex flex-col items-center">
+            <!-- Advanced Glowing Logo Container -->
+            <div class="relative w-64 md:w-96 transform transition-transform hover:scale-105 duration-500">
+                <div class="absolute inset-0 bg-electric blur-[70px] opacity-40 animate-pulse rounded-full"></div>
+                <div class="absolute inset-0 bg-sky blur-[25px] opacity-30 rounded-full"></div>
+                <img src="logo.png" alt="CodenProfit Logo" class="relative z-10 w-full h-auto object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.8)] filter brightness-110">
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Watermark -->
+    <div class="fixed inset-0 flex items-center justify-center pointer-events-none z-[-1] opacity-[0.02]">
+        <img src="logo.png" alt="Watermark" class="w-[90vw] md:w-[60vw] object-contain select-none grayscale blur-sm">
+    </div>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-midnight/90 backdrop-blur-xl border-b border-slate">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center relative">
+            
+            <!-- Logo + Name -->
+            <div class="flex items-center gap-3 cursor-pointer group z-50" onclick="window.scrollTo(0,0)">
+                <img src="logo.png" alt="CodenProfit Logo" class="h-9 md:h-12 w-auto object-contain bg-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
+<span class="font-sans text-xl md:text-2xl font-bold tracking-tight text-white">CodeN<span class="text-electric">Profit</span></span>            </div>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-6 z-50">
+                <a href="about.html" class="text-gray-400 hover:text-sky transition-colors font-medium">About Us</a>
+                <a href="working.html" class="text-gray-400 hover:text-sky transition-colors font-medium">User Guide</a>
+                <a href="auth.html" class="text-gray-400 hover:text-white transition-colors font-medium">Sign In</a>
+                <a href="auth.html?tab=register" class="px-5 py-2 bg-electric hover:bg-sky text-white font-medium rounded-full transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]">Get Started</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-50 p-2 border border-slate rounded-lg bg-slate/30 hover:bg-slate/60 transition-colors">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="fixed inset-x-0 top-[70px] bg-midnight/95 backdrop-blur-3xl border-b border-slate transition-all duration-300 transform -translate-y-full opacity-0 pointer-events-none md:hidden flex flex-col items-center py-8 gap-6 shadow-2xl z-40">
+            <a href="about.html" class="mobile-link text-lg text-gray-300 hover:text-sky font-medium">About Us</a>
+            <a href="working.html" class="mobile-link text-lg text-gray-300 hover:text-sky font-medium">User Guide</a>
+            <a href="auth.html" class="mobile-link text-lg text-gray-300 hover:text-white font-medium">Sign In</a>
+            <a href="auth.html?tab=register" class="px-8 py-3 bg-electric text-white font-medium rounded-full">Get Started</a>
+        </div>
+    </nav>
+
+    <main class="relative pt-32 pb-20 z-10">
+        
+        <!-- HERO SECTION - Removed "We Are Launching Soon" badge -->
+        <section class="max-w-7xl mx-auto px-6 pt-10 pb-24 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <div class="flex-1 text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                        Where Code <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky via-electric to-royal">Meets Profit</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed">
+                        The premier marketplace connecting elite developers with forward-thinking businesses. 
+                        Build faster, earn smarter — <span class="text-electric font-bold">CodeNProfit</span> is where talent meets real opportunity.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                        <a href="auth.html?tab=register&type=developer" class="glow-button-primary relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 rounded-full group overflow-hidden">
+                            <span class="shimmer-effect absolute inset-0"></span>
+                            <span class="relative z-10 flex items-center gap-2">
+                                <i class="fas fa-code"></i> I'm a Developer
+                            </span>
+                        </a>
+                        <a href="business.html" class="relative inline-flex items-center justify-center px-8 py-4 font-bold text-soft transition-all duration-300 rounded-full group overflow-hidden bg-slate border border-electric/50 hover:bg-royal/50 hover:border-electric hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                            <span class="relative z-10 flex items-center gap-2">
+                                <i class="fas fa-building"></i> I'm a Business
+                            </span>
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-12">
+                        <div class="text-center">
+                            <span class="text-3xl font-bold text-white">100+</span>
+                            <span class="block text-gray-400 text-sm">Active Developers*</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-3xl font-bold text-white">100+</span>
+                            <span class="block text-gray-400 text-sm">Businesses*</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-3xl font-bold text-white">120+</span>
+                            <span class="block text-gray-400 text-sm">Projects Posted* <span class="block text-gray-400 text-sm">(It may vary-as per 12th march)</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 relative w-full flex justify-center mt-12 lg:mt-0">
+
+    <!-- MAIN CONTAINER -->
+    <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+
+        <!-- 🔥 CERTIFICATIONS (FLOATING TOP) -->
+        <div class="absolute -top-10 flex items-center gap-6 z-20">
+
+            <!-- MSME -->
+            <img src="https://mistcold.com/images/Msme%20logo.png"
+                 class="h-16 md:h-14 object-contain 
+                        opacity-90 hover:opacity-100 
+                        transition duration-300 
+                        drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]">
+
+            <!-- STARTUP INDIA -->
+            <img src="https://5.imimg.com/data5/SELLER/Default/2025/8/533268299/ZJ/CM/DK/235236326/startup-india-registration-service.png"
+                 class="h-10 md:h-12 object-contain 
+                        opacity-90 hover:opacity-100 
+                        transition duration-300 
+                        drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+
+        </div>
+
+        <!-- MAIN IMAGE -->
+        <img src="logo.png"
+             class="rounded-3xl z-10 object-cover w-full h-full relative"
+             onerror="this.style.display='none'">
+
+        <!-- BACKGROUND GLOW -->
+        <div class="absolute -top-10 -left-10 w-64 h-64 bg-royal rounded-full blur-[100px] opacity-60 animate-blob"></div>
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-electric rounded-full blur-[100px] opacity-50 animate-blob"
+             style="animation-delay: 2s;"></div>
+
+    </div>
+</div>
+            </div>
+        </section>
+        <section class="max-w-7xl mx-auto px-6 py-24">
+
+    <div class="relative rounded-[40px] overflow-hidden border border-electric/30 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
+
+        <!-- BG -->
+        <img src="workshop.png" alt="Workshop Background"
+             class="absolute inset-0 w-full h-full object-cover scale-110">
+
+        <div class="absolute inset-0 bg-[#020617]/90"></div>
+
+        <!-- CONTENT -->
+        <div class="relative z-10 p-8 md:p-16">
+
+            <!-- HEADER -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
+					AI Workshop<br>CodeNProfit Creators Challenge                </h2>
+                <p class="text-electric text-lg font-semibold">
+                    From Learning → Earning
+                </p>
+                <p class="text-gray-400 mt-2">
+                    Code Smart. Build Real. Think Like a Creator.
+                </p>
+            </div>
+
+            <!-- CREATIVE GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+
+                <!-- BIG FEATURE (HACKATHON) -->
+                <div class="md:col-span-4 bg-gradient-to-br from-electric/20 to-purple-500/20 border border-electric rounded-3xl p-8 relative overflow-hidden group">
+
+                    <div class="absolute inset-0 opacity-20 blur-[80px] bg-electric"></div>
+
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                         40-Min Cretivity check challange 
+                        </h3>
+                        <p class="text-gray-300 mb-3">
+                            Think fast. Build ideas. Present solutions.
+                        </p>
+                        <p class="text-electric font-semibold">
+                            “Bring your idea. Build with creativity.”
+                        </p>
+                    </div>
+                </div>
+
+                <!-- OBJECTIVE -->
+                <div class="md:col-span-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 hover:border-electric/40 transition">
+                    <h3 class="font-bold text-white mb-2">🎯 Objective</h3>
+                    <p class="text-gray-400 text-sm">
+                        Move beyond theory → solve real-world problems → earn using AI.
+                    </p>
+                    <p class="text-electric font-semibold mt-2">
+                        Learn → Build → Earn
+                    </p>
+                </div>
+
+                <!-- REALITY (HIGHLIGHT RED) -->
+                <div class="md:col-span-2 bg-gradient-to-br from-red-500/10 to-transparent border border-red-400/30 rounded-3xl p-6">
+                    <h3 class="font-bold text-red-400 mb-2">🧠 Reality Check</h3>
+                    <p class="text-gray-400 text-sm mb-2">
+                        Students lack real-world exposure.
+                    </p>
+                    <p class="text-red-400 font-semibold text-sm">
+                        Degree ≠ Skill ≠ Income
+                    </p>
+                </div>
+
+                <!-- SMART SKILLS -->
+                <div class="md:col-span-2 bg-white/5 backdrop-blur-xl border border-sky/20 rounded-3xl p-6">
+                    <h3 class="font-bold text-white mb-2">💡 Smart Skills</h3>
+                    <p class="text-gray-400 text-sm">
+                        Think, create, execute — not just code.
+                    </p>
+                    <p class="text-sky-400 font-semibold text-sm mt-2">
+                        Problem → Solution → Profit
+                    </p>
+                </div>
+
+                <!-- AI (FEATURE STYLE) -->
+                <div class="md:col-span-2 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-400/30 rounded-3xl p-6">
+                    <h3 class="font-bold text-white mb-2">🤖 AI & Income</h3>
+                    <p class="text-gray-400 text-sm">
+                        Use AI for content, automation & real earning.
+                    </p>
+                    <p class="text-purple-400 font-semibold text-sm mt-2">
+                        AI + Skills = Future Income
+                    </p>
+                </div>
+
+                <!-- FLOW WIDE -->
+                <div class="md:col-span-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
+                    <h3 class="font-bold text-white mb-3">⚡ Workshop Flow</h3>
+                    <div class="flex flex-wrap gap-2 text-xs text-gray-300">
+                        <span class="px-3 py-1 bg-white/10 rounded-full">Intro</span> >
+                        <span class="px-3 py-1 bg-white/10 rounded-full">Reality</span> >
+                        <span class="px-3 py-1 bg-white/10 rounded-full">Skills</span> >
+                        <span class="px-3 py-1 bg-white/10 rounded-full">AI</span> >
+                        <span class="px-3 py-1 bg-electric/20 rounded-full text-electric">Creativity</span>
+                    </div>
+                </div>
+
+                <!-- BENEFITS -->
+                <div class="md:col-span-3 bg-gradient-to-br from-green-500/10 to-transparent border border-green-400/30 rounded-3xl p-6">
+                    <h3 class="font-bold text-green-400 mb-3">🎁 What You Get</h3>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-gray-300">
+                        <div>🏅 participation Certificate</div>
+                        <div> 🎁 surprise gifts from team</div>
+                        <div> 🤖 AI workshop </div>
+                        <div>🏆 Rewards</div>
+                        <div>🚀 real world Projects</div>
+                        <div>🤝 Community</div>
+                    </div>
+                </div>
+
+                <!-- EVENT -->
+                <div class="md:col-span-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 text-center">
+                    <h3 class="font-bold text-white mb-2">📍 Event Details</h3>
+                    <p class="text-gray-400 text-sm">
+                        Physical Event • 120 Minutes • Includes Hackathon Session
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-14">
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-4">
+                    Don’t just learn — build, create & earn 🚀
+                </h3>
+                <br>
+
+                <a href="https://www.codenprofit.com/auth.html"
+                   class="px-10 py-4 bg-gradient-to-r from-royal via-electric to-purple-500 rounded-full text-white font-bold 
+                          hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] transition">
+                          
+                    Register Now
+                </a>
+                <p class="text-gray-400 mt-4 text-sm">Limited spots available !</p>
+                </div>
+                <div class="md:col-span-4 bg-gradient-to-br from-electric/20 to-purple-500/20 border border-electric rounded-3xl p-8 relative overflow-hidden group">
+
+                    <div class="absolute inset-0 opacity-20 blur-[80px] bg-electric"></div>
+
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                         How to Participate? 
+                        </h3>
+                        <p class="text-gray-300 mb-3">
+                            Simple Steps to Join the Workshop
+                        </p>
+                <p class="text-red-500 font-semibold mt-2"><span class="text-blue-500">create account</span> → event → workshop → student launchpad → register → <span class="text-white">Get Pass</span> </p></div>
+            
+
+        </div>
+    </div>
+
+</section>
+
+        <!-- THE CURRENT MARKET REALITY (Moved above Why Choose) -->
+        <section id="about" class="max-w-7xl mx-auto px-6 py-20 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">The Current Market Reality</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-3xl mx-auto text-lg">
+                    In India, there is a huge disconnect between businesses and student talent. Even though both exist in large numbers, they rarely connect directly. <strong>Let's break the wall!!</strong>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Business Problem -->
+                <div class="glass-card rounded-2xl p-8 transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-royal/30 flex items-center justify-center mb-6 border border-royal">
+                        <i data-lucide="building-2" class="w-8 h-8 text-sky"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Problems Faced by Businesses</h3>
+                    <ul class="space-y-5 text-gray-400">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="globe" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">No Professional Website</strong> Many MSMEs remain offline despite strong products.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="share-2" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">Weak Social Media & Marketing</strong> Lack of digital marketing and online representation.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="dollar-sign" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">High Agency Costs</strong> Difficulty competing with digitally active competitors due to expensive dev fees.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="users-x" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">No Creative Talent Access</strong> Business owners are busy; no access to creative developers.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Student Problem -->
+                <div class="glass-card rounded-2xl p-8 transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mb-6 border border-gold/30">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Problems Faced by Students</h3>
+                    <ul class="space-y-5 text-gray-400">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="briefcase" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">No Real-World Experience</strong> Graduating with only college assignments and no real clients.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="folder-x" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">Weak Professional Portfolio</strong> Difficulty building an industry-level portfolio.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="coins" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">Limited Earning Opportunities</strong> Lack of paid work or "pocket money" while learning.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="alert-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div><strong class="text-soft block">The Education-Industry Gap</strong> Still no perfect soft skills or understanding of real business operations.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION (Why Choose codenprofit) -->
+        <section id="features" class="max-w-7xl mx-auto px-6 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Why Choose <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">codenprofit</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-3xl mx-auto text-lg">
+                    We're building the most trusted platform for tech talent and innovative businesses to connect, collaborate, and grow together.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Lightning Fast Matching</h3>
+                    <p class="text-gray-400 text-sm">Our intelligent algorithm matches you with the perfect projects or developers within hours, not days.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Secure Payments</h3>
+                    <p class="text-gray-400 text-sm">Escrow-based payment protection ensures developers get paid and businesses get quality work.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Skill Growth</h3>
+                    <p class="text-gray-400 text-sm">Access learning paths, exams, and badges to showcase your expertise and stand out.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Elite Network</h3>
+                    <p class="text-gray-400 text-sm">Join a curated community of top 1% developers and forward-thinking businesses.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">24/7 Support</h3>
+                    <p class="text-gray-400 text-sm">Our dedicated support team is always available to help you succeed on the platform.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Global Opportunities</h3>
+                    <p class="text-gray-400 text-sm">Work with businesses from around the world without leaving your home.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW CODENPROFIT WORKS (FROM HOMEPAGE.HTML) -->
+        <section id="how-it-works" class="max-w-7xl mx-auto px-6 py-20 relative">
+            <div class="absolute inset-0 bg-slate/20 -skew-y-2 z-0 border-y border-royal/30 pointer-events-none"></div>
+            
+            <div class="relative z-10 py-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">How CodenProfit Works</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+                    <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+                        Creating a transparent, collaborative, and opportunity-driven B2S ecosystem.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Step 1 -->
+                    <div class="bg-midnight border border-slate p-6 rounded-2xl hover:border-electric/50 hover:bg-slate/40 transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-royal/20 flex items-center justify-center text-electric group-hover:scale-110 transition-transform">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-4xl font-black text-slate group-hover:text-royal transition-colors">01</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Business Posts Project</h4>
+                        <p class="text-gray-400 text-sm">Business owner submits their idea, requirement (website/app), budget, and timeline expectations.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-midnight border border-slate p-6 rounded-2xl hover:border-electric/50 hover:bg-slate/40 transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-royal/20 flex items-center justify-center text-electric group-hover:scale-110 transition-transform">
+                                <i data-lucide="list" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-4xl font-black text-slate group-hover:text-royal transition-colors">02</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Project Gets Listed</h4>
+                        <p class="text-gray-400 text-sm">Project appears on the platform. Verified student developers view and apply for the opportunity.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-midnight border border-slate p-6 rounded-2xl hover:border-electric/50 hover:bg-slate/40 transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-royal/20 flex items-center justify-center text-electric group-hover:scale-110 transition-transform">
+                                <i data-lucide="code" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-4xl font-black text-slate group-hover:text-royal transition-colors">03</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Students Build Solution</h4>
+                        <p class="text-gray-400 text-sm">Students analyze, design, and develop. Business provides feedback and feature requests during development.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="bg-midnight border border-slate p-6 rounded-2xl hover:border-electric/50 hover:bg-slate/40 transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-4xl font-black text-slate group-hover:text-gold transition-colors">04</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Mentor Quality Check</h4>
+                        <p class="text-gray-400 text-sm">Crucial step: A mentor/PM rechecks implementation, verifies security, and ensures no technical mismatches.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="bg-midnight border border-slate p-6 rounded-2xl hover:border-electric/50 hover:bg-slate/40 transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-royal/20 flex items-center justify-center text-electric group-hover:scale-110 transition-transform">
+                                <i data-lucide="rocket" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-4xl font-black text-slate group-hover:text-royal transition-colors">05</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Business Receives Product</h4>
+                        <p class="text-gray-400 text-sm">After verification, the approved project is delivered. The business launches and uses the digital solution.</p>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="bg-midnight border border-slate p-6 rounded-2xl hover:border-electric/50 hover:bg-slate/40 transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-royal/20 flex items-center justify-center text-electric group-hover:scale-110 transition-transform">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-4xl font-black text-slate group-hover:text-royal transition-colors">06</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Students Gain Rewards</h4>
+                        <p class="text-gray-400 text-sm">Students earn fair payment while learning, gain real industry exposure, and build a strong professional portfolio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOR DEVELOPERS SECTION -->
+        <section id="developers" class="max-w-7xl mx-auto px-6 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start bg-gradient-to-br from-royal/5 to-electric/5 rounded-[40px] p-12 border border-electric/20">
+                <div class="developer-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">For <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">Developers</span></h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Join India's fastest growing developer community. Work on exciting projects, 
+                        earn competitive rates, and grow your skills with our learning paths.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-500"></i> Access 500+ high-quality projects</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-500"></i> Build your portfolio with real work</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-500"></i> Get paid securely every time</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-500"></i> Earn badges and certifications</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-500"></i> Free learning resources</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-8 mb-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-electric">₹10K+</div>
+                            <div class="text-sm text-gray-400">Avg. Project Value</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-electric">100+</div>
+                            <div class="text-sm text-gray-400">Active Developers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-electric">4.8</div>
+                            <div class="text-sm text-gray-400">Developer Rating</div>
+                        </div>
+                    </div>
+
+                    <a href="auth.html?tab=register&type=developer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-royal to-electric rounded-full text-white font-bold hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all">
+                        Join as Developer <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="developer-right">
+                    <div class="developer-scroll-container">
+                        <div class="developer-scroll-track">
+                            <!-- Developer Card 1 -->
+                            <div class="developer-card-small">
+                                <div class="card-header">
+                                    <div class="avatar">P</div>
+                                    <div class="info">
+                                        <h5 class="text-white font-bold">Priya Sharma</h5>
+                                        <p class="text-gray-400 text-xs">Full Stack Developer</p>
+                                    </div>
+                                </div>
+                                <div class="skills flex gap-1 mb-3">
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">MongoDB</span>
+                                </div>
+                                <div class="meta flex justify-between">
+                                    <span class="badge">⭐ Top Rated</span>
+                                    <span class="rating">★ 4.9</span>
+                                </div>
+                            </div>
+
+                            <!-- Developer Card 2 -->
+                            <div class="developer-card-small">
+                                <div class="card-header">
+                                    <div class="avatar">R</div>
+                                    <div class="info">
+                                        <h5 class="text-white font-bold">Rahul Mehta</h5>
+                                        <p class="text-gray-400 text-xs">Mobile Developer</p>
+                                    </div>
+                                </div>
+                                <div class="skills flex gap-1 mb-3">
+                                    <span class="skill-tag">Flutter</span>
+                                    <span class="skill-tag">Firebase</span>
+                                    <span class="skill-tag">iOS</span>
+                                </div>
+                                <div class="meta flex justify-between">
+                                    <span class="badge">⭐ Rising Star</span>
+                                    <span class="rating">★ 4.7</span>
+                                </div>
+                            </div>
+
+                            <!-- Developer Card 3 -->
+                            <div class="developer-card-small">
+                                <div class="card-header">
+                                    <div class="avatar">A</div>
+                                    <div class="info">
+                                        <h5 class="text-white font-bold">Anjali Desai</h5>
+                                        <p class="text-gray-400 text-xs">UI/UX Designer</p>
+                                    </div>
+                                </div>
+                                <div class="skills flex gap-1 mb-3">
+                                    <span class="skill-tag">Figma</span>
+                                    <span class="skill-tag">Adobe XD</span>
+                                    <span class="skill-tag">Webflow</span>
+                                </div>
+                                <div class="meta flex justify-between">
+                                    <span class="badge">⭐ Expert</span>
+                                    <span class="rating">★ 5.0</span>
+                                </div>
+                            </div>
+
+                            <!-- Developer Card 4 -->
+                            <div class="developer-card-small">
+                                <div class="card-header">
+                                    <div class="avatar">V</div>
+                                    <div class="info">
+                                        <h5 class="text-white font-bold">Vikram Singh</h5>
+                                        <p class="text-gray-400 text-xs">Backend Developer</p>
+                                    </div>
+                                </div>
+                                <div class="skills flex gap-1 mb-3">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Django</span>
+                                    <span class="skill-tag">PostgreSQL</span>
+                                </div>
+                                <div class="meta flex justify-between">
+                                    <span class="badge">⭐ Senior</span>
+                                    <span class="rating">★ 4.8</span>
+                                </div>
+                            </div>
+
+                            <!-- Duplicate for seamless scrolling -->
+                            <div class="developer-card-small">
+                                <div class="card-header">
+                                    <div class="avatar">P</div>
+                                    <div class="info">
+                                        <h5 class="text-white font-bold">Priya Sharma</h5>
+                                        <p class="text-gray-400 text-xs">Full Stack Developer</p>
+                                    </div>
+                                </div>
+                                <div class="skills flex gap-1 mb-3">
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">MongoDB</span>
+                                </div>
+                                <div class="meta flex justify-between">
+                                    <span class="badge">⭐ Top Rated</span>
+                                    <span class="rating">★ 4.9</span>
+                                </div>
+                            </div>
+
+                            <div class="developer-card-small">
+                                <div class="card-header">
+                                    <div class="avatar">R</div>
+                                    <div class="info">
+                                        <h5 class="text-white font-bold">Rahul Mehta</h5>
+                                        <p class="text-gray-400 text-xs">Mobile Developer</p>
+                                    </div>
+                                </div>
+                                <div class="skills flex gap-1 mb-3">
+                                    <span class="skill-tag">Flutter</span>
+                                    <span class="skill-tag">Firebase</span>
+                                    <span class="skill-tag">iOS</span>
+                                </div>
+                                <div class="meta flex justify-between">
+                                    <span class="badge">⭐ Rising Star</span>
+                                    <span class="rating">★ 4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- STUDENT GROWTH SECTION -->
+<section id="student-growth" class="max-w-7xl mx-auto px-6 py-20">
+
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            Grow Your Skills with 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">
+                CodenProfit
+            </span>
+        </h2>
+
+        <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+
+        <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+            Learn, build, and earn while working on real industry projects.
+        </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Weekly Doubt Session -->
+        <div class="student-card">
+            <div class="student-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <h4>Weekly Doubt Sessions</h4>
+            <p>Clear your coding doubts with mentors every week.</p>
+        </div>
+
+        <!-- Tech Masti Workshop -->
+        <div class="student-card">
+            <div class="student-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <h4>Monthly Tech Masti Workshop</h4>
+            <p>Fun learning workshops covering modern technologies.</p>
+        </div>
+
+        <!-- Real World Projects -->
+        <div class="student-card">
+            <div class="student-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h4>Real-World Projects</h4>
+            <p>Build applications for real businesses and gain experience.</p>
+        </div>
+
+        <!-- Interview Ready Projects -->
+        <div class="student-card">
+            <div class="student-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h4>Interview Ready Projects</h4>
+            <p>Create portfolio projects that impress recruiters.</p>
+        </div>
+
+        <!-- Learn with Earn -->
+        <div class="student-card">
+            <div class="student-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <h4>Learn with Earn</h4>
+            <p>Earn while learning by working on real tasks and projects.</p>
+        </div>
+
+        <!-- Multi Domain Creativity -->
+        <div class="student-card">
+            <div class="student-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h4>Multi-Domain Creativity</h4>
+            <p>Explore AI, Web, Apps, Design and many more tech domains.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- FOR BUSINESSES SECTION (renamed from Companies) -->
+        <section id="businesses" class="max-w-7xl mx-auto px-6 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">For <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">Businesses</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+                    Find pre-vetted developers ready to work on your next project
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Post Projects</h4>
+                    <p class="text-gray-400 text-sm mb-6">Post your project requirements and receive applications from qualified developers within hours.</p>
+                    <div class="flex justify-between pt-4 border-t border-white/10">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-electric">24h</div>
+                            <div class="text-xs text-gray-400">Avg. Response</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-electric">5+</div>
+                            <div class="text-xs text-gray-400">Avg. Applicants</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Direct Hiring</h4>
+                    <p class="text-gray-400 text-sm mb-6">Browse developer profiles and send direct hire requests to top talent.</p>
+                    <div class="flex justify-between pt-4 border-t border-white/10">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-electric">200+</div>
+                            <div class="text-xs text-gray-400">Developers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-electric">95%</div>
+                            <div class="text-xs text-gray-400">Response Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Enterprise Solutions</h4>
+                    <p class="text-gray-400 text-sm mb-6">Custom plans for large teams with dedicated account management.</p>
+                    <div class="flex justify-between pt-4 border-t border-white/10">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-electric">50+</div>
+                            <div class="text-xs text-gray-400">Enterprise Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-electric">100%</div>
+                            <div class="text-xs text-gray-400">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="auth.html?tab=register&type=host" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-royal to-electric rounded-full text-white font-bold hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all">
+                    Start Hiring <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+        <!-- BUSINESS GROWTH SECTION -->
+<section id="business-growth" class="max-w-7xl mx-auto px-6 py-20">
+
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            How <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">CodenProfit</span> 
+            Helps Your Business Grow
+        </h2>
+
+        <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+
+        <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+            From idea to digital success — CodenProfit connects businesses with talented developers 
+            to build powerful digital solutions that drive growth.
+        </p>
+    </div>
+
+    <!-- Growth Flow -->
+    <div class="grid md:grid-cols-5 gap-6 items-center">
+
+        <!-- Step 1 -->
+        <div class="growth-card text-center">
+            <div class="growth-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h4 class="growth-title">Share Your Idea</h4>
+            <p class="growth-text">
+                Tell us what your business needs — website, app, automation or digital marketing.
+            </p>
+        </div>
+
+        <!-- Arrow -->
+        <div class="hidden md:flex justify-center text-electric text-3xl">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="growth-card text-center">
+            <div class="growth-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h4 class="growth-title">Developers Connect</h4>
+            <p class="growth-text">
+                Skilled developers apply to your project and collaborate with you.
+            </p>
+        </div>
+
+        <!-- Arrow -->
+        <div class="hidden md:flex justify-center text-electric text-3xl">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="growth-card text-center">
+            <div class="growth-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h4 class="growth-title">Build Digital Product</h4>
+            <p class="growth-text">
+                Developers create websites, apps, or systems tailored to your business needs.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Second Row -->
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+
+        <div class="growth-card text-center">
+            <div class="growth-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h4 class="growth-title">Launch Online</h4>
+            <p class="growth-text">
+                Your business goes digital and reaches more customers.
+            </p>
+        </div>
+
+        <div class="growth-card text-center">
+            <div class="growth-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h4 class="growth-title">Increase Revenue</h4>
+            <p class="growth-text">
+                Better digital presence means higher conversions and sales.
+            </p>
+        </div>
+
+        <div class="growth-card text-center">
+            <div class="growth-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <h4 class="growth-title">Scale Your Brand</h4>
+            <p class="growth-text">
+                Expand beyond local markets and grow your brand globally.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- TESTIMONIALS -->
+        <section class="max-w-7xl mx-auto px-6 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">What Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">Community Says</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+                    Trusted by developers and businesses across India
+                </p>
+            </div>
+
+            <div class="testimonials-slider-container">
+                <div class="testimonials-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 italic">
+                            "In just one month on CodenProfit, I earned around ₹4,000–₹6,000 by submitting multiple projects. It really helped me manage my own pocket money as a student. Thank you, CodenProfit team!"
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">R</div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Rahul Dotre</h5>
+                                <p class="text-gray-400 text-xs">Full Stack Developer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 italic">
+                            "At first, when I received a call from the CodenProfit team, I wasn't sure what the platform was about. But after getting my website developed through them, my tours and travels business has been growing every day. I'm really happy with the results."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">A</div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Anand Patil</h5>
+                                <p class="text-gray-400 text-xs">Tours & Travels Owner</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 italic">
+                            "CodenProfit helped me find a skilled developer for my e-commerce website within a week. The quality of work exceeded my expectations. Highly recommended!"
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">S</div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Shreya Kapoor</h5>
+                                <p class="text-gray-400 text-xs">Startup Founder</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 italic">
+                            "As a student developer, CodenProfit gave me the opportunity to work on real projects and build my portfolio. The learning paths helped me upskill quickly."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">K</div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Kunal Deshmukh</h5>
+                                <p class="text-gray-400 text-xs">CS Student</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate for seamless scrolling -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 italic">
+                            "In just one month on CodenProfit, I earned around ₹4,000–₹6,000 by submitting multiple projects. It really helped me manage my own pocket money as a student. Thank you, CodenProfit team!"
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">R</div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Rahul Dotre</h5>
+                                <p class="text-gray-400 text-xs">Full Stack Developer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 italic">
+                            "At first, when I received a call from the CodenProfit team, I wasn't sure what the platform was about. But after getting my website developed through them, my tours and travels business has been growing every day. I'm really happy with the results."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">A</div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Anand Patil</h5>
+                                <p class="text-gray-400 text-xs">Tours & Travels Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <!-- TRUST & CERTIFICATIONS SECTION -->
+<section id="certifications" class="max-w-7xl mx-auto px-6 py-24">
+
+    <!-- Heading -->
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            Trusted & 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">
+                Certified Platform
+            </span>
+        </h2>
+
+        <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+
+        <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+            Building trust through government recognition and global standards.
+        </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- MSME -->
+        <div class="relative h-80 rounded-3xl overflow-hidden group">
+            
+            <!-- Background Image -->
+            <img src="https://www.thestatesman.com/wp-content/uploads/2024/06/IMG_1181.jpeg" 
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 h-full flex flex-col justify-end p-6">
+                <h3 class="text-xl font-bold text-white mb-2">MSME Registered</h3>
+                <p class="text-gray-300 text-sm">
+                    Government of India verified registration ensuring trust and compliance.
+                </p>
+
+                <span class="mt-4 inline-block px-3 py-1 text-xs rounded-full 
+                             bg-green-500/20 border border-green-400/40 text-green-300 w-fit">
+                    Government Verified
+                </span>
+            </div>
+        </div>
+
+        <!-- STARTUP INDIA -->
+        <div class="relative h-80 rounded-3xl overflow-hidden group">
+            
+            <img src="https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/smstreet/media/media_files/W5cOkLDaOBwFhsoTrioW.jpg" 
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20"></div>
+
+            <div class="relative z-10 h-full flex flex-col justify-end p-6">
+                <h3 class="text-xl font-bold text-white mb-2">Startup India Recognized</h3>
+                <p class="text-gray-300 text-sm">
+                    Supporting innovation under India's official startup initiative.
+                </p>
+
+                <span class="mt-4 inline-block px-3 py-1 text-xs rounded-full 
+                             bg-blue-500/20 border border-blue-400/40 text-blue-300 w-fit">
+                    Govt Initiative
+                </span>
+            </div>
+        </div>
+
+        <!-- ISO -->
+        <div class="relative h-80 rounded-3xl overflow-hidden group">
+            
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-e2cHe8ysnMOMkYXHq6yx551-_oOeYzuJxQ&s" 
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20"></div>
+
+            <div class="relative z-10 h-full flex flex-col justify-end p-6">
+                <h3 class="text-xl font-bold text-white mb-2">ISO Certification (In Progress)</h3>
+                <p class="text-gray-300 text-sm">
+                    Moving towards global quality and security standards.
+                </p>
+
+                <span class="mt-4 inline-block px-3 py-1 text-xs rounded-full 
+                             bg-purple-500/20 border border-purple-400/40 text-purple-300 w-fit">
+                    Coming Soon
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="mt-16 text-center">
+        <p class="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
+            Verified processes. Trusted ecosystem. Built for long-term growth.
+        </p>
+    </div>
+
+</section>
+
+        <!-- CTA SECTION -->
+        <section class="max-w-7xl mx-auto px-6 py-20">
+            <div class="cta-section">
+                <h2 class="cta-title">Ready to Start Your Journey?</h2>
+                <p class="cta-text">
+                    Join thousands of developers and businesses already growing on codenprofit.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="auth.html?tab=register&type=developer" class="glow-button-primary inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white rounded-full">
+                        <i class="fas fa-code"></i> I'm a Developer
+                    </a>
+                    <a href="auth.html?tab=register&type=host" class="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white rounded-full bg-transparent border-2 border-electric/50 hover:bg-royal/50 hover:border-electric transition-all">
+                        <i class="fas fa-building"></i> I'm a Business
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOWCASE SECTION -->
+        <!-- STUDENT EXPERIENCE / GROWTH SECTION -->
+<section id="student-experience" class="max-w-7xl mx-auto px-6 py-24">
+
+    <!-- Heading -->
+    <div class="text-center mb-20">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            Learn • Build • Grow with 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky to-electric">
+                CodenProfit
+            </span>
+        </h2>
+
+        <div class="w-24 h-1 bg-gradient-to-r from-royal to-electric mx-auto rounded-full"></div>
+
+        <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+            Not just projects — we provide a complete ecosystem to learn, solve, and grow with real-world experience.
+        </p>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid lg:grid-cols-3 gap-8">
+
+        <!-- LEFT BIG CARD (Doubt Sessions) -->
+        <div class="relative rounded-3xl overflow-hidden h-[420px] group">
+            
+            <img src="https://ekalshiksha.in/wp-content/uploads/2023/06/Having-Doubts-Before-Exam.jpg" 
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20"></div>
+
+            <div class="relative z-10 h-full flex flex-col justify-end p-6">
+                <h3 class="text-2xl font-bold text-white mb-2">
+                    Weekly Doubt Clear Sessions
+                </h3>
+                <p class="text-gray-300 text-sm">
+                    Live sessions with mentors to solve real coding problems, debug projects, and understand concepts deeply.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT GRID -->
+        <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+
+            <!-- Workshops -->
+            <div class="relative rounded-2xl overflow-hidden h-52 group">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQF2K1vyt7NfoA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1700728113467?e=2147483647&v=beta&t=IyTykxwGGmeppmqQ_e9-cUt6g74Gc33H0CNb5eEi5Oo" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-black/70"></div>
+                <div class="relative z-10 p-5">
+                    <h4 class="text-lg font-bold text-white mb-1">Tech Workshops</h4>
+                    <p class="text-gray-300 text-xs">Hands-on sessions on Web, AI, and modern tech stacks.</p>
+                </div>
+            </div>
+
+            <!-- Hackathons -->
+            <div class="relative rounded-2xl overflow-hidden h-52 group">
+                <img src="https://media.istockphoto.com/id/1443234555/vector/hackathon-doodle-hand-drawing-business-programmers-team-develop-software.jpg?s=612x612&w=0&k=20&c=-4BAQmS6DLYtYB56XwuYlO0PRtBi6L27riZwZbMPp2A=" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-black/70"></div>
+                <div class="relative z-10 p-5">
+                    <h4 class="text-lg font-bold text-white mb-1">Hackathons</h4>
+                    <p class="text-gray-300 text-xs">Build, compete, and showcase your creativity in real-time events.</p>
+                </div>
+            </div>
+
+            <!-- AI Growth -->
+            <div class="relative rounded-2xl overflow-hidden h-52 group">
+                <img src="https://educationalvoice.co.uk/wp-content/uploads/2025/04/v2-t3ic7-o2he2.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-black/70"></div>
+                <div class="relative z-10 p-5">
+                    <h4 class="text-lg font-bold text-white mb-1">Growth with AI</h4>
+                    <p class="text-gray-300 text-xs">Leverage AI tools to build faster, smarter, and stand out.</p>
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="relative rounded-2xl overflow-hidden h-52 group">
+                <img src="https://img.freepik.com/free-vector/flat-customer-support-illustration_23-2148899113.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-black/70"></div>
+                <div class="relative z-10 p-5">
+                    <h4 class="text-lg font-bold text-white mb-1">24/7 Doubt Support</h4>
+                    <p class="text-gray-300 text-xs">Get help anytime from mentors and the developer community.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16">
+        <p class="text-gray-400 mb-6">
+            Learn continuously. Build confidently. Grow exponentially 🚀
+        </p>
+
+        <a href="auth.html?tab=register&type=developer" 
+           class="px-8 py-4 bg-gradient-to-r from-royal to-electric rounded-full text-white font-bold 
+                  hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] transition-all">
+            Start Your Journey
+        </a>
+    </div>
+
+</section>
+    </main>
+
+    <!-- Referral Popup Modal -->
+    <div id="referral-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+        <div class="bg-midnight border border-electric/50 p-6 md:p-8 rounded-2xl max-w-lg w-full text-center relative shadow-[0_0_40px_rgba(59,130,246,0.25)] transform scale-95 transition-transform duration-300" id="referral-modal-content">
+            <!-- Close Button -->
+            <button onclick="closeReferralModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <!-- Glowing Gift Icon -->
+            <div class="relative inline-block mb-4">
+                <div class="absolute inset-0 bg-gold blur-xl opacity-40 animate-pulse"></div>
+                <i data-lucide="gift" class="w-16 h-16 text-gold relative z-10 drop-shadow-[0_0_15px_rgba(245,158,11,0.8)]"></i>
+            </div>
+            
+            <h3 class="text-2xl font-extrabold text-white mb-2">🎁 Want to unlock special rewards?</h3>
+            <p class="text-sky font-medium mb-4 text-sm md:text-base">Invite your friends and grow the CodenProfit community together!</p>
+            
+            <div class="bg-slate/50 p-4 rounded-xl border border-slate mb-6 text-sm text-left text-gray-300 shadow-inner">
+                <p class="mb-2">👥 Invite <strong class="text-white">10 friends</strong> using the "Invite Friends" buttons below and you can become eligible for surprising gift hampers and special benefits from the CodenProfit team.</p>
+                <p class="font-medium text-gold">The more you share, the more rewards you unlock!</p>
+            </div>
+            
+            <!-- URL Generation Area -->
+            <div class="mb-6 relative">
+                <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider font-bold text-left pl-1">Your Launch Invite Link</p>
+                <div class="flex items-center bg-black/50 border border-royal rounded-xl overflow-hidden focus-within:border-electric transition-colors">
+                    <input type="text" readonly value="https://www.codenprofit.com/index.html" id="referral-link-input" class="w-full bg-transparent text-sky font-mono text-sm px-4 py-3 outline-none select-all">
+                    <button onclick="copyReferralLink()" class="px-4 py-3 bg-slate hover:bg-royal text-white transition-colors border-l border-royal flex items-center gap-2 group">
+                        <i data-lucide="copy" class="w-4 h-4 group-hover:scale-110 transition-transform"></i> <span id="copy-text" class="text-sm font-medium">Copy</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Share Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a id="modalWhatsappShare" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold rounded-xl transition-all shadow-[0_0_15px_rgba(37,211,102,0.3)] hover:-translate-y-1 cursor-pointer">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp
+                </a>
+                <button onclick="shareEmail()" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate hover:bg-royal border border-electric/30 text-white font-bold rounded-xl transition-all shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:-translate-y-1 cursor-pointer">
+                    <i data-lucide="mail" class="w-5 h-5"></i> Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<footer class="bg-midnight border-t border-slate pt-16 pb-8 relative z-10 w-full">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-4 gap-10 mb-12">
+
+        <!-- LEFT MAIN -->
+        <div class="col-span-1 md:col-span-2">
+
+            <!-- LOGO -->
+            <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden">
+                    <img src="logo.png" alt="CodenProfit Logo"
+                         class="w-full h-full object-cover drop-shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                </div>
+                <span class="text-xl md:text-2xl font-bold text-white">
+                    CodeN<span class="text-electric">Profit</span>
+                </span>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <p class="text-gray-400 max-w-sm text-sm leading-relaxed mb-6 text-center md:text-left">
+                India's premier platform connecting elite developers with forward-thinking businesses. 
+                Build faster, earn smarter.
+            </p>
+
+            <!-- SOCIAL -->
+            <div class="flex items-center justify-center md:justify-start gap-4 mb-8">
+                <a href="https://www.linkedin.com/company/codenprofit-tech/" target="_blank"
+                   class="w-10 h-10 rounded-full bg-slate/50 border border-electric/30 flex items-center justify-center text-electric hover:bg-electric hover:text-white transition">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://www.instagram.com/codenprofit" target="_blank"
+                   class="w-10 h-10 rounded-full bg-slate/50 border border-electric/30 flex items-center justify-center text-electric hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://twitter.com/codenprofit" target="_blank"
+                   class="w-10 h-10 rounded-full bg-slate/50 border border-electric/30 flex items-center justify-center text-electric hover:bg-sky-500 hover:text-white transition">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <a href="https://github.com/codenprofit" target="_blank"
+                   class="w-10 h-10 rounded-full bg-slate/50 border border-electric/30 flex items-center justify-center text-electric hover:bg-white hover:text-gray-900 transition">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- PLATFORM -->
+        <div class="text-center md:text-left">
+            <h4 class="text-white font-semibold mb-4">Platform</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+                <li><a href="#features" class="hover:text-electric transition">Features</a></li>
+                <li><a href="#how-it-works" class="hover:text-electric transition">How it Works</a></li>
+                <li><a href="#" class="hover:text-electric transition">FAQ</a></li>
+            </ul>
+        </div>
+
+        <!-- COMPANY -->
+        <div class="text-center md:text-left">
+            <h4 class="text-white font-semibold mb-4">Company</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+                <li><a href="about.html" class="hover:text-electric transition">About Us</a></li>
+                <li><a href="privacy.html" class="hover:text-electric transition">Privacy Policy</a></li>
+                <li><a href="terms.html" class="hover:text-electric transition">Terms of Service</a></li>
+                <li><a href="#" onclick="openReferralModal(); return false;"
+                       class="hover:text-gold transition font-medium">Referral Program</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- ✅ CERTIFICATION SECTION (PROPER POSITION) -->
+    <div class="border-t border-white/10 pt-10 mb-6">
+
+        <div class="text-center mb-6">
+            <p class="text-gray-400 text-sm md:text-base">
+                🇮🇳 Certified & Recognized by Government of India
+            </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-10">
+
+            <!-- MSME -->
+            <div class="flex flex-col items-center group">
+                <img src="https://gstloan.com/wp-content/uploads/2025/02/MSME_LOGO_new-removebg-preview.png"
+                     class="h-12 md:h-16 object-contain transition duration-300 
+                            group-hover:scale-110 
+                            drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]">
+            </div>
+
+            <!-- STARTUP INDIA -->
+            <div class="flex flex-col items-center group">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2025/8/533268299/ZJ/CM/DK/235236326/startup-india-registration-service.png"
+                     class="h-12 md:h-16 object-contain transition duration-300 
+                            group-hover:scale-110 
+                            drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="text-center border-t border-slate pt-6 text-gray-500 text-sm">
+        &copy; <span id="current-year"></span> CodenProfit Technologies. All rights reserved. @INDIA'SFIRSTB2S
+    </div>
+
+</footer>    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set Current Year in Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Particle Background Logic
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let animationFrameId;
+        let particles = [];
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#3B82F6' : '#0EA5E9';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        const initParticles = () => {
+            particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        };
+
+        const animateParticles = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            animationFrameId = requestAnimationFrame(animateParticles);
+        };
+
+        initParticles();
+        animateParticles();
+
+        // Welcome Animation Logic - Reduced to 2.5 seconds
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('welcome-loader');
+                if(loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.remove(), 700);
+                }
+            }, 2500); // Reduced from 5500ms to 2500ms
+        });
+
+        // Mobile Menu Toggle Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
+
+        // Referral Share Logic
+        const message = `🔥 Stop scrolling… Start *coding for profit* 💻💰\n\nI just joined the *CodenProfit Waitlist* — a platform where *students, developers, and creators turn coding skills into real earnings.*\n\nImagine learning, building real projects, collaborating with teams, and actually *getting paid for your skills.* 🚀\n\n🎁 *Executive Launch Offer:*\nInvite your friends and unlock exclusive rewards.\n\nIf you complete *69 referrals*, you will receive:\n✨ *1 Month Premium Subscription FREE*\n🎁 *Exclusive CodenProfit Launch Gift Hamper*\n🚀 *Early Access to Premium Features*\n\nDon't miss the launch opportunity — this is where *code meets profit.*\n\n👉 *Sign up here:*\nhttps://www.codenprofit.com/index.html\n\nLet's build, learn, and earn together.\nSee you at the launch 🚀\n\n#CodenProfit #CodeAndProfit #StudentStartup`;
+
+        const whatsappURL = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message);
+        
+        const modalWhatsappBtn = document.getElementById("modalWhatsappShare");
+        if(modalWhatsappBtn) modalWhatsappBtn.href = whatsappURL;
+
+        function shareEmail() {
+            const emailBody = message.replace(/\*/g, ''); 
+            const url = `mailto:?subject=${encodeURIComponent("Join me on the CodenProfit Waitlist! 🚀")}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = url;
+        }
+
+        function openReferralModal() {
+            const modal = document.getElementById('referral-modal');
+            const content = document.getElementById('referral-modal-content');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+            lucide.createIcons();
+        }
+
+        function closeReferralModal() {
+            const modal = document.getElementById('referral-modal');
+            const content = document.getElementById('referral-modal-content');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+        function copyReferralLink() {
+            const linkInput = document.getElementById('referral-link-input');
+            linkInput.select();
+            document.execCommand('copy');
+            const copyText = document.getElementById('copy-text');
+            copyText.textContent = 'Copied!';
+            setTimeout(() => { copyText.textContent = 'Copy'; }, 2000);
+        }
+
+        // Showcase Slider Logic
+        const slider = document.getElementById('showcaseSlider');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentIndex = 0;
+        const cardWidth = 480;
+        const totalCards = document.querySelectorAll('.showcase-card').length;
+
+        function updateSlider() {
+            const offset = -currentIndex * cardWidth;
+            slider.style.transform = `translateX(${offset}px)`;
+        }
+
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % (totalCards - 1);
+                updateSlider();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + (totalCards - 1)) % (totalCards - 1);
+                updateSlider();
+            });
+        }
+
+        // Auto-rotation for showcase
+        let autoRotate = setInterval(() => {
+            if (nextBtn) {
+                currentIndex = (currentIndex + 1) % (totalCards - 1);
+                updateSlider();
+            }
+        }, 5000);
+
+        if (slider) {
+            slider.addEventListener('mouseenter', () => clearInterval(autoRotate));
+            slider.addEventListener('mouseleave', () => {
+                autoRotate = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % (totalCards - 1);
+                    updateSlider();
+                }, 5000);
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Pause testimonial scroll on hover
+        const testimonialTrack = document.querySelector('.testimonials-track');
+        if (testimonialTrack) {
+            testimonialTrack.addEventListener('mouseenter', () => {
+                testimonialTrack.style.animationPlayState = 'paused';
+            });
+            testimonialTrack.addEventListener('mouseleave', () => {
+                testimonialTrack.style.animationPlayState = 'running';
+            });
+        }
+
+        // Pause developer scroll on hover
+        const developerTrack = document.querySelector('.developer-scroll-track');
+        if (developerTrack) {
+            developerTrack.addEventListener('mouseenter', () => {
+                developerTrack.style.animationPlayState = 'paused';
+            });
+            developerTrack.addEventListener('mouseleave', () => {
+                developerTrack.style.animationPlayState = 'running';
+            });
+        }
+    </script>
+
+    <!-- AI Chatbot Styles -->
+    <style>
+        /* AI Chatbot Styles - Prefix cn-ai- */
+        .cn-ai-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:rgba(104, 125, 174, 0.95); ;   /* removes background */
+    border: none;              /* removes border */
+    box-shadow: none;          /* removes any box shadow */
+
+    animation: cn-ai-pulse 2s infinite;
+    transition: transform 0.3s ease;
+}
+
+.cn-ai-btn:hover{
+    transform: scale(1.1);
+}
+
+/* If icon is used */
+.cn-ai-btn i{
+    font-size: 28px;
+    color: white;
+}
+
+/* If image is used instead of icon */
+.cn-ai-btn img{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 50px;
+}
+
+
+        .cn-ai-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 380px;
+            height: 550px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 9998;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cn-ai-window.open {
+            display: flex;
+            animation: cn-ai-slideIn 0.3s ease-out;
+        }
+
+        @keyframes cn-ai-slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes cn-ai-pulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+            }
+            50% {
+                box-shadow: 0 12px 35px rgba(139, 92, 246, 0.7);
+            }
+        }
+
+        .cn-ai-header {
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cn-ai-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .cn-ai-header-info {
+            flex: 1;
+        }
+
+        .cn-ai-header-info h3 {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .cn-ai-header-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        .cn-ai-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+.cn-ai-header-info{
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
+}
+
+/* Bot Name */
+.cn-ai-title{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:0.5px;
+    background:linear-gradient(90deg,#3B82F6,#0EA5E9,#8B5CF6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    text-shadow:0 0 12px rgba(59,130,246,0.5);
+}
+
+/* Subtitle */
+.cn-ai-subtitle{
+    font-size:12px;
+    color:#94a3b8;
+    font-weight:500;
+    letter-spacing:0.3px;
+}
+
+        .cn-ai-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .cn-ai-chat {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cn-ai-message {
+            display: flex;
+            gap: 12px;
+            max-width: 85%;
+            animation: cn-ai-fadeIn 0.3s ease;
+        }
+
+        .cn-ai-message.user {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+
+        .cn-ai-message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .cn-ai-message.user .cn-ai-message-avatar {
+            background: #10b981;
+        }
+
+        .cn-ai-message-content {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 18px;
+            padding: 12px 16px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .cn-ai-message.user .cn-ai-message-content {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border: none;
+            color: white;
+        }
+
+        .cn-ai-message-content p {
+            margin: 0;
+        }
+
+        .cn-ai-message-content a {
+            color: #8B5CF6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cn-ai-message.user .cn-ai-message-content a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .cn-ai-typing {
+            display: flex;
+            gap: 4px;
+            padding: 8px 12px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 18px;
+            width: fit-content;
+        }
+
+        .cn-ai-typing span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: cn-ai-bounce 1.4s infinite;
+        }
+
+        .cn-ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .cn-ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes cn-ai-bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px); background: #8B5CF6; }
+        }
+
+        @keyframes cn-ai-fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cn-ai-footer {
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .cn-ai-input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cn-ai-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .cn-ai-input:focus {
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+        }
+
+        .cn-ai-send {
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .cn-ai-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .cn-ai-send i {
+            font-size: 18px;
+        }
+
+        .cn-ai-send.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cn-ai-send.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        .cn-ai-brain{
+    font-size:20px;
+
+    /* Brain gradient color */
+    background: linear-gradient(135deg,#8B0000,#a52a2a,#c14444,#6b1b1b);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+
+    /* realistic brain glow */
+    filter: drop-shadow(0 0 4px rgba(139,0,0,0.6))
+            drop-shadow(0 0 8px rgba(165,42,42,0.4));
+
+    transition: transform 0.3s ease;
+}
+
+/* cool hover effect */
+.cn-ai-brain:hover{
+    transform: scale(1.15);
+}
+.cn-ai-bot-avatar{
+    width: 40px;
+    height: 40px;
+    object-fit:contain;
+    border-radius:8px;
+
+    /* glowing AI effect */
+    filter: drop-shadow(0 0 6px rgba(59,130,246,0.7))
+            drop-shadow(0 0 12px rgba(14,165,233,0.5));
+
+    transition: transform 0.3s ease;
+}
+
+.cn-ai-bot-avatar:hover{
+    transform: scale(1.1);
+}
+.cn-ai-bot-avatar1{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    background:transparent;
+
+    /* Smooth transition */
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    /* Light blue AI glow */
+    filter:
+        drop-shadow(0 0 10px #0EA5E9)
+        drop-shadow(0 0 20px #38BDF8)
+        drop-shadow(0 0 40px rgba(14,165,233,0.9))
+        drop-shadow(0 0 60px rgba(59,130,246,0.6));
+}
+
+.cn-ai-bot-avatar1:hover{
+    transform: scale(1.1);
+
+    /* stronger glow on hover */
+    filter:
+        drop-shadow(0 0 15px #0EA5E9)
+        drop-shadow(0 0 30px #38BDF8)
+        drop-shadow(0 0 55px rgba(14,165,233,1))
+        drop-shadow(0 0 80px rgba(59,130,246,0.8));
+}
+
+        @media (max-width: 480px) {
+            .cn-ai-window {
+                width: calc(100% - 40px);
+                right: 20px;
+                left: 20px;
+                height: 500px;
+            }
+        }
+    </style>
+
+    <!-- AI Chatbot HTML -->
+    <div class="cn-ai-btn" id="cnAIChatBtn">
+       <img src="Chat-bot.gif"
+         class="cn-ai-bot-avatar1">
+    </div>
+
+
+
+    </div>
+
+    <div class="cn-ai-window" id="cnAIWindow">
+        <div class="cn-ai-header">
+    
+    <img src="https://png.pngtree.com/png-clipart/20250228/original/pngtree-adorable-ai-robot-with-expressive-blue-eyes-png-image_20533828.png"
+         class="cn-ai-bot-avatar">
+
+    <div class="cn-ai-header-info">
+        <h3 class="cn-ai-title">ProfitBot</h3>
+        <p class="cn-ai-subtitle">⚡ Your AI Coding Assistant</p>
+    </div>
+
+            <div class="cn-ai-close" id="cnAICloseBtn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="cn-ai-chat" id="cnAIChat">
+            <!-- Welcome message will be added by JS -->
+        </div>
+
+        <div class="cn-ai-footer">
+            <div class="cn-ai-input-container">
+                <input type="text" class="cn-ai-input" id="cnAIInput" placeholder="Ask me anything about CodeNProfit..." autocomplete="off">
+                <button class="cn-ai-send" id="cnAISendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot JavaScript -->
+    <script>
+        // AI Chatbot Configuration
+        const AI_CONFIG = {
+            GEMINI_API_KEY: 'AIzaSyD9POGWXzUs5QY9dqrnlk7RqDn_A-KsSDc', // Using your provided API key
+            GEMINI_API_URL:'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent'
+        };
+
+        // Platform Knowledge Base - Extracted from website files
+        const PLATFORM_INFO = {
+            name: 'CodeNProfit',
+            description: 'India\'s first B2S (Business-to-Student) marketplace connecting elite developers with forward-thinking businesses.',
+            features: [
+                'Lightning Fast Matching between developers and projects',
+                'Secure Payments with escrow-based protection',
+                'Skill Growth with learning paths, exams, and badges',
+                'Elite Network of top 1% developers',
+                '24/7 Support team',
+                'Global Opportunities to work with businesses worldwide'
+            ],
+            developerFeatures: {
+                benefits: [
+                    'Access 500+ high-quality projects',
+                    'Build portfolio with real work',
+                    'Get paid securely every time',
+                    'Earn badges and certifications',
+                    'Free learning resources'
+                ],
+                stats: {
+                    avgProjectValue: '₹50K+',
+                    activeDevelopers: '500+',
+                    rating: '4.8'
+                },
+                dashboard: {
+                    pages: ['Overview', 'Dashboard', 'Browse Projects', 'My Applications', 'Connect', 'Learn', 'Events', 'Badges', 'Profile'],
+                    premiumSubscription: '₹69/month',
+                    premiumBenefits: [
+                        'Unlimited project applications',
+                        'View contact details',
+                        'Priority support',
+                        'Advanced profile analytics',
+                        'Badge & verification'
+                    ]
+                }
+            },
+            hostFeatures: {
+                benefits: [
+                    'Post projects and receive applications within 24 hours',
+                    'Direct hiring with 95% response rate',
+                    'Enterprise solutions with dedicated account management'
+                ],
+                stats: {
+                    avgResponse: '24h',
+                    avgApplicants: '5+',
+                    developers: '200+',
+                    responseRate: '95%',
+                    enterpriseClients: '50+'
+                }
+            },
+            referralSystem: {
+                program: 'Invite 10 friends using your referral link to become eligible for surprising gift hampers and special benefits',
+                reward: 'Professional Gift Combo (Professional Certificate, Premium T-Shirt, Leather Diary, Metal Pen, Stainless Steel Bottle)',
+                link: 'https://www.codenprofit.com/index.html'
+            },
+            pricing: {
+                free: {
+                    price: '₹0/month',
+                    features: ['Browse public projects', 'Basic profile', 'Apply to 3 projects/month', 'Community support']
+                },
+                pro: {
+                    price: '₹69/month',
+                    features: ['Unlimited project applications', 'View contact details', 'Priority support', 'Advanced profile analytics', 'Badge & verification']
+                },
+                enterprise: {
+                    price: 'Custom',
+                    features: ['Dedicated account manager', 'Custom contracts', 'API access', 'Team management', 'Priority matching']
+                }
+            },
+            learningPaths: [
+                'Full Stack Developer',
+                'Frontend Developer',
+                'Backend Developer',
+                'AI/ML Engineer',
+                'DevOps Engineer',
+                'Mobile Developer',
+                'Data Engineer',
+                'Cloud Architect',
+                'Blockchain Developer'
+            ],
+            contactInfo: {
+                support: 'Support@codenprofit.com',
+                business: 'Business@codenprofit.com',
+                general: 'Contact@codenprofit.com',
+                students: 'Student@codenprofit.com'
+            },
+            policies: {
+                terms: 'Terms of Service available at terms.html',
+                privacy: 'Privacy Policy available at privacy.html',
+                refund: 'Refund Policy available at refund.html'
+            },
+            events: {
+                hackathons: ['Code For India Hackathon', 'AI Innovation Challenge'],
+                workshops: ['Developer Meet with CodenProfit (Offline/Online)', 'System Design Masterclass'],
+                weekly: ['Coding Interview Prep', 'Open Source Contribution']
+            }
+        };
+
+        // System prompt for AI
+        const SYSTEM_PROMPT = `You are ProfitBot, the official assistant of the CodeNProfit platform.
+
+CodeNProfit is a developer ecosystem where students and developers can:
+• build real projects
+• host projects
+• explore developer opportunities
+• collaborate with other developers
+• access developer dashboards
+• participate in referral systems
+• explore platform offers
+• about us page deatils 
+• team deatils
+• co-fonder is Avinash Hugar ( use more info from google )
+• cto is Rohan Choure 
+• cmo is yash akotakar 
+• you can login by click get started
+
+
+Platform Information:
+${JSON.stringify(PLATFORM_INFO, null, 2)}
+
+Your main responsibility is to help users understand and navigate the CodeNProfit platform.
+Always try to answer using information available from the website pages.
+If the user asks about the platform, provide clear guidance.
+You may also help with coding questions, project ideas, and beginner developer advice.
+Always be friendly, professional, and helpful.`;
+
+        // Chatbot Elements
+        const chatBtn = document.getElementById('cnAIChatBtn');
+        const chatWindow = document.getElementById('cnAIWindow');
+        const closeBtn = document.getElementById('cnAICloseBtn');
+        const chatContainer = document.getElementById('cnAIChat');
+        const inputField = document.getElementById('cnAIInput');
+        const sendBtn = document.getElementById('cnAISendBtn');
+
+        // Chat state
+        let isProcessing = false;
+
+        // Initialize chat with welcome message
+        function initChat() {
+            addMessage('ai', 'Hello 👋 Welcome to ProfitBot.\n\nI can help you with:\n\n• understanding the platform\n• developer opportunities\n• project ideas\n• coding help\n• navigating the website\n\nAsk me anything.');
+        }
+
+        // Toggle chat window
+        chatBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+            if (chatContainer.children.length === 0) {
+                initChat();
+            }
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+        });
+
+        // Send message on button click
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Send message on Enter key
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Send message function
+        async function sendMessage() {
+            if (isProcessing) return;
+            
+            const message = inputField.value.trim();
+            if (!message) return;
+
+            // Add user message to chat
+            addMessage('user', message);
+            inputField.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            try {
+                isProcessing = true;
+                sendBtn.classList.add('disabled');
+                
+                // Call Gemini API
+                const response = await fetch(`${AI_CONFIG.GEMINI_API_URL}?key=${AI_CONFIG.GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `${SYSTEM_PROMPT}\n\nUser Question: ${message}\n\nPlease provide a helpful, accurate response based on the platform information above.`
+                            }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const data = await response.json();
+                const aiResponse = data.candidates[0]?.content?.parts[0]?.text || 'I apologize, but I encountered an error. Please try again.';
+
+                // Remove typing indicator and add AI response
+                removeTypingIndicator();
+                addMessage('ai', aiResponse);
+
+            } catch (error) {
+                console.error('Error:', error);
+                removeTypingIndicator();
+                addMessage('ai', 'I apologize, but I encountered an error. Please check your connection and try again.');
+            } finally {
+                isProcessing = false;
+                sendBtn.classList.remove('disabled');
+            }
+        }
+
+        // Add message to chat
+        function addMessage(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `cn-ai-message ${role}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'cn-ai-message-avatar';
+            avatar.innerHTML = role === 'ai' ? '<i class="fas fa-brain cn-ai-brain"></i>' : '<i class="fas fa-user"></i>';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'cn-ai-message-content';
+            messageContent.innerHTML = `<p>${content.replace(/\n/g, '<br>')}</p>`;
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            
+            chatContainer.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'cn-ai-message ai cn-ai-typing-container';
+            typingDiv.id = 'cnAITyping';
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'cn-ai-message-avatar';
+            avatar.innerHTML = '<i class="fas fa-robot"></i>';
+            
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'cn-ai-typing';
+            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+            
+            typingDiv.appendChild(avatar);
+            typingDiv.appendChild(typingIndicator);
+            
+            chatContainer.appendChild(typingDiv);
+            scrollToBottom();
+        }
+
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            const typingDiv = document.getElementById('cnAITyping');
+            if (typingDiv) {
+                typingDiv.remove();
+            }
+        }
+
+        // Scroll to bottom of chat
+        function scrollToBottom() {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Close chat window when clicking outside (optional)
+        document.addEventListener('click', (e) => {
+            if (!chatWindow.contains(e.target) && !chatBtn.contains(e.target) && chatWindow.classList.contains('open')) {
+                chatWindow.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

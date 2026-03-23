@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | codenprofit</title>
+  <link rel="canonical" href="https://codenprofit.com/index.html">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg2: #0a1020;
+      --surface: rgba(30,41,59,0.5);
+      --surface2: rgba(30,41,59,0.8);
+      --border: rgba(255,255,255,0.07);
+      --border-h: rgba(139,92,246,0.35);
+      --accent: #3B82F6;
+      --accent2: #8B5CF6;
+      --grad: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      --green: #10b981;
+      --text: #F8FAFC;
+      --text-secondary: #e2e8f0;
+      --muted: rgba(248,250,252,0.6);
+      --nav-h: 80px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 70% at 10% 20%, rgba(59,130,246,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 70% 60% at 90% 80%, rgba(139,92,246,0.15) 0%, transparent 60%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ffffff 0%, var(--accent) 50%, var(--accent2) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: logoShimmer 3s linear infinite;
+    }
+
+    @keyframes logoShimmer {
+      to { background-position: 200% center; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(139,92,246,0.15);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .nav-btn-login:hover {
+      border-color: var(--accent2);
+      color: var(--text);
+    }
+
+    .nav-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    .nav-btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139,92,246,0.4);
+    }
+
+    .hamburger {
+      display: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--accent2);
+      font-size: 24px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-buttons {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+    }
+    .mobile-menu-overlay.open { display: block; }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background: #0f1729;
+      border-left: 1px solid var(--border);
+      padding: 30px 20px;
+      transition: right 0.3s ease;
+      z-index: 201;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .mobile-menu-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu-link {
+      display: block;
+      padding: 15px 20px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .mobile-menu-link:hover {
+      background: rgba(139,92,246,0.1);
+      color: var(--accent2);
+    }
+    .mobile-menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+    .mobile-menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-menu-btn {
+      padding: 14px;
+      border-radius: 40px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .mobile-menu-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .mobile-menu-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .about-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .about-hero-content h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .about-hero-content p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-hero-image {
+      position: relative;
+      height: 400px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .about-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2));
+    }
+
+    /* Stats Section */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-h);
+      background: var(--surface2);
+    }
+
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--accent2);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Mission Vision */
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .mv-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 40px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+
+    .mv-card:hover {
+      border-color: var(--border-h);
+      background: var(--surface2);
+    }
+
+    .mv-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: var(--accent2);
+      margin-bottom: 25px;
+    }
+
+    .mv-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .mv-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* Values */
+    .values-section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .value-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-h);
+    }
+
+    .value-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .value-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* Team Section */
+    .team-section {
+      margin-bottom: 80px;
+    }
+
+    .team-grid {
+      display: flex;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 70px;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-h);
+    }
+
+    .team-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .team-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .team-role {
+      color: var(--accent2);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .team-bio {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .team-social {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .team-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .team-social a:hover {
+      background: var(--accent2);
+      color: white;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin-bottom: 80px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-content {
+      width: 45%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      backdrop-filter: blur(12px);
+    }
+
+    .timeline-year {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent2);
+      margin-bottom: 10px;
+    }
+
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .timeline-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--grad);
+      border: 3px solid var(--bg);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(15,23,42,0.5);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-about p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--accent2);
+      color: white;
+    }
+
+    .footer-links h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent2);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 30px 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: var(--muted2);
+      text-decoration: none;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-section,
+      .values-grid,
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+      }
+      .mission-vision,
+      .stats-section,
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline::before {
+        left: 30px;
+      }
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 60px;
+      }
+      .timeline-content {
+        width: 100%;
+      }
+      .timeline-dot {
+        left: 30px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="dev.html" class="logo">
+      <img src="logo.png" alt="codenprofit" class="logo-img">
+      <span class="logo-text">codenprofit</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="dev.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  
+
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span style="font-weight:800;">CodeNProfit</span>
+      <div class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <a href="dev.html" class="mobile-menu-link">Home</a>
+    <a href="about.html" class="mobile-menu-link">About</a>
+    <a href="contact.html" class="mobile-menu-link">Contact</a>
+    <div class="mobile-menu-divider"></div>
+    <div class="mobile-menu-buttons">
+      <a href="auth.html" class="mobile-menu-btn mobile-menu-btn-login">Sign In</a>
+      <a href="auth.html?tab=register" class="mobile-menu-btn mobile-menu-btn-signup">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">About codenprofit</h1>
+      <p class="page-subtitle">India's first Business-to-Student (B2S) platform connecting companies with talented student developers</p>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="about-hero">
+      <div class="about-hero-content">
+        <h1>Building the future of student development</h1>
+        <p>codenprofit was born from a simple idea: talented student developers deserve real-world project experience while earning money, and businesses deserve access to fresh, innovative talent at affordable rates.</p>
+        <p>What started as a small community project has grown into India's premier B2S platform, helping hundreds of students launch their careers and dozens of businesses bring their ideas to life.</p>
+        <p>We believe in the power of student innovation and the value of practical experience. Our platform bridges the gap between academic learning and industry requirements.</p>
+      </div>
+      <div class="about-hero-image">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Team collaboration">
+        <div class="image-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Student Developers with diffrent college </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Companies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">₹50k+</div>
+        <div class="stat-label">Paid to Students</div>
+      </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="mission-vision">
+      <div class="mv-card">
+        <div class="mv-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To empower student developers with real-world project experience and fair compensation while helping businesses access high-quality development talent at affordable rates. We're building a bridge between academic learning and industry needs.</p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon">🔭</div>
+        <h3>Our Vision</h3>
+        <p>To become India's largest and most trusted platform for student-developer collaboration, creating a ecosystem where every student can build a professional portfolio while earning, and every business can find the perfect talent for their projects.</p>
+      </div>
+    </div>
+
+    <!-- Core Values -->
+    <div class="values-section">
+      <h2 class="section-title">Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h4>Trust & Transparency</h4>
+          <p>We believe in clear communication, honest feedback, and transparent processes for both students and businesses.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💡</div>
+          <h4>Innovation First</h4>
+          <p>We encourage creative solutions and fresh perspectives, valuing the unique ideas that students bring to the table.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">📈</div>
+          <h4>Growth Mindset</h4>
+          <p>Every project is a learning opportunity. We're committed to helping students grow their skills and portfolios.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚖️</div>
+          <h4>Fair Opportunity</h4>
+          <p>We ensure fair compensation for students and quality deliverables for businesses, creating win-win situations.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌱</div>
+          <h4>Community First</h4>
+          <p>We're building more than a platform – we're building a community of passionate developers and forward-thinking businesses.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🚀</div>
+          <h4>Excellence Always</h4>
+          <p>We strive for excellence in every project, every interaction, and every aspect of our platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="team-section">
+      <h2 class="section-title">Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+  <div class="team-avatar">
+    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGvqGQMtXtXag/profile-displayphoto-shrink_200_200/B4DZcWhfAQGcAY-/0/1748429567773?e=2147483647&v=beta&t=j2py2yKoWZKEHlVOAWA1YY0-X9AqQYSFo8YC7fJuqO8" alt="Avinash Hugar" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+  </div>
+
+  <h3 class="team-name">Avinash Hugar</h3>
+
+  <div class="team-role">Co-Founder & CEO — codenprofit</div>
+
+  <p class="team-bio">
+    Entrepreneur, AI/ML Engineer, Full-Stack Developer, and Project Manager focused on building impactful student-tech ecosystems. Founder of CodeNProfit, a platform designed to help students transform coding skills into real income opportunities. Currently developing Generative AI and NLP-driven solutions while leading product development and technical teams. 2× Startup Builder | 2× Hackathon Finalist.
+  </p>
+
+  <div class="team-social">
+    <a href="https://linkedin.com/in/abhi-11435aru"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/Hugarabhi"><i class="fab fa-github"></i></a>
+    <a href="https://t.me/abhi_1435_aruu"><i class="fab fa-telegram"></i></a>
+  </div>
+</div>
+        <div class="team-card">
+
+  <div class="team-avatar">
+    <img src="https://media.licdn.com/dms/image/v2/D4E03AQHtBvEvdM6M_A/profile-displayphoto-scale_200_200/B4EZrTsJ3gIQAY-/0/1764488160759?e=2147483647&v=beta&t=DQZ6CRaALb7d-KRhXeid3m1duNCsAXJlYnX34ucdFPg" 
+         alt="Rohan Choure"
+         style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+  </div>
+
+  <h3 class="team-name">Rohan Choure</h3>
+
+  <div class="team-role">CTO — codenprofit</div>
+
+  <p class="team-bio">
+    Technical Manager @ Codenprofit | AIML Engineer | GenAI | Machine Learning | Python | 
+    Data Analysis | Building AI-Driven Solutions and leading the technical architecture 
+    of the Codenprofit platform.
+  </p>
+
+  <div class="team-social">
+    <a href="https://www.linkedin.com/in/rohan-choure-853173333"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/rhnchoure-lang"><i class="fab fa-github"></i></a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <h2 class="section-title">Our Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">sept 2024 </div>
+          <div class="timeline-title">planning </div>
+          <div class="timeline-desc">codenprofit started as a small community project to help student developers find real-world projects.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">Dec 2024 </div>
+          <div class="timeline-title">market analysis </div>
+          <div class="timeline-desc">the reality between the industry and the student obeserd by the co founder </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-title">Reeady to build the platform </div>
+          <div class="timeline-desc">codenprofit is just not the platform this fully analysis and stats of changing the mindset theory to realisty </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-title">Premium launch by team codenprofit </div>
+          <div class="timeline-desc">Launched premium subscriptions, referral programs, and gift combos to reward our community.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <img src="logo.png" style="height: 40px; width: 40px; border-radius: 10px;">
+          <span class="logo-text" style="font-size: 20px;">codenprofit</span>
+        </div>
+        <p>India's first B2S platform connecting businesses with talented student developers. Build faster, earn smarter.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="mailto:Support@codenprofit.com">Support@codenprofit.com</a></li>
+          <li><a href="mailto:Business@codenprofit.com">Business@codenprofit.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 codenprofit. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+  </script>
+</body>
+</html>

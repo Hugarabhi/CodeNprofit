@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://codenprofit.com/sitemap.xml
+
+User-agent: *
+Disallow: /sitemap.xml

@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Navigate CodenProfit | User Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg2: #0a1020;
+      --surface: rgba(30,41,59,0.5);
+      --surface2: rgba(30,41,59,0.8);
+      --border: rgba(255,255,255,0.07);
+      --border-h: rgba(139,92,246,0.35);
+      --accent: #3B82F6;
+      --accent2: #8B5CF6;
+      --grad: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      --green: #10b981;
+      --red: #ef4444;
+      --amber: #f59e0b;
+      --text: #ffffff;
+      --text-secondary: #e2e8f0;
+      --muted: rgba(255,255,255,0.7);
+      --muted2: rgba(255,255,255,0.3);
+      --nav-h: 80px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 70% at 10% 20%, rgba(59,130,246,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 70% 60% at 90% 80%, rgba(139,92,246,0.15) 0%, transparent 60%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      animation: reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ffffff 0%, var(--accent) 50%, var(--accent2) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: logoShimmer 3s linear infinite;
+    }
+
+    @keyframes logoShimmer {
+      to { background-position: 200% center; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(139,92,246,0.15);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .nav-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .nav-btn-login:hover {
+      border-color: var(--accent2);
+      color: var(--text);
+    }
+
+    .nav-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    .nav-btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139,92,246,0.4);
+    }
+
+    .hamburger {
+      display: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--accent2);
+      font-size: 24px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-buttons {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+    }
+    .mobile-menu-overlay.open { display: block; }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background: #0f1729;
+      border-left: 1px solid var(--border);
+      padding: 30px 20px;
+      transition: right 0.3s ease;
+      z-index: 201;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .mobile-menu-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu-link {
+      display: block;
+      padding: 15px 20px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-menu-link:hover {
+      background: rgba(139,92,246,0.1);
+      color: var(--accent2);
+    }
+    .mobile-menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+    .mobile-menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-menu-btn {
+      padding: 14px;
+      border-radius: 40px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-menu-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .mobile-menu-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 40px;
+      margin-bottom: 30px;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-badge-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Welcome Card */
+    .welcome-card {
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.05));
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 30px;
+      padding: 40px;
+      margin-bottom: 60px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .welcome-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 30px rgba(139,92,246,0.3));
+      color: var(--accent2);
+    }
+
+    .welcome-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .welcome-card p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      max-width: 800px;
+      margin-bottom: 30px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .role-selector {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .role-btn {
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .role-btn-developer {
+      background: var(--grad);
+      color: white;
+      box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+    }
+
+    .role-btn-host {
+      background: transparent;
+      border: 1px solid var(--accent2);
+      color: var(--text);
+    }
+
+    .role-btn-host:hover {
+      background: rgba(139,92,246,0.1);
+      transform: translateY(-2px);
+    }
+
+    .role-btn-developer:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(139,92,246,0.5);
+    }
+
+    /* Section Styles */
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(139,92,246,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: var(--text);
+    }
+
+    /* Step Cards */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      border-color: var(--border-h);
+      transform: translateY(-4px);
+      background: var(--surface2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .step-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(139,92,246,0.2);
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .step-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(59,130,246,0.1));
+      border: 1px solid rgba(139,92,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--accent2);
+      margin-bottom: 20px;
+    }
+
+    .step-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .step-tip {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 30px;
+      padding: 6px 14px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Feature Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .feature-item:hover {
+      background: rgba(139,92,246,0.05);
+      border-color: var(--border-h);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: var(--accent2);
+    }
+
+    .feature-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .feature-item p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Dashboard Preview */
+    .preview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 30px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(12px);
+    }
+
+    .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(139,92,246,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--accent2);
+    }
+
+    .preview-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .preview-header p {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .preview-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .preview-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--accent2);
+    }
+
+    .preview-item ul {
+      list-style: none;
+    }
+
+    .preview-item li {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .preview-item li i {
+      color: var(--green);
+      font-size: 12px;
+    }
+
+    /* FAQ Section */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-h);
+      background: var(--surface2);
+    }
+
+    .faq-question {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .faq-question i {
+      color: var(--accent2);
+      font-size: 14px;
+    }
+
+    .faq-answer {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Quick Tips */
+    .tips-container {
+      background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(59,130,246,0.05));
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 30px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .tip-item {
+      text-align: center;
+    }
+
+    .tip-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: var(--amber);
+    }
+
+    .tip-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .tip-item p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(15,23,42,0.5);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-about p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 20px 0;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--accent2);
+      color: white;
+    }
+
+    .footer-links h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent2);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 30px 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted2);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: var(--muted2);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    @media (max-width: 1024px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 40px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+  <div class="bg-glow" style="top: -200px; left: -100px;"></div>
+  <div class="bg-glow" style="bottom: -200px; right: -100px;"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="codenprofit" class="logo-img">
+      <span class="logo-text">CodeNProfit</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="guide.html" class="active">User Guide</a>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="auth.html" class="nav-btn nav-btn-login">Sign In</a>
+      <a href="auth.html?tab=register" class="nav-btn nav-btn-signup">Get Started</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-weight:600;">codenprofit</span>
+      <div class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <a href="index.html" class="mobile-menu-link">Home</a>
+    <a href="about.html" class="mobile-menu-link">About</a>
+    <a href="contact.html" class="mobile-menu-link">Contact</a>
+    <a href="guide.html" class="mobile-menu-link">User Guide</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="privacy.html" class="mobile-menu-link">Privacy Policy</a>
+    <a href="terms.html" class="mobile-menu-link">Terms of Service</a>
+    <a href="refund.html" class="mobile-menu-link">Refund Policy</a>
+    <div class="mobile-menu-divider"></div>
+    <div class="mobile-menu-buttons">
+      <a href="auth.html" class="mobile-menu-btn mobile-menu-btn-login">Sign In</a>
+      <a href="auth.html?tab=register" class="mobile-menu-btn mobile-menu-btn-signup">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="page-header">
+      <div class="hero-badge reveal" style="animation-delay: 0.1s">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">New to CodenProfit?</span>
+      </div>
+      <h1 class="page-title reveal" style="animation-delay: 0.2s">Your Complete Guide</h1>
+      <p class="page-subtitle reveal" style="animation-delay: 0.3s">Learn how to navigate the platform, find projects, hire developers, and make the most of your experience.</p>
+    </div>
+
+    <!-- Welcome Card with Role Selector -->
+    <div class="welcome-card reveal" style="animation-delay: 0.4s">
+      <div class="welcome-icon"><i class="fas fa-hand-wave"></i></div>
+      <h2>Welcome to CodenProfit!</h2>
+      <p>India's first Business-to-Student (B2S) platform connecting talented student developers with innovative companies. Whether you're here to build your portfolio or find the perfect developer for your project, we've got you covered.</p>
+      <div class="role-selector">
+        <button class="role-btn role-btn-developer" onclick="showRoleGuide('developer')"><i class="fas fa-code"></i> I'm a Developer</button>
+        <button class="role-btn role-btn-host" onclick="showRoleGuide('host')"><i class="fas fa-building"></i> I'm a Company/Host</button>
+      </div>
+    </div>
+
+    <!-- Getting Started Section (Dynamic based on role) -->
+    <div id="developer-guide" class="section">
+      <div class="section-header">
+        <span class="section-tag">For Developers</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 class="section-title"><i class="fas fa-rocket" style="color: var(--accent2); margin-right: 12px;"></i>Getting Started as a Developer</h2>
+
+      <!-- Step-by-step guide -->
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fas fa-pen-to-square"></i></div>
+          <h3>Create Your Account</h3>
+          <p>Sign up as a developer using your email or Google account. Choose "Developer" as your role and fill in your basic information.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Use your college email for verification</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Complete Your Profile</h3>
+          <p>Add your skills, experience, GitHub portfolio, and set your minimum project budget. A complete profile gets 4x more hire requests!</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Add at least 5 skills to appear in search</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fas fa-magnifying-glass"></i></div>
+          <h3>Browse Projects</h3>
+          <p>Explore available projects that match your skills. You can see project titles, categories, and budgets without a subscription.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Use filters to find relevant projects</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <div class="step-icon"><i class="fas fa-unlock"></i></div>
+          <h3>Subscribe for Premium</h3>
+          <p>Projects above ₹1000 require a premium subscription (₹69/month) to view full details and apply. Projects under ₹1000 are completely free!</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Start with free projects to build your portfolio</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">05</div>
+          <div class="step-icon"><i class="fas fa-paper-plane"></i></div>
+          <h3>Apply to Projects</h3>
+          <p>Once subscribed, you can view full project details including host contact information and apply directly with a personalized message.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Customize each application for better results</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">06</div>
+          <div class="step-icon"><i class="fas fa-circle-check"></i></div>
+          <h3>Get Hired & Deliver</h3>
+          <p>If selected, you'll receive a hire request. Accept it, communicate with the host, deliver your work, and get paid!</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Keep all communication on the platform</span>
+        </div>
+      </div>
+
+      <!-- Developer Dashboard Preview -->
+      <div class="preview-card" style="margin-top: 40px;">
+        <div class="preview-header">
+          <div class="preview-icon"><i class="fas fa-chart-pie"></i></div>
+          <div>
+            <h3>Developer Dashboard Overview</h3>
+            <p style="color: var(--muted); font-size: 13px;">Your command center for all activities</p>
+          </div>
+        </div>
+        <div class="preview-grid">
+          <div class="preview-item">
+            <h4><i class="fas fa-chart-line"></i> Overview Page</h4>
+            <ul>
+              <li><i class="fas fa-check"></i> Activity graph of applications</li>
+              <li><i class="fas fa-check"></i> Earnings summary</li>
+              <li><i class="fas fa-check"></i> Learning progress tracker</li>
+              <li><i class="fas fa-check"></i> Daily creativity score</li>
+            </ul>
+          </div>
+          <div class="preview-item">
+            <h4><i class="fas fa-house"></i> Dashboard</h4>
+            <ul>
+              <li><i class="fas fa-check"></i> Recent hire requests</li>
+              <li><i class="fas fa-check"></i> Latest open projects</li>
+              <li><i class="fas fa-check"></i> Quick stats (requests, applications)</li>
+              <li><i class="fas fa-check"></i> Project submission links</li>
+            </ul>
+          </div>
+          <div class="preview-item">
+            <h4><i class="fas fa-magnifying-glass"></i> Browse Projects</h4>
+            <ul>
+              <li><i class="fas fa-check"></i> Budget filter (free vs premium)</li>
+              <li><i class="fas fa-check"></i> Category filters</li>
+              <li><i class="fas fa-check"></i> Project preview cards</li>
+              <li><i class="fas fa-check"></i> Unlock premium projects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Host Guide (Initially hidden) -->
+    <div id="host-guide" class="section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">For Companies/Hosts</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 class="section-title"><i class="fas fa-building" style="color: var(--accent2); margin-right: 12px;"></i>Getting Started as a Host</h2>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fas fa-pen-to-square"></i></div>
+          <h3>Create Company Account</h3>
+          <p>Sign up as a host with your company details. Provide your company name, industry, and team size to build trust with developers.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Verified companies get more applications</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+          <h3>Post Your First Project</h3>
+          <p>Fill in project details: title, description, required skills, budget range, and timeline. Be specific to attract the right developers.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Clear requirements = better proposals</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fas fa-users"></i></div>
+          <h3>Review Applications</h3>
+          <p>Developers will apply to your project. Review their profiles, skills, and previous work. You can accept or reject applications.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Check their portfolio and GitHub</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <div class="step-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Send Hire Requests</h3>
+          <p>Found a developer you like? Send them a direct hire request with a personalized message about your project.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Mention why you chose them specifically</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">05</div>
+          <div class="step-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+          <h3>Manage Payments</h3>
+          <p>Payments are held securely until project completion. Release payment only when you're satisfied with the delivered work.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Use milestone payments for large projects</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">06</div>
+          <div class="step-icon"><i class="fas fa-star"></i></div>
+          <h3>Leave Reviews</h3>
+          <p>After project completion, leave a review for the developer. This helps build the community and rewards quality work.</p>
+          <span class="step-tip"><i class="fas fa-lightbulb"></i> Be honest and constructive</span>
+        </div>
+      </div>
+
+      <!-- Host Dashboard Preview -->
+      <div class="preview-card" style="margin-top: 40px;">
+        <div class="preview-header">
+          <div class="preview-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <h3>Host Dashboard Overview</h3>
+            <p style="color: var(--muted); font-size: 13px;">Manage your projects and find developers</p>
+          </div>
+        </div>
+        <div class="preview-grid">
+          <div class="preview-item">
+            <h4><i class="fas fa-chart-pie"></i> Dashboard</h4>
+            <ul>
+              <li><i class="fas fa-check"></i> Project stats (posted, active)</li>
+              <li><i class="fas fa-check"></i> Recent applications</li>
+              <li><i class="fas fa-check"></i> Quick actions (post project)</li>
+            </ul>
+          </div>
+          <div class="preview-item">
+            <h4><i class="fas fa-code"></i> Find Developers</h4>
+            <ul>
+              <li><i class="fas fa-check"></i> Browse developer profiles</li>
+              <li><i class="fas fa-check"></i> Filter by skills & availability</li>
+              <li><i class="fas fa-check"></i> Send direct hire requests</li>
+            </ul>
+          </div>
+          <div class="preview-item">
+            <h4><i class="fas fa-tasks"></i> My Projects</h4>
+            <ul>
+              <li><i class="fas fa-check"></i> View all posted projects</li>
+              <li><i class="fas fa-check"></i> Track application status</li>
+              <li><i class="fas fa-check"></i> Close completed projects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Features for Both -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Platform Features</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 class="section-title"><i class="fas fa-sparkles" style="color: var(--accent2); margin-right: 12px;"></i>What You Can Do on CodenProfit</h2>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h4>Learning Paths</h4>
+          <p>Follow structured learning paths based on your role. Complete steps, earn badges, and track your progress.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+          <h4>Badges & Exams</h4>
+          <p>Take skill exams to earn stars on your profile. Pass all 5 exams to become a Top Developer!</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-user-group"></i></div>
+          <h4>Connect Developer</h4>
+          <p>Collaborate with other developers on projects. Split work, combine skills, and earn together.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-gift"></i></div>
+          <h4>Referral Program</h4>
+          <p>Refer friends to CodenProfit and earn a Professional Gift Combo when 10 friends join!</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-crown"></i></div>
+          <h4>Premium Subscription</h4>
+          <p>₹69/month unlocks all projects above ₹1000 with full contact details and unlimited applications.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-mobile-screen"></i></div>
+          <h4>Mobile Friendly</h4>
+          <p>Access the platform from any device. The mobile menu gives you all features on the go.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium Subscription Explained -->
+    <div class="preview-card" style="background: linear-gradient(135deg, rgba(245,158,11,0.05), rgba(59,130,246,0.05)); border: 1px solid rgba(245,158,11,0.2);">
+      <div class="preview-header">
+        <div class="preview-icon" style="background: rgba(245,158,11,0.1); color: #fbbf24;"><i class="fas fa-star"></i></div>
+        <div>
+          <h3>Understanding Premium Subscription</h3>
+          <p style="color: var(--muted); font-size: 13px;">₹69/month – Unlock the full potential</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+          <h4 style="color: #fbbf24; margin-bottom: 16px;"><i class="fas fa-check-circle"></i> What you get:</h4>
+          <ul style="list-style: none;">
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--green);"></i> <span style="color: var(--text-secondary);">View full project details & requirements</span></li>
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--green);"></i> <span style="color: var(--text-secondary);">See host contact information & phone numbers</span></li>
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--green);"></i> <span style="color: var(--text-secondary);">Apply to all projects directly</span></li>
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--green);"></i> <span style="color: var(--text-secondary);">Priority placement in search results</span></li>
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--green);"></i> <span style="color: var(--text-secondary);">Exclusive opportunities from top companies</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: #fbbf24; margin-bottom: 16px;"><i class="fas fa-indian-rupee-sign"></i> How to subscribe:</h4>
+          <ol style="color: var(--text-secondary); padding-left: 20px;">
+            <li style="margin-bottom: 8px;">Go to Browse Projects page</li>
+            <li style="margin-bottom: 8px;">Click "Get Subscription" button</li>
+            <li style="margin-bottom: 8px;">Choose payment method (UPI, GPay, PhonePe, Paytm)</li>
+            <li style="margin-bottom: 8px;">Complete payment of ₹69</li>
+            <li style="margin-bottom: 8px;">Submit payment screenshot for verification</li>
+            <li style="margin-bottom: 8px;">Receive coupon code via email within 24 hours</li>
+          </ol>
+          <div style="margin-top: 16px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 12px;">
+            <p style="color: var(--text-secondary); font-size: 13px;"><strong>Note:</strong> Projects under ₹1000 are always free – no subscription needed!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Guide -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Navigation</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 class="section-title"><i class="fas fa-compass" style="color: var(--accent2); margin-right: 12px;"></i>How to Navigate the Platform</h2>
+
+      <div class="steps-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="step-card">
+          <div class="step-icon"><i class="fas fa-house"></i></div>
+          <h3>Desktop Navigation</h3>
+          <p>The main navigation bar at the top gives you access to all pages: Dashboard, Projects, Applications, Connect, Learn, and more.</p>
+          <div style="margin-top: 16px; background: rgba(139,92,246,0.1); border-radius: 8px; padding: 8px; font-size: 12px;">
+            <i class="fas fa-lightbulb" style="color: var(--amber);"></i> <strong>Pro tip:</strong> Click your avatar for quick access to Profile, Settings, and Logout
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon"><i class="fas fa-mobile-screen"></i></div>
+          <h3>Mobile Navigation</h3>
+          <p>On mobile, the menu is hidden behind the hamburger icon (☰). Tap it to open the full menu with all options.</p>
+          <div style="margin-top: 16px; background: rgba(139,92,246,0.1); border-radius: 8px; padding: 8px; font-size: 12px;">
+            <i class="fas fa-lightbulb" style="color: var(--amber);"></i> <strong>Pro tip:</strong> Swipe from the right edge to open the menu faster
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon"><i class="fas fa-arrow-down"></i></div>
+          <h3>Footer Links</h3>
+          <p>Scroll to the bottom for important links: About Us, Privacy Policy, Terms & Conditions, Refund Policy, and Contact information.</p>
+          <div style="margin-top: 16px; background: rgba(139,92,246,0.1); border-radius: 8px; padding: 8px; font-size: 12px;">
+            <i class="fas fa-lightbulb" style="color: var(--amber);"></i> <strong>Pro tip:</strong> All legal documents are accessible from any page
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Common Questions</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 class="section-title"><i class="fas fa-circle-question" style="color: var(--accent2); margin-right: 12px;"></i>Frequently Asked Questions</h2>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            How do I get started as a developer?
+          </div>
+          <div class="faq-answer">Sign up, complete your profile with skills and portfolio, browse free projects, and subscribe for premium access to unlock all opportunities.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            How do I post a project as a company?
+          </div>
+          <div class="faq-answer">Create a host account, go to "My Projects", click "Post New Project", fill in the details, and publish. Developers will start applying!</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            What is the premium subscription?
+          </div>
+          <div class="faq-answer">₹69/month gives you access to all premium projects (above ₹1000) with full contact details and unlimited applications.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            How do payments work?
+          </div>
+          <div class="faq-answer">Payments are held securely and released to developers only after host approval. Both parties are protected.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            What are skill exams?
+          </div>
+          <div class="faq-answer">Take exams to prove your expertise. Each passed exam earns you a star on your profile. Pass all 5 to become a Top Developer!</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            How do I refer friends?
+          </div>
+          <div class="faq-answer">Use your unique referral link from the Referral card. When 10 friends join, you get a free Professional Gift Combo!</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            Can I collaborate with other developers?
+          </div>
+          <div class="faq-answer">Yes! The "Connect Developer" feature lets you assign tasks to other developers and split project earnings.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            What if I need help?
+          </div>
+          <div class="faq-answer">Contact us at Support@codenprofit.com or use the contact form. We're here 24/7 to assist you!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Tips -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Pro Tips</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 class="section-title"><i class="fas fa-lightbulb" style="color: var(--accent2); margin-right: 12px;"></i>Quick Tips for Success</h2>
+
+      <div class="tips-container">
+        <div class="tip-item">
+          <div class="tip-icon"><i class="fas fa-camera"></i></div>
+          <h4>Complete Profile</h4>
+          <p>Add a profile picture, detailed bio, and all your skills. Complete profiles get 4x more attention!</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon"><i class="fas fa-bell"></i></div>
+          <h4>Stay Available</h4>
+          <p>Keep your availability toggle ON to appear in search results and receive hire requests.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon"><i class="fas fa-chart-simple"></i></div>
+          <h4>Track Earnings</h4>
+          <p>Monitor your total earnings from completed projects in the dashboard overview.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon"><i class="fas fa-pen"></i></div>
+          <h4>Customize Applications</h4>
+          <p>Personalize each project application. Generic applications are less likely to be accepted.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon"><i class="fas fa-book"></i></div>
+          <h4>Follow Learning Paths</h4>
+          <p>Complete learning paths to earn badges and stand out to potential employers.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon"><i class="fas fa-user-group"></i></div>
+          <h4>Refer Friends</h4>
+          <p>Share your referral link and earn the Professional Gift Combo – includes certificate, t-shirt, diary, pen, and bottle!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div style="text-align: center; margin: 60px 0;">
+    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; margin-bottom: 20px; color: white;">Ready to start your journey?</h3>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        
+        <!-- Developer Button - Minimal -->
+        <button onclick="window.location.href='auth.html?tab=register&type=developer'" 
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; 
+                       background: #3B82F6; border: none; border-radius: 8px; 
+                       color: white; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; 
+                       cursor: pointer; transition: opacity 0.2s ease;
+                       text-decoration: none; outline: none;"
+                onmouseover="this.style.opacity='0.9'"
+                onmouseout="this.style.opacity='1'">
+            <i class="fas fa-code"></i> Join as Developer
+        </button>
+        
+        <!-- Company Button - Minimal -->
+        <button onclick="window.location.href='auth.html?tab=register&type=host'" 
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; 
+                       background: transparent; border: 1px solid #3B82F6; border-radius: 8px; 
+                       color: #3B82F6; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; 
+                       cursor: pointer; transition: all 0.2s ease;
+                       text-decoration: none; outline: none;"
+                onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'"
+                onmouseout="this.style.background='transparent'">
+            <i class="fas fa-building"></i> Join as Company
+        </button>
+        
+    </div>
+</div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <img src="logo.png" style="height: 40px; width: 40px; border-radius: 10px;" alt="logo">
+          <span class="logo-text" style="font-size: 20px;">CodeNProfit</span>
+        </div>
+        <p>India's first B2S platform connecting businesses with talented student developers. Build faster, earn smarter.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/codenprofit-tech/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/codenprofit" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+          <a href="https://github.com/codenprofit" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/codenprofit?igsh=am43MnNiNjFwY3A3" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="mailto:Support@codenprofit.com">Support@codenprofit.com</a></li>
+          <li><a href="mailto:Business@codenprofit.com">Business@codenprofit.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 codenprofit. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund.html">Refund</a>
+        <a href="guide.html">User Guide</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    function showRoleGuide(role) {
+      const devGuide = document.getElementById('developer-guide');
+      const hostGuide = document.getElementById('host-guide');
+      
+      if (role === 'developer') {
+        devGuide.style.display = 'block';
+        hostGuide.style.display = 'none';
+        // Smooth scroll to guide
+        devGuide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        devGuide.style.display = 'none';
+        hostGuide.style.display = 'block';
+        hostGuide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Show developer guide by default
+    window.onload = function() {
+      showRoleGuide('developer');
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refund Policy | codenprofit legal </title>
+  <meta name="description" content="CodeNProfit – India's First B2S Marketplace connecting developers with businesses. Build real-world projects, gain experience and grow your career.">
+
+<meta name="keywords" content="CodeNProfit, developer marketplace, hire developers, student developers, web development projects, startup developers India">
+
+<meta name="author" content="CodeNProfit">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://codenprofit.com">
+
+<!-- WEBSITE ICON / FAVICON -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- THEME COLOR -->
+<meta name="theme-color" content="#0B1120">
+
+<!-- OPEN GRAPH (LinkedIn / Facebook Preview) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CodeNProfit — Where Code Meets Profit">
+<meta property="og:description" content="Connect talented developers with innovative businesses and build real projects.">
+<meta property="og:image" content="https://codenprofit.com/logo.png">
+<meta property="og:url" content="https://codenprofit.com">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CodeNProfit — India's First B2S Marketplace">
+<meta name="twitter:description" content="Work on real projects, build your portfolio and earn while learning.">
+<meta name="twitter:image" content="https://codenprofit.com/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg2: #0a1020;
+      --surface: rgba(30,41,59,0.5);
+      --surface2: rgba(30,41,59,0.8);
+      --border: rgba(255,255,255,0.07);
+      --border-h: rgba(139,92,246,0.35);
+      --accent: #3B82F6;
+      --accent2: #8B5CF6;
+      --grad: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      --green: #10b981;
+      --red: #ef4444;
+      --amber: #f59e0b;
+      --text: #F8FAFC;
+      --text-secondary: #e2e8f0;
+      --muted: rgba(248,250,252,0.6);
+      --nav-h: 80px;
+      
+      --font-primary: 'DM Sans', sans-serif;
+      --font-display: 'Syne', sans-serif;
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 70% at 10% 20%, rgba(59,130,246,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 70% 60% at 90% 80%, rgba(139,92,246,0.15) 0%, transparent 60%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      animation: reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+
+    .logo-text {
+      font-family: 'outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ffffff 0%, var(--accent) 50%, var(--accent2) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: logoShimmer 3s linear infinite;
+    }
+
+    @keyframes logoShimmer {
+      to { background-position: 200% center; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(139,92,246,0.15);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .nav-btn-login:hover {
+      border-color: var(--accent2);
+      color: var(--text);
+    }
+
+    .nav-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    .nav-btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139,92,246,0.4);
+    }
+
+    .hamburger {
+      display: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--accent2);
+      font-size: 24px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-buttons {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+    }
+    
+    .mobile-menu-overlay.open { display: block; }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background: #0f1729;
+      border-left: 1px solid var(--border);
+      padding: 30px 20px;
+      transition: right 0.3s ease;
+      z-index: 201;
+      overflow-y: auto;
+    }
+    
+    .mobile-menu.open { right: 0; }
+    
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    
+    .mobile-menu-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mobile-menu-link {
+      display: block;
+      padding: 15px 20px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .mobile-menu-link:hover {
+      background: rgba(139,92,246,0.1);
+      color: var(--accent2);
+    }
+    
+    .mobile-menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+    
+    .mobile-menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .mobile-menu-btn {
+      padding: 14px;
+      border-radius: 40px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .mobile-menu-btn-login {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    
+    .mobile-menu-btn-signup {
+      background: var(--grad);
+      color: white;
+    }
+
+    /* Header/Hero Section */
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 40px;
+      margin-bottom: 30px;
+    }
+
+    .hero-badge i {
+      color: var(--red);
+      font-size: 14px;
+    }
+
+    .hero-badge-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Last Updated */
+    .last-updated {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .last-updated strong {
+      color: var(--accent2);
+    }
+
+    /* Main Content Layout */
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-sticky {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-link {
+      text-align: left;
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .sidebar-link i {
+      width: 20px;
+      color: var(--accent2);
+    }
+
+    .sidebar-link:hover {
+      background: rgba(139,92,246,0.1);
+      color: var(--accent2);
+    }
+
+    .sidebar-link.active {
+      background: rgba(139,92,246,0.15);
+      color: var(--accent2);
+      border-left: 3px solid var(--accent2);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      flex: 1;
+      max-width: 800px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(139,92,246,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: var(--accent2);
+    }
+
+    /* Card Styles */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .card:hover {
+      border-color: var(--border-h);
+      background: var(--surface2);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--accent2);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title i {
+      color: var(--accent2);
+    }
+
+    .card-content {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    /* Timeline */
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      border-radius: 16px;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+
+    .timeline-item:hover {
+      background: rgba(255,255,255,0.03);
+      border-left-color: var(--accent2);
+    }
+
+    .timeline-time {
+      min-width: 100px;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-content h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Important Notes */
+    .important-note {
+      background: rgba(239,68,68,0.05);
+      border: 1px solid rgba(239,68,68,0.15);
+      border-radius: 20px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+
+    .important-note-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .important-note-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .important-note-text a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    .important-note-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Highlight Card */
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(59,130,246,0.1));
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 30px;
+    }
+
+    .highlight-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .highlight-card-text {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      color: var(--green);
+    }
+
+    .badge-amber {
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.2);
+      color: var(--amber);
+    }
+
+    .badge-red {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.2);
+      color: var(--red);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 40px 0;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(15,23,42,0.5);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-about p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--accent2);
+      color: white;
+    }
+
+    .footer-links h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent2);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 30px 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: var(--muted2);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .content-wrapper {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+      .sidebar-sticky {
+        position: static;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-title {
+        font-size: 40px;
+      }
+      .timeline-item {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .timeline-time {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+  <div class="bg-glow" style="top: -200px; left: -100px;"></div>
+  <div class="bg-glow" style="bottom: -200px; right: -100px;"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="dev.html" class="logo">
+      <img src="logo.png" alt="codenprofit" class="logo-img">
+      <span class="logo-text">CodeNProfit</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="dev.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="auth.html" class="nav-btn nav-btn-login">Sign In</a>
+      <a href="auth.html?tab=register" class="nav-btn nav-btn-signup">Get Started</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span style="font-weight:800;">codenprofit</span>
+      <div class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <a href="index.html" class="mobile-menu-link">Home</a>
+    <a href="about.html" class="mobile-menu-link">About</a>
+    <a href="contact.html" class="mobile-menu-link">Contact</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="privacy.html" class="mobile-menu-link">Privacy Policy</a>
+    <a href="terms.html" class="mobile-menu-link">Terms of Service</a>
+    <a href="refund.html" class="mobile-menu-link">Refund Policy</a>
+    <div class="mobile-menu-divider"></div>
+    <div class="mobile-menu-buttons">
+      <a href="auth.html" class="mobile-menu-btn mobile-menu-btn-login">Sign In</a>
+      <a href="auth.html?tab=register" class="mobile-menu-btn mobile-menu-btn-signup">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="page-header">
+    <div class="hero-badge reveal" style="animation-delay: 0.1s">
+      <i class="fas fa-rotate-left"></i>
+      <span class="hero-badge-text">Refund & Cancellation Policy</span>
+    </div>
+    <h1 class="page-title reveal" style="animation-delay: 0.2s">Refund Policy</h1>
+    <p class="page-subtitle reveal" style="animation-delay: 0.3s">Understanding your rights and our commitments regarding payments, refunds, and cancellations on the codenprofit platform.</p>
+    <div class="last-updated reveal" style="animation-delay: 0.4s">
+      <i class="fas fa-calendar-alt" style="color: var(--accent2); margin-right: 6px;"></i> Last Updated: <strong>March 15, 2026</strong>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <h4 class="sidebar-title">Policy Sections</h4>
+        <div class="sidebar-nav" id="sidebar-nav"></div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="content-area">
+      <!-- Dynamic content will be injected here -->
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <img src="logo.png" style="height: 40px; width: 40px; border-radius: 10px;" alt="logo">
+          <span class="logo-text" style="font-size: 20px;">CodeNProfit</span>
+        </div>
+        <p>India's first B2S platform connecting businesses with talented student developers. Build faster, earn smarter.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="mailto:Support@codenprofit.com">Support@codenprofit.com</a></li>
+          <li><a href="mailto:Business@codenprofit.com">Business@codenprofit.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 codenprofit. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const refundData = [
+      { 
+        id: 'overview', 
+        title: 'Policy Overview', 
+        icon: '<i class="fas fa-info-circle"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-scale-balanced"></i></div>
+              <div>
+                <h4 class="card-title">Our Commitment to Fairness</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="mb-4">At codenprofit, we strive to maintain transparency and fairness in all financial transactions. This Refund Policy outlines the terms and conditions under which refunds may be issued for payments made on our platform.</p>
+              <p class="mb-4">Given the nature of our marketplace connecting businesses with student developers, refund eligibility depends on the type of transaction and the stage of project completion.</p>
+              <div class="badge-container flex gap-3 mt-4">
+                <span class="badge badge-green"><i class="fas fa-check-circle"></i> Fair Processing</span>
+                <span class="badge badge-amber"><i class="fas fa-clock"></i> Case-by-Case</span>
+                <span class="badge badge-red"><i class="fas fa-exclamation-triangle"></i> Conditions Apply</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      { 
+        id: 'subscription', 
+        title: 'Subscription Refunds', 
+        icon: '<i class="fas fa-crown"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-crown"></i></div>
+              <div>
+                <h4 class="card-title">Premium Subscription</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="grid-2 mb-4">
+                <div class="bg-white/5 p-4 rounded-xl">
+                  <div class="text-amber mb-2"><i class="fas fa-clock"></i> First 7 Days</div>
+                  <div class="text-white font-bold">100% Refund</div>
+                  <div class="text-xs text-muted">If no benefits used</div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-xl">
+                  <div class="text-amber mb-2"><i class="fas fa-calendar-check"></i> After 7 Days</div>
+                  <div class="text-white font-bold">Prorated Refund</div>
+                  <div class="text-xs text-muted">For annual plans only</div>
+                </div>
+              </div>
+              
+              <h4 class="card-title mt-6">Refund Eligibility</h4>
+              <ul class="space-y-3 text-gray-400">
+                <li class="flex gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong class="text-white">7-Day Money-Back Guarantee:</strong> If you're not satisfied with your Premium subscription within the first 7 days of purchase and haven't utilized any premium features (project applications, contact views), you're eligible for a full refund.</span></li>
+                <li class="flex gap-3"><i class="fas fa-times text-red-500 mt-1"></i> <span><strong class="text-white">No Refund After 7 Days:</strong> After 7 days, monthly subscriptions are non-refundable. Annual subscriptions may receive a prorated refund for the unused portion, minus a 15% processing fee.</span></li>
+                <li class="flex gap-3"><i class="fas fa-times text-red-500 mt-1"></i> <span><strong class="text-white">Feature Usage:</strong> If you've applied to projects or viewed contact details, you forfeit the refund eligibility as these are considered "consumed benefits".</span></li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      { 
+        id: 'project', 
+        title: 'Project Payments', 
+        icon: '<i class="fas fa-laptop-code"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+              <div>
+                <h4 class="card-title">Project-Based Payments</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="mb-4">Project payments are handled through our secure escrow system. Refunds depend on project milestones and delivery status.</p>
+              
+              <h4 class="card-title mt-4">Escrow Release Timeline</h4>
+              <div class="space-y-4 mt-4">
+                <div class="timeline-item">
+                  <div class="timeline-time">Before Start</div>
+                  <div class="timeline-content">
+                    <h4>100% Refund</h4>
+                    <p>If project hasn't started and no work has been delivered, full refund is issued within 5-7 business days.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-time">Milestone 1</div>
+                  <div class="timeline-content">
+                    <h4>Partial Refund (Released Milestone)</h4>
+                    <p>Completed milestones are non-refundable. Only future milestones can be cancelled.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-time">Project Complete</div>
+                  <div class="timeline-content">
+                    <h4>No Refund</h4>
+                    <p>Once final milestone is approved and payment released, no refunds are possible.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="important-note mt-6">
+                <div class="important-note-title">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span>Dispute Resolution</span>
+                </div>
+                <p class="important-note-text">If you're unsatisfied with delivered work, please use our <a href="#">Dispute Resolution Process</a> before requesting a refund. Our mediation team will review the project and help reach a fair resolution.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      { 
+        id: 'disputes', 
+        title: 'Dispute Process', 
+        icon: '<i class="fas fa-gavel"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-scale-balanced"></i></div>
+              <div>
+                <h4 class="card-title">Dispute Resolution Process</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="bg-white/5 p-5 rounded-xl mb-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-amber/20 flex items-center justify-center">
+                    <span class="text-amber font-bold">1</span>
+                  </div>
+                  <span class="text-white font-medium">Submit Dispute Ticket</span>
+                </div>
+                <p class="text-gray-400 text-sm pl-11">Open a dispute ticket from your project dashboard within 7 days of milestone completion.</p>
+              </div>
+              
+              <div class="bg-white/5 p-5 rounded-xl mb-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-amber/20 flex items-center justify-center">
+                    <span class="text-amber font-bold">2</span>
+                  </div>
+                  <span class="text-white font-medium">Mediation Period</span>
+                </div>
+                <p class="text-gray-400 text-sm pl-11">Our mediation team reviews project requirements, deliverables, and communication logs (5-7 business days).</p>
+              </div>
+              
+              <div class="bg-white/5 p-5 rounded-xl">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-amber/20 flex items-center justify-center">
+                    <span class="text-amber font-bold">3</span>
+                  </div>
+                  <span class="text-white font-medium">Final Decision</span>
+                </div>
+                <p class="text-gray-400 text-sm pl-11">Based on evidence, we may approve full/partial refund, require revisions, or release payment to developer.</p>
+              </div>
+
+              <div class="important-note mt-6">
+                <div class="important-note-title">
+                  <i class="fas fa-clock"></i>
+                  <span>Processing Time</span>
+                </div>
+                <p class="important-note-text">Approved refunds typically process within 7-10 business days, depending on your payment method and financial institution.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      { 
+        id: 'exceptions', 
+        title: 'Non-Refundable Items', 
+        icon: '<i class="fas fa-ban"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
+              <div>
+                <h4 class="card-title">Non-Refundable Items</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                  <div>
+                    <strong class="text-white">Processing Fees</strong>
+                    <p class="text-gray-400 text-sm">Payment gateway fees (typically 2-3%) are non-refundable.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                  <div>
+                    <strong class="text-white">Verification Badges</strong>
+                    <p class="text-gray-400 text-sm">One-time verification fees are non-refundable once processed.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                  <div>
+                    <strong class="text-white">Completed Milestones</strong>
+                    <p class="text-gray-400 text-sm">Payments for approved and released milestones cannot be refunded.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                  <div>
+                    <strong class="text-white">Referral Bonuses</strong>
+                    <p class="text-gray-400 text-sm">Earned referral credits and bonuses are non-refundable.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      { 
+        id: 'how-to', 
+        title: 'How to Request', 
+        icon: '<i class="fas fa-envelope"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
+              <div>
+                <h4 class="card-title">Requesting a Refund</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="mb-6">To request a refund, please contact our support team with the following information:</p>
+              
+              <div class="bg-white/5 p-5 rounded-xl mb-6">
+                <h5 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fas fa-list text-accent2"></i> Required Information:</h5>
+                <ul class="space-y-2 text-gray-400">
+                  <li><i class="fas fa-angle-right text-accent2 mr-2"></i> Transaction ID / Payment Reference</li>
+                  <li><i class="fas fa-angle-right text-accent2 mr-2"></i> Date of transaction</li>
+                  <li><i class="fas fa-angle-right text-accent2 mr-2"></i> Reason for refund request</li>
+                  <li><i class="fas fa-angle-right text-accent2 mr-2"></i> Supporting evidence (if applicable)</li>
+                </ul>
+              </div>
+              
+              <div class="flex flex-col gap-4">
+                <a href="mailto:Support@codenprofit.com?subject=Refund%20Request" class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-royal to-electric rounded-xl text-white font-bold hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all">
+                  <i class="fas fa-envelope"></i> Email Refund Request
+                </a>
+                <p class="text-xs text-gray-500 text-center">Response within 24-48 hours on business days</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <h4 class="highlight-card-title"><i class="fas fa-question-circle"></i> Need Help?</h4>
+            <p class="highlight-card-text">Our support team is here to assist you with any payment-related questions or concerns.</p>
+            <div class="flex flex-col sm:flex-row gap-3 mt-4">
+              <a href="mailto:Support@codenprofit.com" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all">
+                <i class="fas fa-envelope"></i> Support@codenprofit.com
+              </a>
+              <a href="contact.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all">
+                <i class="fas fa-headset"></i> Contact Support
+              </a>
+            </div>
+          </div>
+        `
+      },
+      { 
+        id: 'cancellation', 
+        title: 'Cancellation Policy', 
+        icon: '<i class="fas fa-ban"></i>',
+        content: `
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-calendar-times"></i></div>
+              <div>
+                <h4 class="card-title">Subscription Cancellation</h4>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="mb-4">You can cancel your subscription at any time from your account settings. Here's what happens when you cancel:</p>
+              
+              <div class="grid-2 gap-4">
+                <div class="bg-white/5 p-4 rounded-xl">
+                  <i class="fas fa-check-circle text-green-500 mb-2"></i>
+                  <h5 class="text-white font-bold text-sm">Monthly Plans</h5>
+                  <p class="text-xs text-gray-400">Access continues until end of current billing cycle. No refunds for partial months.</p>
+                </div>
+                <div class="bg-white/5 p-4 rounded-xl">
+                  <i class="fas fa-clock text-amber mb-2"></i>
+                  <h5 class="text-white font-bold text-sm">Annual Plans</h5>
+                  <p class="text-xs text-gray-400">Prorated refund for unused months (minus 15% processing fee).</p>
+                </div>
+              </div>
+              
+              <div class="mt-6">
+                <h5 class="text-white font-bold mb-2">To Cancel:</h5>
+                <ol class="list-decimal list-inside text-gray-400 space-y-2">
+                  <li>Go to Account Settings → Subscription</li>
+                  <li>Click "Cancel Subscription"</li>
+                  <li>Confirm cancellation</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    function renderSidebar() {
+      const nav = document.getElementById('sidebar-nav');
+      nav.innerHTML = refundData.map(section => `
+        <button onclick="scrollToSection('${section.id}')" id="nav-${section.id}" class="sidebar-link">
+          ${section.icon} ${section.title}
+        </button>
+      `).join('');
+    }
+
+    function renderContent() {
+      const content = document.getElementById('content-area');
+      content.innerHTML = refundData.map((section, idx) => `
+        <section id="${section.id}" class="section reveal" style="animation-delay: ${idx * 0.1}s">
+          <div class="section-header">
+            <span class="section-tag">${section.title.toUpperCase()}</span>
+            <div class="section-line"></div>
+          </div>
+          <h2 class="section-title">${section.icon} ${section.title}</h2>
+          <div class="section-content">
+            ${section.content}
+          </div>
+        </section>
+      `).join('');
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        window.scrollTo({ top: el.offsetTop - 140, behavior: 'smooth' });
+      }
+    }
+
+    function setupScrollSpy() {
+      const sections = document.querySelectorAll('section');
+      const navItems = document.querySelectorAll('.sidebar-link');
+
+      const options = { rootMargin: '-30% 0px -60% 0px', threshold: 0 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(n => n.classList.remove('active'));
+            const active = document.getElementById(`nav-${entry.target.id}`);
+            if (active) active.classList.add('active');
+          }
+        });
+      }, options);
+
+      sections.forEach(s => observer.observe(s));
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenuOverlay').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Initialize
+    window.onload = () => {
+      renderSidebar();
+      renderContent();
+      setupScrollSpy();
+    };
+  </script>
+</body>
+</html>

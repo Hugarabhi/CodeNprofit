@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Module Content - Simple Version</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0F172A;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .success {
+            color: #10b981;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(16,185,129,0.1);
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+        }
+        .error {
+            color: #ef4444;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(239,68,68,0.1);
+            border-radius: 8px;
+            border-left: 3px solid #ef4444;
+        }
+        .info {
+            color: #3B82F6;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(59,130,246,0.1);
+            border-radius: 8px;
+            border-left: 3px solid #3B82F6;
+        }
+        button {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139,92,246,0.4);
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Update HTML/CSS Module Content</h1>
+        <p>This will add rich content and 12 quiz questions to each chapter</p>
+        
+        <div class="progress">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <button onclick="updateAllChapters()">🚀 Update ALL Chapters</button>
+            <button onclick="updateChapter1()">📘 Update Chapter 1 Only</button>
+            <button onclick="updateChapter2()">🎨 Update Chapter 2 Only</button>
+            <button onclick="updateChapter3()">📦 Update Chapter 3 Only</button>
+            <button onclick="clearOutput()">🗑️ Clear Output</button>
+        </div>
+        
+        <div id="output" class="status">
+            <div class="info">💡 Ready to update. Click a button above to start.</div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <script>
+    // Firebase configuration (same as your working config)
+    const firebaseConfig = {
+        apiKey: "AIzaSyC1Ps2vP8ilQNPp9zeaxP9sGBglGVKBSPM",
+        authDomain: "codenprofit-17152.firebaseapp.com",
+        projectId: "codenprofit-17152",
+        storageBucket: "codenprofit-17152.firebasestorage.app",
+        messagingSenderId: "340619486766",
+        appId: "1:340619486766:web:4600dd0ce05467c46ba1bf",
+        measurementId: "G-0KMHJ2Z0PP"
+    };
+    
+    let db = null;
+    let output = null;
+    let progressFill = null;
+    
+    // Initialize Firebase immediately
+    try {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        db = firebase.firestore();
+        console.log("✅ Firebase initialized");
+    } catch (error) {
+        console.error("Firebase init error:", error);
+    }
+    
+    function showMessage(message, type = 'success') {
+        if (!output) output = document.getElementById('output');
+        const div = document.createElement('div');
+        div.className = type;
+        div.textContent = message;
+        output.appendChild(div);
+        output.scrollTop = output.scrollHeight;
+        console.log(message);
+    }
+    
+    function updateProgress(percent) {
+        if (!progressFill) progressFill = document.getElementById('progressFill');
+        progressFill.style.width = percent + '%';
+    }
+    
+    function clearOutput() {
+        if (output) output.innerHTML = '';
+        updateProgress(0);
+    }
+    
+    async function updateChapter1() {
+        try {
+            showMessage("📝 Updating Chapter 1: Introduction to HTML...", 'info');
+            updateProgress(10);
+            
+            const chapterRef = db.collection("modules").doc("html-css").collection("chapters").doc("chapter_1");
+            
+            const chapterData = {
+                id: "chapter_1",
+                title: "Introduction to HTML - Complete Guide",
+                duration: "45 min",
+                order: 1,
+                content: {
+                    sections: [
+                        {
+                            type: "text",
+                            content: "<h2>What is HTML?</h2><p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of a web page using markup.</p>"
+                        },
+                        {
+                            type: "code",
+                            language: "html",
+                            code: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>My First Page</title>\n</head>\n<body>\n    <h1>Hello World!</h1>\n    <p>This is my first paragraph.</p>\n</body>\n</html>"
+                        },
+                        {
+                            type: "list",
+                            title: "HTML Elements Explained",
+                            items: [
+                                "<strong>&lt;!DOCTYPE html&gt;</strong> - Declares HTML5 document",
+                                "<strong>&lt;html&gt;</strong> - Root element",
+                                "<strong>&lt;head&gt;</strong> - Contains meta information",
+                                "<strong>&lt;body&gt;</strong> - Contains visible content",
+                                "<strong>&lt;h1&gt;</strong> - Main heading",
+                                "<strong>&lt;p&gt;</strong> - Paragraph"
+                            ]
+                        },
+                        {
+                            type: "tip",
+                            content: "Always use semantic HTML tags for better accessibility and SEO!"
+                        }
+                    ],
+                    quiz: [
+                        { question: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Home Tool Markup Language"], correct: 0, explanation: "HTML stands for HyperText Markup Language." },
+                        { question: "Which tag contains the visible content of an HTML document?", options: ["<head>", "<body>", "<main>", "<content>"], correct: 1, explanation: "The <body> tag contains all visible content." },
+                        { question: "Where does the <title> tag go?", options: ["Inside <body>", "Inside <head>", "After <html>", "Before <!DOCTYPE>"], correct: 1, explanation: "The <title> tag goes inside the <head> section." },
+                        { question: "Which tag is used for the largest heading?", options: ["<h1>", "<heading>", "<h6>", "<head>"], correct: 0, explanation: "<h1> is the largest heading." },
+                        { question: "What is the purpose of <!DOCTYPE html>?", options: ["Link to CSS", "Tell browser HTML version", "Create document", "Add comments"], correct: 1, explanation: "It declares this is an HTML5 document." },
+                        { question: "Which attribute provides alt text for images?", options: ["src", "href", "alt", "title"], correct: 2, explanation: "The alt attribute provides alternative text." },
+                        { question: "What's the difference between <div> and <span>?", options: ["<div> block, <span> inline", "<div> for text, <span> for images", "They are the same", "<div> inline, <span> block"], correct: 0, explanation: "<div> is block-level, <span> is inline." },
+                        { question: "Which tag creates a hyperlink?", options: ["<link>", "<a>", "<href>", "<url>"], correct: 1, explanation: "The <a> tag creates hyperlinks." },
+                        { question: "How to create an unordered list?", options: ["<ul><li>", "<ol><li>", "<list><item>", "<ul><item>"], correct: 0, explanation: "<ul> creates unordered (bulleted) lists." },
+                        { question: "Which attribute opens a link in a new tab?", options: ["target=\"_blank\"", "target=\"new\"", "new=\"true\"", "blank=\"true\""], correct: 0, explanation: "target=\"_blank\" opens links in new tab." },
+                        { question: "What is semantic HTML?", options: ["HTML with CSS", "Meaningful tags describing content", "Valid HTML", "HTML with JavaScript"], correct: 1, explanation: "Semantic HTML uses meaningful tags." },
+                        { question: "How to add comments in HTML?", options: ["// comment", "/* comment */", "<!-- comment -->", "# comment"], correct: 2, explanation: "HTML comments use <!-- comment -->." }
+                    ]
+                }
+            };
+            
+            await chapterRef.set(chapterData);
+            updateProgress(100);
+            showMessage("✅ Chapter 1 updated successfully with 12 quiz questions!", 'success');
+            
+        } catch (error) {
+            showMessage("❌ Error: " + error.message, 'error');
+            console.error(error);
+        }
+    }
+    
+    async function updateChapter2() {
+        try {
+            showMessage("📝 Updating Chapter 2: Introduction to CSS...", 'info');
+            updateProgress(10);
+            
+            const chapterRef = db.collection("modules").doc("html-css").collection("chapters").doc("chapter_2");
+            
+            const chapterData = {
+                id: "chapter_2",
+                title: "CSS Fundamentals - Complete Guide",
+                duration: "50 min",
+                order: 2,
+                content: {
+                    sections: [
+                        {
+                            type: "text",
+                            content: "<h2>What is CSS?</h2><p>CSS (Cascading Style Sheets) is the language used to style HTML documents. It controls colors, fonts, spacing, and layout.</p>"
+                        },
+                        {
+                            type: "code",
+                            language: "css",
+                            code: "/* CSS Syntax */\nselector {\n    property: value;\n}\n\n/* Example */\nh1 {\n    color: blue;\n    font-size: 32px;\n}"
+                        },
+                        {
+                            type: "list",
+                            title: "Three Ways to Add CSS",
+                            items: [
+                                "<strong>Inline CSS</strong> - Using style attribute",
+                                "<strong>Internal CSS</strong> - Using &lt;style&gt; tag",
+                                "<strong>External CSS</strong> - Separate .css file (best practice)"
+                            ]
+                        }
+                    ],
+                    quiz: [
+                        { question: "What does CSS stand for?", options: ["Cascading Style Sheets", "Creative Style System", "Computer Style Sheets", "Colorful Style Sheets"], correct: 0, explanation: "CSS stands for Cascading Style Sheets." },
+                        { question: "Correct CSS syntax?", options: ["body:color=black;", "{body;color:black;}", "body {color: black;}", "body {color=black;}"], correct: 2, explanation: "selector { property: value; }" },
+                        { question: "Which property changes text color?", options: ["text-color", "color", "font-color", "text-style"], correct: 1, explanation: "The color property changes text color." },
+                        { question: "Which tag defines internal CSS?", options: ["<css>", "<style>", "<script>", "<link>"], correct: 1, explanation: "The <style> tag defines internal CSS." },
+                        { question: "Which property controls text size?", options: ["text-size", "font-size", "text-style", "size"], correct: 1, explanation: "font-size controls text size." },
+                        { question: "Difference between class and ID?", options: ["IDs for JS, classes for CSS", "IDs unique, classes reusable", "Classes unique, IDs reusable", "They are the same"], correct: 1, explanation: "IDs must be unique, classes can be reused." },
+                        { question: "Which property changes background color?", options: ["bgcolor", "background-color", "color", "background"], correct: 1, explanation: "background-color sets background color." },
+                        { question: "Default position value?", options: ["relative", "absolute", "static", "fixed"], correct: 2, explanation: "Default is 'static'." },
+                        { question: "Which property controls line spacing?", options: ["letter-spacing", "word-spacing", "line-height", "text-spacing"], correct: 2, explanation: "line-height controls line spacing." },
+                        { question: "What does 'cascading' mean?", options: ["Style priority system", "Waterfall effect", "HTML cascade", "Page flow"], correct: 0, explanation: "Cascading refers to style priority." },
+                        { question: "Which creates rounded corners?", options: ["corner-radius", "border-radius", "rounded-corners", "border-curve"], correct: 1, explanation: "border-radius creates rounded corners." },
+                        { question: "CSS specificity order?", options: ["Element, Class, ID, Inline", "Class, Element, ID, Inline", "ID, Class, Element, Inline", "Inline, ID, Class, Element"], correct: 0, explanation: "Element (1) < Class (10) < ID (100) < Inline (1000)" }
+                    ]
+                }
+            };
+            
+            await chapterRef.set(chapterData);
+            updateProgress(100);
+            showMessage("✅ Chapter 2 updated successfully with 12 quiz questions!", 'success');
+            
+        } catch (error) {
+            showMessage("❌ Error: " + error.message, 'error');
+            console.error(error);
+        }
+    }
+    
+    async function updateChapter3() {
+        try {
+            showMessage("📝 Updating Chapter 3: CSS Box Model...", 'info');
+            updateProgress(10);
+            
+            const chapterRef = db.collection("modules").doc("html-css").collection("chapters").doc("chapter_3");
+            
+            const chapterData = {
+                id: "chapter_3",
+                title: "CSS Box Model - Deep Dive",
+                duration: "55 min",
+                order: 3,
+                content: {
+                    sections: [
+                        {
+                            type: "text",
+                            content: "<h2>The CSS Box Model</h2><p>Every element is a rectangular box. The box model consists of: Margin, Border, Padding, Content.</p>"
+                        },
+                        {
+                            type: "code",
+                            language: "css",
+                            code: "/* Box Model Example */\n.box {\n    width: 300px;\n    padding: 20px;\n    border: 2px solid black;\n    margin: 15px;\n}"
+                        },
+                        {
+                            type: "tip",
+                            content: "Use `box-sizing: border-box;` to make width include padding and border!"
+                        }
+                    ],
+                    quiz: [
+                        { question: "What does box model include?", options: ["Content only", "Content & padding", "Content, padding, border, margin", "Width & height only"], correct: 2, explanation: "Box model = content + padding + border + margin" },
+                        { question: "Difference between padding and margin?", options: ["Same thing", "Padding inside border, margin outside", "Padding for text, margin for images", "Margin inside, padding outside"], correct: 1, explanation: "Padding is inside border, margin is outside." },
+                        { question: "What does `box-sizing: border-box` do?", options: ["Adds border", "Width includes padding & border", "Changes color", "Removes margin"], correct: 1, explanation: "border-box includes padding and border in width." },
+                        { question: "Element width:200px, padding:20px, border:2px, content-box. Total width?", options: ["200px", "220px", "224px", "244px"], correct: 3, explanation: "200 + 40 + 4 = 244px" },
+                        { question: "What happens to vertical margins?", options: ["Add together", "Collapse to larger", "Multiply", "Remain separate"], correct: 1, explanation: "Vertical margins collapse to the larger value." },
+                        { question: "Which creates space INSIDE element?", options: ["margin", "padding", "border", "spacing"], correct: 1, explanation: "Padding creates space inside an element." },
+                        { question: "Which creates space OUTSIDE element?", options: ["margin", "padding", "border", "outline"], correct: 0, explanation: "Margin creates space outside an element." },
+                        { question: "Default box-sizing value?", options: ["border-box", "content-box", "padding-box", "margin-box"], correct: 1, explanation: "Default is 'content-box'." },
+                        { question: "Which creates rounded corners?", options: ["corner-radius", "border-radius", "rounded-corners", "border-curve"], correct: 1, explanation: "border-radius creates rounded corners." },
+                        { question: "How to center a block element?", options: ["text-align:center", "margin:0 auto", "align:center", "position:center"], correct: 1, explanation: "margin: 0 auto centers block elements." },
+                        { question: "Box model order outside to inside?", options: ["Content,Padding,Border,Margin", "Margin,Border,Padding,Content", "Border,Margin,Padding,Content", "Margin,Padding,Border,Content"], correct: 1, explanation: "Margin → Border → Padding → Content" },
+                        { question: "How to prevent margin collapse?", options: ["display:flex", "margin:separate", "collapse:none", "margin-collapse:separate"], correct: 0, explanation: "display: flex prevents margin collapse." }
+                    ]
+                }
+            };
+            
+            await chapterRef.set(chapterData);
+            updateProgress(100);
+            showMessage("✅ Chapter 3 updated successfully with 12 quiz questions!", 'success');
+            
+        } catch (error) {
+            showMessage("❌ Error: " + error.message, 'error');
+            console.error(error);
+        }
+    }
+    
+    async function updateAllChapters() {
+        if (!db) {
+            showMessage("❌ Firebase not initialized. Please refresh and try again.", 'error');
+            return;
+        }
+        
+        clearOutput();
+        showMessage("🚀 Starting to update all chapters...", 'info');
+        updateProgress(10);
+        
+        await updateChapter1();
+        updateProgress(40);
+        
+        await updateChapter2();
+        updateProgress(70);
+        
+        await updateChapter3();
+        updateProgress(100);
+        
+        showMessage("🎉 ALL CHAPTERS UPDATED SUCCESSFULLY!", 'success');
+        showMessage("📊 Each chapter now has 12 comprehensive quiz questions!", 'success');
+        showMessage("💡 Refresh modules.html?module=html-css to see the new content!", 'info');
+    }
+    
+    // Check if Firebase is ready
+    setTimeout(() => {
+        if (db) {
+            showMessage("✅ Firebase connected and ready!", 'success');
+        } else {
+            showMessage("⚠️ Firebase not ready. Please refresh the page.", 'error');
+        }
+    }, 1000);
+    </script>
+</body>
+</html>

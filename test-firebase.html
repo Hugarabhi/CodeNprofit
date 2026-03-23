@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Firebase</title>
+</head>
+<body>
+    <h1>Testing Firebase Connection</h1>
+    <div id="status">Loading...</div>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    
+    <script>
+    async function testFirebase() {
+        const statusDiv = document.getElementById('status');
+        statusDiv.innerHTML = "Initializing Firebase...";
+        
+        try {
+            // Initialize Firebase
+            if (typeof initializeFirebase === 'function') {
+                initializeFirebase();
+                statusDiv.innerHTML += "<br>✓ Firebase initialized";
+            } else {
+                throw new Error("initializeFirebase function not found");
+            }
+            
+            // Wait for FirebaseService
+            let attempts = 0;
+            const waitForService = setInterval(async () => {
+                attempts++;
+                
+                if (window.FirebaseService && FirebaseService.getDb && FirebaseService.getDb()) {
+                    clearInterval(waitForService);
+                    statusDiv.innerHTML += "<br>✓ FirebaseService ready";
+                    
+                    // Try to get Firestore
+                    const db = FirebaseService.getDb();
+                    statusDiv.innerHTML += "<br>✓ Firestore instance ready";
+                    
+                    // Try to read a document
+                    try {
+                        const testDoc = await db.collection("modules").doc("html-css").get();
+                        if (testDoc.exists) {
+                            statusDiv.innerHTML += "<br>✓ Module document exists!";
+                            statusDiv.innerHTML += "<br>Module title: " + (testDoc.data().title || "N/A");
+                        } else {
+                            statusDiv.innerHTML += "<br>⚠ Module document not found (run the creation script first)";
+                        }
+                    } catch (err) {
+                        statusDiv.innerHTML += "<br>❌ Error reading: " + err.message;
+                    }
+                    
+                } else if (attempts >= 20) {
+                    clearInterval(waitForService);
+                    statusDiv.innerHTML += "<br>❌ FirebaseService not available after 10 seconds";
+                }
+            }, 500);
+            
+        } catch (error) {
+            statusDiv.innerHTML += "<br>❌ Error: " + error.message;
+        }
+    }
+    
+    testFirebase();
+    </script>
+</body>
+</html>
